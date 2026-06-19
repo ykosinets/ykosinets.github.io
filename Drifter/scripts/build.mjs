@@ -1,10 +1,16 @@
 import fs from "node:fs";
 import path from "node:path";
+import { execFileSync } from "node:child_process";
 
-const root = process.cwd();
-const srcDir = path.join(root, "src");
-const distDir = path.join(root, "dist");
-const publicDir = path.join(root, "public");
+const projectRoot = process.cwd();
+const gitRoot = execFileSync("git", ["rev-parse", "--show-toplevel"], {
+  cwd: projectRoot,
+  encoding: "utf8"
+}).trim();
+
+const srcDir = path.join(projectRoot, "src");
+const publicDir = path.join(projectRoot, "public");
+const outputDir = gitRoot;
 
 function read(file) {
   return fs.readFileSync(file, "utf8");
@@ -35,21 +41,19 @@ function copyDir(source, target) {
 }
 
 function build() {
-  fs.rmSync(distDir, { recursive: true, force: true });
-  fs.mkdirSync(path.join(distDir, "styles"), { recursive: true });
-
-  copyDir(publicDir, distDir);
+  fs.mkdirSync(path.join(outputDir, "styles"), { recursive: true });
+  copyDir(publicDir, outputDir);
 
   const pageFile = path.join(srcDir, "pages", "index.html");
   const html = includePartials(read(pageFile), pageFile);
-  fs.writeFileSync(path.join(distDir, "index.html"), html);
+  fs.writeFileSync(path.join(outputDir, "index.html"), html);
 
   fs.copyFileSync(
     path.join(srcDir, "styles", "main.pcss"),
-    path.join(distDir, "styles", "drifter.css")
+    path.join(outputDir, "styles", "drifter.css")
   );
 
-  console.log("Built dist/index.html");
+  console.log(`Built ${path.relative(projectRoot, path.join(outputDir, "index.html")) || "index.html"}`);
 }
 
 build();
