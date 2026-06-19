@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="DRIFTER builds bespoke camper van conversions out of Metro Detroit. Twenty-four builds a year, each one numbered and commissioned to a brief." />
+    <title>DRIFTER | Bespoke Camper Van Conversions</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#231f20",
+              gold: "#ffdd15",
+              ivory: "#f5eee9",
+              red: "#ec1c24",
+              blue: "#15416f",
+              green: "#00a14b",
+              walnut: "#22160d"
+            },
+            fontFamily: {
+              serif: ["Georgia", "serif"],
+              sans: ["Inter", "Arial", "sans-serif"],
+              mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"]
+            }
+          }
+        }
+      };
+    </script>
+    <link rel="stylesheet" href="styles/drifter.css" />
+  </head>
+  <body class="bg-ink font-sans text-ivory antialiased">
+    <!-- @include organisms/site-header.html -->
+    <main>
+      <!-- @include organisms/hero.html -->
+      <!-- @include organisms/collection.html -->
+      <!-- @include organisms/process.html -->
+      <!-- @include organisms/drift.html -->
+      <!-- @include organisms/connect.html -->
+    </main>
+    <!-- @include organisms/site-footer.html -->
+  </body>
+</html>

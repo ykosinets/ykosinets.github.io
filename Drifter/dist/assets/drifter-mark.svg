@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 220" role="img" aria-labelledby="title desc">
+  <title id="title">DRIFTER crest mark</title>
+  <desc id="desc">A gold shield mark with coordinate stars for the DRIFTER brand.</desc>
+  <path d="M90 10 154 34v69c0 48-25 83-64 107-39-24-64-59-64-107V34L90 10Z" fill="#ffdd15"/>
+  <path d="M90 24 140 43v59c0 38-18 66-50 87-32-21-50-49-50-87V43L90 24Z" fill="#231f20"/>
+  <path d="M89 55c15 0 29 9 34 22-13-6-26-5-37 4 10 4 18 11 24 21-17-2-30 2-40 12 4-18 13-31 27-38-11-3-22-1-33 6 5-16 13-27 25-27Z" fill="#ffdd15"/>
+  <path d="M64 137h52v8H64v-8Zm9 17h34v7H73v-7Z" fill="#ffdd15"/>
+  <g fill="#ffdd15">
+    <circle cx="57" cy="55" r="2.5"/><circle cx="67" cy="48" r="2.5"/><circle cx="79" cy="44" r="2.5"/><circle cx="91" cy="42" r="2.5"/><circle cx="103" cy="44" r="2.5"/><circle cx="115" cy="48" r="2.5"/><circle cx="125" cy="55" r="2.5"/>
+    <circle cx="50" cy="70" r="2.5"/><circle cx="132" cy="70" r="2.5"/><circle cx="48" cy="88" r="2.5"/><circle cx="134" cy="88" r="2.5"/><circle cx="51" cy="106" r="2.5"/><circle cx="131" cy="106" r="2.5"/>
+  </g>
+</svg>
