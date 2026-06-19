@@ -3,222 +3,187 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="DRIFTER builds bespoke camper van conversions out of Metro Detroit. Twenty-four builds a year, each one numbered and commissioned to a brief." />
-    <title>DRIFTER | Bespoke Camper Van Conversions</title>
+    <meta name="description" content="DRIFTER custom camper van builder in Michigan. Coachbuilt campervans, small-batch builds, and the Andara Collection." />
+    <title>DRIFTER | Custom Camper Van Builder</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://cdn.tailwindcss.com" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              ink: "#231f20",
-              gold: "#ffdd15",
-              ivory: "#f5eee9",
-              red: "#ec1c24",
-              blue: "#15416f",
-              green: "#00a14b",
-              walnut: "#22160d"
-            },
-            fontFamily: {
-              serif: ["Georgia", "serif"],
-              sans: ["Inter", "Arial", "sans-serif"],
-              mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"]
-            }
-          }
-        }
-      };
-    </script>
     <link rel="stylesheet" href="styles/drifter.css" />
   </head>
-  <body class="bg-ink font-sans text-ivory antialiased">
-    <header class="site-header fixed inset-x-0 top-0 z-50 border-b border-ivory/10 bg-ink/88 backdrop-blur-xl">
-  <div class="mx-auto flex h-[76px] max-w-[1440px] items-center justify-between px-4 sm:px-6 lg:px-10">
-    <a class="brand-lockup group flex items-center gap-3" href="#home" aria-label="DRIFTER home">
-  <img class="h-12 w-10 shrink-0" src="assets/drifter-mark.svg" alt="" />
-  <span class="wordmark text-[1.35rem] font-black tracking-[0.22em] text-ivory">DRIFTER</span>
-</a>
-
-    <nav class="hidden items-center gap-8 text-xs font-bold uppercase tracking-[0.18em] text-ivory/78 lg:flex" aria-label="Primary navigation">
-      <a href="#home">Home</a>
-      <a href="#collection">Collection</a>
-      <a href="#process">Process</a>
-      <a href="#drift">The Drift</a>
-      <a href="#connect">Connect</a>
-    </nav>
-    <div class="hidden items-center gap-3 md:flex">
-      <a class="button-cut border border-gold px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-ivory" href="tel:18555380093">855-538-0093</a>
-      <a class="button-cut inline-flex min-h-11 items-center justify-center border border-gold bg-gold px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-ink transition hover:bg-transparent hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-ink" href="#connect">
-  Start Your Build
-</a>
-
-    </div>
-    <a class="button-cut border border-gold px-4 py-3 text-xs font-bold uppercase tracking-[0.14em] text-gold md:hidden" href="#connect">Build</a>
-  </div>
-</header>
-
-    <main>
-      <section id="home" class="hero-section relative min-h-[92svh] overflow-hidden bg-ink pt-[76px] text-ivory">
-  <img class="absolute inset-0 h-full w-full object-cover" src="assets/hero-van-large.jpg" alt="A DRIFTER camper van staged in low desert light" />
-  <div class="hero-vignette absolute inset-0"></div>
-  <div class="relative z-10 mx-auto grid min-h-[calc(92svh-76px)] max-w-[1440px] content-end px-4 pb-8 pt-20 sm:px-6 lg:px-10 lg:pb-12">
-    <div class="grid gap-8 lg:grid-cols-[minmax(0,0.92fr)_360px] lg:items-end">
-      <div class="max-w-5xl">
-        <p class="mono-label mb-5 text-gold">Bespoke van conversions / Metro Detroit</p>
-        <h1 class="headline text-[4.25rem] leading-[0.88] text-ivory sm:text-[7rem] lg:text-[9.5rem]">DRIFTER</h1>
-        <p class="mt-6 max-w-2xl text-xl leading-8 text-ivory/86 sm:text-2xl">Twenty-four builds a year. Each one numbered. Each builder named. Built for the person who has already crossed the threshold.</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a class="button-cut inline-flex min-h-11 items-center justify-center border border-gold bg-gold px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-ink transition hover:bg-transparent hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-ink" href="#connect">
-  Start Your Build
-</a>
-
-          <a class="button-cut inline-flex min-h-11 items-center justify-center border border-ivory/70 px-5 py-3 text-sm font-bold uppercase tracking-[0.1em] text-ivory transition hover:border-gold hover:text-gold focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-ink" href="#collection">
-  Andara Collection
-</a>
-
+  <body>
+    <div class="site-shell">
+      <header class="nav" id="home">
+        <a class="wordmark" href="#home" aria-label="DRIFTER home">DRIFTER</a>
+        <nav aria-label="Primary navigation">
+          <a href="#home">Home</a>
+          <a href="#collection">Collection</a>
+          <a href="#process">Process</a>
+          <a href="#drift">The Drift</a>
+          <a href="#connect">Connect</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-phone" href="tel:18555380093">855-538-0093</a>
+          <a class="btn btn-gold" href="#connect">Start Your Build</a>
         </div>
-      </div>
-      <aside class="hero-brief border border-ivory/18 bg-ink/58 p-5 backdrop-blur-md">
-        <p class="mono-label text-gold">Commission status</p>
-        <p class="mt-4 text-2xl font-semibold leading-tight">2026 intake: selective review.</p>
-        <p class="mt-3 text-sm leading-6 text-ivory/70">No tiers. No entry product. The schedule opens around capacity, not demand.</p>
-      </aside>
+      </header>
+
+      <main>
+        <section class="hero panel-dark">
+          <img class="hero-bg" src="assets/svg-home/03-image-24.jpg" alt="Black DRIFTER camper van on a mountain road" />
+          <div class="standard-card">
+            <img src="assets/drifter-mark.svg" alt="" />
+            <div>
+              <p class="eyebrow">Coach</p>
+              <h1>Craft<br />Standard</h1>
+              <p class="tiny-gold">Introducing<br />the Andara Collection</p>
+              <p>Spanish for “to move forward.” Twenty-four coaches, commissioned through 2027. Built by hand in Michigan. Each one numbered, each assigned to a Master Builder.</p>
+              <div class="social-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+          </div>
+          <div class="hero-buttons">
+            <a class="btn btn-outline-light" href="#collection">Andara Collection</a>
+            <a class="btn btn-outline-light" href="#connect">Start Your Build</a>
+          </div>
+        </section>
+
+        <section class="image-band">
+          <img src="assets/svg-home/04-image-23.png" alt="Warm coachbuilt DRIFTER camper van interior" />
+        </section>
+
+        <section class="builder cream" id="collection">
+          <div class="builder-copy">
+            <h2>Custom<br />Van Builder</h2>
+            <p class="subhead">Coachbuilt Campervans, Michigan</p>
+            <p>Drifter builds twenty-four custom campervans per year. Each one is a luxury custom campervan executed under Drifter Coachcraft Standard, design-led, small-batch, finished to a coachbuilt interior.</p>
+            <p class="price">Starting at $119,950 <span>Van not included*</span></p>
+            <div class="button-row"><a class="btn btn-line" href="#connect">Finance Options</a><a class="btn btn-gold small" href="#process">Customize This Build</a></div>
+          </div>
+          <img class="builder-van" src="assets/svg-home/05-Layer_1-4.png" alt="DRIFTER black camper van profile" />
+        </section>
+
+        <section class="process panel-dark" id="process">
+          <article class="process-copy">
+            <span>.01</span>
+            <h3>Choose Your Van</h3>
+            <p>Work directly with product designers and master builders to create a custom floorplan or choose from preset floorplans.</p>
+            <a class="btn btn-line-dark" href="#connect">Chassis Selection</a>
+          </article>
+          <figure><img src="assets/svg-home/07-fxcZI2-2.png" alt="Two DRIFTER vans in a wooded setting" /></figure>
+          <figure><img src="assets/svg-home/08-E6HUV6-2.png" alt="Design desk with floor plans and materials" /></figure>
+          <article class="process-copy lower">
+            <span>.02</span>
+            <h3>Customize the Floor Plan</h3>
+            <p>Work with an interior designer to refine materials, colors, and finishes.</p>
+            <a class="btn btn-line-dark" href="#connect">See Floor Plans</a>
+          </article>
+          <article class="process-copy">
+            <span>.03</span>
+            <h3>Professional Interior Design</h3>
+            <p>Work with an interior designer to refine materials, colors, and finishes.</p>
+            <a class="btn btn-line-dark" href="#connect">Learn More</a>
+          </article>
+          <figure><img src="assets/svg-home/09-h5t6E2-2.png" alt="Bright DRIFTER camper van interior" /></figure>
+          <figure><img src="assets/svg-home/10-AyRwsn-2.png" alt="Night view through a camper van rear door" /></figure>
+          <article class="process-copy lower">
+            <span>.04</span>
+            <h3>What Each Build Comes With</h3>
+            <p>Work with an interior designer to refine materials, colors, and finishes.</p>
+            <a class="btn btn-line-dark" href="#connect">What’s Included</a>
+          </article>
+        </section>
+
+        <section class="schedule gold-panel" id="connect">
+          <img src="assets/svg-home/11-Layer_1-2.png" alt="Black DRIFTER van side profile" />
+          <div>
+            <h2>Schedule<br />A Call</h2>
+            <p class="subhead">15 Minute Discovery Call</p>
+            <p>Drifter builds twenty-four custom campervans per year. Each one is design-led, small-batch, and finished to a coachbuilt interior.</p>
+            <div class="button-row"><a class="btn btn-line" href="tel:18555380093">855-538-0093</a><a class="btn btn-dark" href="mailto:build@drifter.example">Start Your Build</a></div>
+          </div>
+        </section>
+
+        <section class="gallery cream">
+          <div class="tabs"><span>Overview</span><span>Sprinter</span><span>Transit</span><span>Staff Picks</span><span>Pet Friendly</span><a href="#">Explore Full Gallery</a></div>
+          <div class="gallery-grid">
+            <div class="gallery-copy">
+              <h2>Drifter<br />Gallery</h2>
+              <p class="subhead">15 Minute Discovery Call</p>
+              <p>Browse coachbuilt interiors, working cabins, pet-friendly layouts, and custom storage details.</p>
+              <a class="btn btn-gold small" href="#connect">Start Your Build</a>
+            </div>
+            <img class="big" src="assets/svg-home/13-Layer_0-4.png" alt="White camper van at sunset" />
+            <img src="assets/svg-home/12-Layer_0-5.png" alt="Interior galley detail" />
+            <img src="assets/svg-home/14-Layer_0-7.png" alt="Camper van bed detail" />
+            <img src="assets/svg-home/15-Layer_0-6.png" alt="Camper van cabinetry detail" />
+          </div>
+        </section>
+
+        <section class="discover green-panel">
+          <h2>Discover</h2>
+          <p>Coachbuilt Campervans, Michigan</p>
+          <div class="discover-cards">
+            <article><img src="assets/svg-home/16-_0jO4P8-2.png" alt="Workshop plans" /><a class="btn btn-line-dark" href="#">Inside the Workshop</a></article>
+            <article><img src="assets/svg-home/17-Wp1NsB-2.png" alt="Craftsperson working in black and white" /><a class="btn btn-line-dark" href="#">Owners Studio</a></article>
+            <article><img src="assets/svg-home/08-E6HUV6-2.png" alt="Financing plans and material desk" /><a class="btn btn-line-dark" href="#">Drifter Financing Options Available</a></article>
+          </div>
+        </section>
+
+        <section class="club panel-dark">
+          <div><h2>The<br />Owners<br />Club.</h2></div>
+          <img src="assets/svg-home/01-image.png" alt="Owner reviews" />
+        </section>
+
+        <section class="stories cream">
+          <h2>Real Custom Camper Van<br />Client Stories</h2>
+          <div class="story-grid">
+            <article><img src="assets/svg-home/18-sPosd8-2.png" alt="Owners standing by a van" /><h3>Aron + Jamie | Build #85</h3><p>Dual Workstation, Starlink & Mobile Office</p><a class="btn btn-gold small" href="#">Watch Full Video</a></article>
+            <article><img src="assets/svg-home/19-q4KVIi-2.png" alt="Owner inside camper van" /><h3>Derek Sarno | Build #83</h3><p>Chef Van, Mobile Kitchen & Outdoor Cooking</p><a class="btn btn-gold small" href="#">Watch Full Video</a></article>
+            <article><img src="assets/svg-home/20-Wz2Lvk-2.png" alt="Owner with white van" /><h3>Allison + Her Dogs | Build #81</h3><p>Marble Shower, Rattan Cabinets & Dog-Friendly</p><a class="btn btn-gold small" href="#">Watch Full Video</a></article>
+          </div>
+        </section>
+
+        <section class="journal-signup cream" id="drift">
+          <div>
+            <h2>The Drift:<br />A Campervan<br />Journel</h2>
+            <p>Build decisions.<br />Design thinking.<br />Owner stories.</p>
+            <form><input aria-label="Email" placeholder="ENTER YOUR EMAIL HERE" /><button class="btn btn-dark" type="submit">Sign Up</button></form>
+          </div>
+          <img src="assets/svg-home/21-_9JFm50-2.png" alt="Three white camper vans in profile" />
+        </section>
+
+        <section class="studio panel-dark"><img src="assets/svg-home/02-image-2.png" alt="The Owners Studio" /><h2>The Owners Studio.</h2><a class="btn btn-line-dark" href="#">Learn More</a></section>
+
+        <section class="latest cream">
+          <h2>The Latest from ‘The Drift’</h2>
+          <p>The Drift is the storytelling hub of Drifter Vans. What goes into our builds to the people living in them.</p>
+          <div class="story-grid compact">
+            <article><img src="assets/svg-home/24-Layer_0.png" alt="Sunset from camper van" /><h3>Do It Sacred: A Drifter Campervan Story</h3><a class="btn btn-gold small" href="#">Read Full Story</a></article>
+            <article><img src="assets/svg-home/23-Layer_0-2.png" alt="Camper van build screen" /><h3>What To Expect During A Custom Campervan Build</h3><a class="btn btn-gold small" href="#">Read Full Story</a></article>
+            <article><img src="assets/svg-home/22-Layer_0-3.png" alt="Builder working on plans" /><h3>Custom Campervan Build Standards</h3><a class="btn btn-gold small" href="#">Read Full Story</a></article>
+          </div>
+        </section>
+
+        <section class="schedule forest-cta">
+          <img src="assets/svg-home/25-wpAfgZ-2.png" alt="DRIFTER van glowing in a forest" />
+          <div>
+            <h2>Schedule<br />A Call</h2>
+            <p class="subhead">15 Minute Discovery Call</p>
+            <p>Drifter builds twenty-four custom campervans per year. Each one is design-led, small-batch, and finished to a coachbuilt interior.</p>
+            <div class="button-row"><a class="btn btn-line-dark" href="tel:18555380093">855-538-0093</a><a class="btn btn-gold small" href="mailto:build@drifter.example">Start Your Build</a></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer panel-dark">
+        <div>
+          <a class="wordmark footer-mark" href="#home">DRIFTER</a>
+          <div class="social-dots large" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+          <p>Drifter Camper Vans LLC.<br />24175 Telegraph Rd #100, Southfield,<br />MI 48033</p>
+        </div>
+        <div>
+          <h2>The Drift:<br />A Campervan<br />Journel</h2>
+          <form><input aria-label="Email" placeholder="ENTER YOUR EMAIL HERE" /><button class="btn btn-light" type="submit">Sign Up</button></form>
+        </div>
+      </footer>
     </div>
-    <div class="stat-strip grid grid-cols-2 border-y border-ivory/15 md:grid-cols-4">
-  <div>
-    <strong>24</strong>
-    <span>builds per year</span>
-  </div>
-  <div>
-    <strong>01</strong>
-    <span>standard</span>
-  </div>
-  <div>
-    <strong>26</strong>
-    <span>coordinate stars</span>
-  </div>
-  <div>
-    <strong>MI</strong>
-    <span>built in Michigan</span>
-  </div>
-</div>
-
-  </div>
-</section>
-
-      <section id="collection" class="section-band bg-ivory text-ink">
-  <div class="mx-auto grid max-w-[1440px] gap-10 px-4 py-20 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-10 lg:py-28">
-    <div>
-      <p class="mono-label text-blue">The collection</p>
-      <h2 class="section-title mt-4">One standard. No decorative ambition.</h2>
-      <p class="mt-6 max-w-xl text-lg leading-8 text-ink/72">DRIFTER builds coaches for transitions already earned. The van is not the fantasy. It is what happens after the fantasy is gone.</p>
-    </div>
-    <div class="collection-grid">
-      <figure class="media-panel media-panel-large">
-        <img src="assets/craft-interior-b.png" alt="A handcrafted DRIFTER van interior with warm cabinetry and precise detailing" />
-        <figcaption>Interior systems resolved as a single commission.</figcaption>
-      </figure>
-      <figure class="media-panel">
-        <img src="assets/craft-interior-a.png" alt="Detailed cabinetry and seating inside a DRIFTER van" />
-        <figcaption>Storage, sleep, utility, and service access.</figcaption>
-      </figure>
-      <figure class="media-panel">
-        <img src="assets/road-van.png" alt="A DRIFTER van photographed on open terrain" />
-        <figcaption>Built for the real world, not the feed.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-      <section id="process" class="section-band bg-ink text-ivory">
-  <div class="mx-auto max-w-[1440px] px-4 py-20 sm:px-6 lg:px-10 lg:py-28">
-    <div class="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
-      <div>
-        <p class="mono-label text-gold">Process</p>
-        <h2 class="section-title mt-4 text-ivory">A build with authorship.</h2>
-      </div>
-      <div class="grid gap-px bg-ivory/12 md:grid-cols-3">
-        <article class="process-card">
-  <span class="mono-label text-gold">01 / Brief</span>
-  <h3>Tell us what begins next.</h3>
-  <p>The first conversation is not a product configurator. It is a commission brief: where the van needs to go, how it needs to hold up, and what cannot be compromised.</p>
-</article>
-<article class="process-card">
-  <span class="mono-label text-gold">02 / Author</span>
-  <h3>A named builder owns the decisions.</h3>
-  <p>Each conversion is numbered and accountable. Materials, layout, systems, storage, and service access are resolved as one build, not a stack of options.</p>
-</article>
-<article class="process-card">
-  <span class="mono-label text-gold">03 / Release</span>
-  <h3>The handoff is the threshold.</h3>
-  <p>When the van leaves Metro Detroit, it carries the mark, the coordinates, and the record of what was built for the person stepping into it.</p>
-</article>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-      <section id="drift" class="section-band bg-walnut text-ivory">
-  <div class="mx-auto grid max-w-[1440px] gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:py-28">
-    <figure class="media-panel border-ivory/14 bg-ink/30">
-      <img src="assets/build-detail.png" alt="Craft detail from a DRIFTER build" />
-      <figcaption>Material choices with weight: dark walnut, steel, leather, linen.</figcaption>
-    </figure>
-    <div class="self-center">
-      <p class="mono-label text-gold">The drift</p>
-      <h2 class="section-title mt-4 text-ivory">The refusal is part of the product.</h2>
-      <p class="mt-6 text-lg leading-8 text-ivory/76">Most brands chase the wrong audience until the work becomes costume. DRIFTER holds a narrower line: deliberate movement, technical precision, institutional restraint, and no explanation of price as performance.</p>
-      <div class="mt-8 grid gap-4 sm:grid-cols-3">
-        <div class="principle"><span>Shroud</span><strong>Composed signal</strong></div>
-        <div class="principle"><span>Helm</span><strong>Precise decisions</strong></div>
-        <div class="principle"><span>Anchor</span><strong>What comes next</strong></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-      <section id="connect" class="section-band bg-gold text-ink">
-  <div class="mx-auto grid max-w-[1440px] gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1fr_0.8fr] lg:px-10 lg:py-24">
-    <div>
-      <p class="mono-label text-ink/70">Commission inquiry</p>
-      <h2 class="section-title mt-4">Start with the brief.</h2>
-      <p class="mt-5 max-w-2xl text-lg leading-8 text-ink/72">Tell us what the van has to make possible. If the schedule is closed, the answer is a sentence. If there is room, the next step is a call.</p>
-    </div>
-    <form class="connect-form grid gap-3" action="mailto:build@drifter.example" method="post" enctype="text/plain">
-      <label>
-        <span>Name</span>
-        <input name="name" autocomplete="name" />
-      </label>
-      <label>
-        <span>Email</span>
-        <input name="email" type="email" autocomplete="email" />
-      </label>
-      <label>
-        <span>What begins next?</span>
-        <textarea name="brief" rows="4"></textarea>
-      </label>
-      <button class="button-cut min-h-12 border border-ink bg-ink px-5 py-3 text-sm font-black uppercase tracking-[0.12em] text-gold transition hover:bg-transparent hover:text-ink" type="submit">Send Brief</button>
-    </form>
-  </div>
-</section>
-
-    </main>
-    <footer class="bg-ink text-ivory">
-  <div class="mx-auto flex max-w-[1440px] flex-col gap-8 px-4 py-10 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-    <a class="brand-lockup group flex items-center gap-3" href="#home" aria-label="DRIFTER home">
-  <img class="h-12 w-10 shrink-0" src="assets/drifter-mark.svg" alt="" />
-  <span class="wordmark text-[1.35rem] font-black tracking-[0.22em] text-ivory">DRIFTER</span>
-</a>
-
-    <div class="grid gap-2 text-sm text-ivory/64 sm:grid-cols-3 sm:gap-8">
-      <span>Metro Detroit</span>
-      <a href="tel:18555380093">855-538-0093</a>
-      <span>Twenty-four builds annually</span>
-    </div>
-  </div>
-</footer>
-
   </body>
 </html>
