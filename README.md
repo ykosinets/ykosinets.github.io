@@ -1,1 +1,0 @@
-# ykosinets.github.io
