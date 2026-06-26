@@ -145,47 +145,12 @@
       overflow: hidden;
     }
 
-    .car-photo.dark {
-      background: linear-gradient(160deg, #141923 0%, #2b3647 43%, #0a0d12 44%, #090b10 100%);
-    }
-
-    .car-photo.blank {
-      background: #f3f4f6;
-      border: 1px solid #c8cdd4;
-      width: 107px;
-      height: 68px;
-    }
-
-    .image-icon {
-      width: 42px;
-      height: 36px;
-      border: 4px solid #a4abb5;
-      border-radius: 4px;
-      position: relative;
-      margin: 13px auto 0;
-    }
-
-    .image-icon:before {
-      content: "";
-      position: absolute;
-      width: 9px;
-      height: 9px;
-      border: 3px solid #a4abb5;
-      border-radius: 50%;
-      top: 5px;
-      right: 6px;
-    }
-
-    .image-icon:after {
-      content: "";
-      position: absolute;
-      left: 5px;
-      bottom: 5px;
-      width: 28px;
-      height: 22px;
-      border-left: 4px solid #a4abb5;
-      border-bottom: 4px solid #a4abb5;
-      transform: rotate(45deg);
+    .car-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      aspect-ratio: 3 / 2;
+      display: block;
     }
 
     .price-box {
@@ -225,6 +190,79 @@
       font-size: 10px;
       line-height: 10px;
       font-weight: 700;
+    }
+    .separator-wing {
+      position: relative;
+    }
+
+    .separator-wing:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      left: 0;
+      top: 50%;
+    }
+
+    .separator-wing--is-left:after {
+      background-image: linear-gradient(to right, transparent 0%, #ccc 100%);
+    }
+    .separator-wing--is-right:after {
+      background-image: linear-gradient(to right, #ccc 0%, transparent 100%);
+    }
+
+    .separator-dots span {
+      position: relative;
+      background-color:#ec2d87;
+      width: 8px;
+      height: 8px;
+      display: block;
+      border-radius: 100%;
+    }
+
+    .separator-dots span:before,
+    .separator-dots span:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      display: block;
+      border-radius: 100%;
+      background-color:#ec2d87;
+    }
+
+    .separator-dots span:before {
+      right: 100%;
+      transform: translate(-3px, -50%);
+    }
+
+    .separator-dots span:after {
+      left: 100%;
+      transform: translate(3px, -50%);
+    }
+
+    .presentation-wrapper {
+      background: #f6f6ff;
+      position: relative;
+    }
+
+    .presentation-wrapper .tag-arrow {
+      width: 28px;
+      height: 28px;
+      font-size: 16px;
+      line-height: 25px;
+      padding: 0;
+      text-align: center;
+      border-radius: 100%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .mobile-specs .pill {
+      box-shadow: 0 2px 4px 0 rgba(0 0 0 / .1);
     }
 
     @media screen and (max-width: 620px) {
@@ -288,7 +326,7 @@
       .car-photo,
       .car-photo.blank {
         width: 100% !important;
-        height: 118px !important;
+        height: auto !important;
       }
 
       .price-box {
@@ -296,66 +334,24 @@
       }
 
       .price-box td {
-        text-align: right !important;
+        text-align: center !important;
       }
 
       .hide-mobile {
         display: none !important;
       }
-    }
 
-    .separator-wing {
-      position: relative;
-    }
-    .separator-wing.separator-wing--is-left {}
-    .separator-wing.separator-wing--is-right {}
+      .presentation-wrapper .tag-arrow {
+        display: block;
+        position: relative;
+        transform: none;
+        left: auto;
+        top: auto;
+      }
 
-    .separator-wing.separator-wing--is-left:after,
-    .separator-wing.separator-wing--is-right:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 1px;
-      left: 0;
-      top: 50%;
-    }
-
-    .separator-wing.separator-wing--is-left:after {
-      background-image: linear-gradient(to right, transparent 0%, #ccc 100%);
-    }
-    .separator-wing.separator-wing--is-right:after {
-      background-image: linear-gradient(to right, #ccc 0%, transparent 100%);
-    }
-
-    .separator-dots span {
-      position: relative;
-      background-color:#ec2d87;
-      width: 8px;
-      height: 8px;
-      display: block;
-      border-radius: 100%;
-    }
-
-    .separator-dots span:before,
-    .separator-dots span:after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      width: 5px;
-      height: 5px;
-      display: block;
-      border-radius: 100%;
-      background-color:#ec2d87;
-    }
-
-    .separator-dots span:before {
-      right: 100%;
-      transform: translate(-3px, -50%);
-    }
-
-    .separator-dots span:after {
-      left: 100%;
-      transform: translate(3px, -50%);
+      .pill + [width="6"] {
+        display: none !important;
+      }
     }
   </style>
 </head>
@@ -520,7 +516,9 @@
                           <div style="height:14px;font-size:0;line-height:14px;">&nbsp;</div>
                           <table role="presentation" width="100%" class="stack">
                             <tr>
-                              <td width="124" valign="top"><div class="car-photo"></div></td>
+                              <td width="124" valign="top"><div class="car-photo">
+                                <img src="https://picsum.photos/id/0/200/300" alt="">
+                              </div></td>
                               <td valign="top" class="mobile-pad-top">
                                 <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">BMW 330e xDrive M Sport</div>
                                 <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
@@ -546,16 +544,18 @@
                           </table>
                         </td></tr>
                         <tr><td height="14" style="font-size:0;line-height:14px;">&nbsp;</td></tr>
-                        <tr><td style="padding:0 16px;"><table role="presentation" width="100%"><tr><td style="border-top:1px solid #e7edf4;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
-                        <tr>
-                          <td class="offer-bg" style="padding:0 16px 19px;">
-                            <div style="height:19px;font-size:0;line-height:19px;">&nbsp;</div>
+                        <tr class="presentation-wrapper">
+                          <td style="padding:10px 16px;">
                             <table role="presentation" width="100%">
                               <tr>
                                 <td><span class="pill tag-pink" style="display:inline-block;padding:4px 10px;font-size:9px;">Based on your successful sale</span></td>
-                                <td align="center" width="28"><span class="pill tag-pink" style="display:inline-block;width:20px;height:20px;line-height:20px;padding:0;">+</span></td>
+                                <td align="center" width="28"><span class="pill tag-pink tag-arrow">↓</span></td>
                               </tr>
                             </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="offer-bg" style="padding:0 16px 19px;">
                             <div style="height:16px;font-size:0;line-height:16px;">&nbsp;</div>
                             <table role="presentation" width="100%">
                               <tr>
@@ -566,7 +566,9 @@
                             <div style="height:15px;font-size:0;line-height:15px;">&nbsp;</div>
                             <table role="presentation" width="100%" class="stack">
                               <tr>
-                                <td width="124" valign="top"><div class="car-photo"></div></td>
+                                <td width="124" valign="top"><div class="car-photo">
+                                  <img src="https://picsum.photos/id/10/200/300" alt="">
+                                </div></td>
                                 <td valign="top" class="mobile-pad-top">
                                   <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">BMW 330e xDrive M Sport</div>
                                   <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
@@ -622,7 +624,9 @@
                           <div style="height:14px;font-size:0;line-height:14px;">&nbsp;</div>
                           <table role="presentation" width="100%" class="stack">
                             <tr>
-                              <td width="124" valign="top"><div class="car-photo dark"></div></td>
+                              <td width="124" valign="top"><div class="car-photo">
+                                <img src="https://picsum.photos/id/20/200/300" alt="">
+                              </div></td>
                               <td valign="top" class="mobile-pad-top">
                                 <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">Audi A5 S Line</div>
                                 <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
@@ -648,16 +652,18 @@
                           </table>
                         </td></tr>
                         <tr><td height="14" style="font-size:0;line-height:14px;">&nbsp;</td></tr>
-                        <tr><td style="padding:0 16px;"><table role="presentation" width="100%"><tr><td style="border-top:1px solid #e7edf4;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
-                        <tr>
-                          <td class="offer-bg" style="padding:0 16px 19px;">
-                            <div style="height:19px;font-size:0;line-height:19px;">&nbsp;</div>
+                        <tr class="presentation-wrapper">
+                          <td style="padding:10px 16px;">
                             <table role="presentation" width="100%">
                               <tr>
                                 <td><span class="pill tag-pink" style="display:inline-block;padding:4px 10px;font-size:9px;">Based on your successful sale</span></td>
-                                <td align="center" width="28"><span class="pill tag-pink" style="display:inline-block;width:20px;height:20px;line-height:20px;padding:0;">+</span></td>
+                                <td align="center" width="28"><span class="pill tag-pink tag-arrow">↓</span></td>
                               </tr>
                             </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="offer-bg" style="padding:0 16px 19px;">
                             <div style="height:16px;font-size:0;line-height:16px;">&nbsp;</div>
                             <table role="presentation" width="100%">
                               <tr>
@@ -668,7 +674,9 @@
                             <div style="height:15px;font-size:0;line-height:15px;">&nbsp;</div>
                             <table role="presentation" width="100%" class="stack">
                               <tr>
-                                <td width="124" valign="top"><div class="car-photo dark"></div></td>
+                                <td width="124" valign="top"><div class="car-photo">
+                                  <img src="https://picsum.photos/id/30/200/300" alt="">
+                                </div></td>
                                 <td valign="top" class="mobile-pad-top">
                                   <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">Audi A5 S Line</div>
                                   <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
@@ -724,7 +732,9 @@
                           <div style="height:14px;font-size:0;line-height:14px;">&nbsp;</div>
                           <table role="presentation" width="100%" class="stack">
                             <tr>
-                              <td width="124" valign="top"><div class="car-photo blank"><div class="image-icon"></div></div></td>
+                              <td width="124" valign="top"><div class="car-photo">
+                                <img src="https://picsum.photos/id/40/200/300" alt="">
+                              </div></td>
                               <td valign="top" class="mobile-pad-top">
                                 <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">Mercedes-Benz C-Class AMG Line</div>
                                 <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
@@ -750,16 +760,18 @@
                           </table>
                         </td></tr>
                         <tr><td height="14" style="font-size:0;line-height:14px;">&nbsp;</td></tr>
-                        <tr><td style="padding:0 16px;"><table role="presentation" width="100%"><tr><td style="border-top:1px solid #e7edf4;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
-                        <tr>
-                          <td class="offer-bg" style="padding:0 16px 19px;">
-                            <div style="height:19px;font-size:0;line-height:19px;">&nbsp;</div>
+                        <tr class="presentation-wrapper">
+                          <td style="padding:10px 16px;">
                             <table role="presentation" width="100%">
                               <tr>
                                 <td><span class="pill tag-pink" style="display:inline-block;padding:4px 10px;font-size:9px;">Based on your successful sale</span></td>
-                                <td align="center" width="28"><span class="pill tag-pink" style="display:inline-block;width:20px;height:20px;line-height:20px;padding:0;">+</span></td>
+                                <td align="center" width="28"><span class="pill tag-pink tag-arrow">↓</span></td>
                               </tr>
                             </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="offer-bg" style="padding:0 16px 19px;">
                             <div style="height:16px;font-size:0;line-height:16px;">&nbsp;</div>
                             <table role="presentation" width="100%">
                               <tr>
@@ -770,7 +782,9 @@
                             <div style="height:15px;font-size:0;line-height:15px;">&nbsp;</div>
                             <table role="presentation" width="100%" class="stack">
                               <tr>
-                                <td width="124" valign="top"><div class="car-photo blank"><div class="image-icon"></div></div></td>
+                                <td width="124" valign="top"><div class="car-photo">
+                                  <img src="https://picsum.photos/id/50/200/300" alt="">
+                                </div></td>
                                 <td valign="top" class="mobile-pad-top">
                                   <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">Mercedes-Benz C-Class AMG Line</div>
                                   <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
