@@ -1,223 +1,894 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="DRIFTER custom camper van builder in Michigan. Coachbuilt campervans, small-batch builds, and the Andara Collection." />
-    <title>DRIFTER | Custom Camper Van Builder</title>
-    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="styles/drifter.css" />
-    <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script type="module" src="assets/site.js"></script>
-  </head>
-  <body>
-    <button class="menu-toggle menu-toggle-fixed" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span></button>
-    <div class="site-shell">
-      <header class="nav" id="home">
-        <a class="wordmark" href="#home" aria-label="DRIFTER home">DRIFTER</a>
-        <button class="menu-toggle" type="button" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false"><span></span><span></span></button>
-        <nav class="desktop-nav" aria-label="Primary navigation">
-          <a href="#home">Home</a>
-          <a href="#collection">Collection</a>
-          <a href="#process">Process</a>
-          <a href="#drift">The Drift</a>
-          <a href="#connect">Connect</a>
-        </nav>
-        <div class="nav-actions">
-          <a class="btn btn-phone" href="tel:18555380093">855-538-0093</a>
-          <a class="btn btn-gold" href="#connect">Start Your Build</a>
-        </div>
-        <div class="mobile-menu" id="mobile-menu">
-          <a href="#home">Home</a>
-          <a href="#collection">Collection</a>
-          <a href="#process">Process</a>
-          <a href="#drift">The Drift</a>
-          <a href="#connect">Connect</a>
-          <a class="btn btn-phone" href="tel:18555380093">855-538-0093</a>
-          <a class="btn btn-gold" href="#connect">Start Your Build</a>
-        </div>
-      </header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Performance Report</title>
+  <style>
+    html,
+    body {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      min-width: 100% !important;
+      background: #f3f7fa;
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
 
-      <main>
-        <section class="hero panel-dark">
-          <div class="swiper hero-slider" aria-label="Featured DRIFTER builds">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><img class="hero-bg" src="assets/svg-home/03-image-24.jpg" alt="Black DRIFTER camper van on a mountain road" /></div>
-              <div class="swiper-slide"><img class="hero-bg" src="assets/svg-home/25-wpAfgZ-2.png" alt="DRIFTER van glowing in a forest" /></div>
-              <div class="swiper-slide"><img class="hero-bg" src="assets/svg-home/07-fxcZI2-2.png" alt="Two DRIFTER vans in a wooded setting" /></div>
-            </div>
-            <div class="swiper-pagination hero-pagination"></div>
-          </div>
-          <div class="standard-card">
-            <img src="assets/drifter-mark.svg" alt="" />
-            <div>
-              <p class="eyebrow">Coach</p>
-              <h1>Craft<br />Standard</h1>
-              <p class="tiny-gold">Introducing<br />the Andara Collection</p>
-              <p>Spanish for “to move forward.” Twenty-four coaches, commissioned through 2027. Built by hand in Michigan. Each one numbered, each assigned to a Master Builder.</p>
-              <div class="social-dots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-            </div>
-          </div>
-          <div class="hero-buttons">
-            <a class="btn btn-outline-light" href="#collection">Andara Collection</a>
-            <a class="btn btn-outline-light" href="#connect">Start Your Build</a>
-          </div>
-        </section>
+    table {
+      border-spacing: 0 !important;
+      border-collapse: collapse !important;
+      mso-table-lspace: 0pt !important;
+      mso-table-rspace: 0pt !important;
+    }
 
-        <section class="image-band">
-          <img src="assets/svg-home/04-image-23.png" alt="Warm coachbuilt DRIFTER camper van interior" />
-        </section>
+    td {
+      padding: 0;
+    }
 
-        <section class="builder cream" id="collection">
-          <div class="builder-copy">
-            <h2>Custom<br />Van Builder</h2>
-            <p class="subhead">Coachbuilt Campervans, Michigan</p>
-            <p>Drifter builds twenty-four custom campervans per year. Each one is a luxury custom campervan executed under Drifter Coachcraft Standard, design-led, small-batch, finished to a coachbuilt interior.</p>
-            <p class="price">Starting at $119,950 <span>Van not included*</span></p>
-            <div class="button-row"><a class="btn btn-line" href="#connect">Finance Options</a><a class="btn btn-gold small" href="#process">Customize This Build</a></div>
-          </div>
-          <img class="builder-van" src="assets/svg-home/05-Layer_1-4.png" alt="DRIFTER black camper van profile" />
-        </section>
+    img {
+      border: 0;
+      display: block;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+      -ms-interpolation-mode: bicubic;
+    }
 
-        <section class="process panel-dark" id="process">
-          <article class="process-copy">
-            <span>.01</span>
-            <h3>Choose Your Van</h3>
-            <p>Work directly with product designers and master builders to create a custom floorplan or choose from preset floorplans.</p>
-            <a class="btn btn-line-dark" href="#connect">Chassis Selection</a>
-          </article>
-          <figure><img src="assets/svg-home/07-fxcZI2-2.png" alt="Two DRIFTER vans in a wooded setting" /></figure>
-          <figure><img src="assets/svg-home/08-E6HUV6-2.png" alt="Design desk with floor plans and materials" /></figure>
-          <article class="process-copy lower">
-            <span>.02</span>
-            <h3>Customize the Floor Plan</h3>
-            <p>Work with an interior designer to refine materials, colors, and finishes.</p>
-            <a class="btn btn-line-dark" href="#connect">See Floor Plans</a>
-          </article>
-          <article class="process-copy">
-            <span>.03</span>
-            <h3>Professional Interior Design</h3>
-            <p>Work with an interior designer to refine materials, colors, and finishes.</p>
-            <a class="btn btn-line-dark" href="#connect">Learn More</a>
-          </article>
-          <figure><img src="assets/svg-home/09-h5t6E2-2.png" alt="Bright DRIFTER camper van interior" /></figure>
-          <figure><img src="assets/svg-home/10-AyRwsn-2.png" alt="Night view through a camper van rear door" /></figure>
-          <article class="process-copy lower">
-            <span>.04</span>
-            <h3>What Each Build Comes With</h3>
-            <p>Work with an interior designer to refine materials, colors, and finishes.</p>
-            <a class="btn btn-line-dark" href="#connect">What’s Included</a>
-          </article>
-        </section>
+    a {
+      text-decoration: none;
+    }
 
-        <section class="schedule gold-panel" id="connect">
-          <img src="assets/svg-home/11-Layer_1-2.png" alt="Black DRIFTER van side profile" />
-          <div>
-            <h2>Schedule<br />A Call</h2>
-            <p class="subhead">15 Minute Discovery Call</p>
-            <p>Drifter builds twenty-four custom campervans per year. Each one is design-led, small-batch, and finished to a coachbuilt interior.</p>
-            <div class="button-row"><a class="btn btn-line" href="tel:18555380093">855-538-0093</a><a class="btn btn-dark" href="mailto:build@drifter.example">Start Your Build</a></div>
-          </div>
-        </section>
+    .email-shell {
+      width: 100%;
+      background: #f3f7fa;
+    }
 
-        <section class="gallery cream">
-          <div class="tabs"><span>Overview</span><span>Sprinter</span><span>Transit</span><span>Staff Picks</span><span>Pet Friendly</span><a href="#">Explore Full Gallery</a></div>
-          <div class="gallery-grid">
-            <div class="gallery-copy">
-              <h2>Drifter<br />Gallery</h2>
-              <p class="subhead">15 Minute Discovery Call</p>
-              <p>Browse coachbuilt interiors, working cabins, pet-friendly layouts, and custom storage details.</p>
-              <a class="btn btn-gold small" href="#connect">Start Your Build</a>
-            </div>
-            <div class="swiper drifter-gallery-slider pswp-gallery">
-              <div class="swiper-wrapper">
-                <a class="swiper-slide gallery-slide" href="assets/svg-home/13-Layer_0-4.png" data-pswp-width="1153" data-pswp-height="774"><img src="assets/svg-home/13-Layer_0-4.png" alt="White camper van at sunset" /></a>
-                <a class="swiper-slide gallery-slide" href="assets/svg-home/12-Layer_0-5.png" data-pswp-width="590" data-pswp-height="880"><img src="assets/svg-home/12-Layer_0-5.png" alt="Interior galley detail" /></a>
-                <a class="swiper-slide gallery-slide" href="assets/svg-home/14-Layer_0-7.png" data-pswp-width="590" data-pswp-height="880"><img src="assets/svg-home/14-Layer_0-7.png" alt="Camper van bed detail" /></a>
-                <a class="swiper-slide gallery-slide" href="assets/svg-home/15-Layer_0-6.png" data-pswp-width="590" data-pswp-height="880"><img src="assets/svg-home/15-Layer_0-6.png" alt="Camper van cabinetry detail" /></a>
-                <a class="swiper-slide gallery-slide" href="assets/svg-home/04-image-23.png" data-pswp-width="928" data-pswp-height="1152"><img src="assets/svg-home/04-image-23.png" alt="Warm coachbuilt DRIFTER camper van interior" /></a>
-              </div>
-              <div class="gallery-controls"><button class="gallery-prev" type="button" aria-label="Previous gallery image">Prev</button><div class="swiper-pagination gallery-pagination"></div><button class="gallery-next" type="button" aria-label="Next gallery image">Next</button></div>
-            </div>
-          </div>
-        </section>
+    .email-card {
+      width: 600px;
+      max-width: 600px;
+      background: #ffffff;
+      border-top: 5px solid #e92d86;
+      box-shadow: 0 4px 16px rgba(22, 34, 51, 0.10);
+    }
 
-        <section class="discover green-panel">
-          <h2>Discover</h2>
-          <p>Coachbuilt Campervans, Michigan</p>
-          <div class="discover-cards linked-cards">
-            <a class="linked-card" href="#"><img src="assets/svg-home/16-_0jO4P8-2.png" alt="Workshop plans" /><span class="btn btn-line-dark">Inside the Workshop</span></a>
-            <a class="linked-card" href="#"><img src="assets/svg-home/17-Wp1NsB-2.png" alt="Craftsperson working in black and white" /><span class="btn btn-line-dark">Owners Studio</span></a>
-            <a class="linked-card" href="#"><img src="assets/svg-home/08-E6HUV6-2.png" alt="Financing plans and material desk" /><span class="btn btn-line-dark">Drifter Financing Options Available</span></a>
-          </div>
-        </section>
+    .container {
+      width: 514px;
+      max-width: 514px;
+    }
 
-        <section class="club panel-dark">
-          <div><h2>The<br />Owners<br />Club.</h2></div>
-          <img src="assets/svg-home/01-image.png" alt="Owner reviews" />
-        </section>
+    .font {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #182136;
+    }
 
-        <section class="stories cream">
-          <h2>Real Custom Camper Van<br />Client Stories</h2>
-          <div class="story-grid linked-cards">
-            <a class="story-card linked-card" href="#"><img src="assets/svg-home/18-sPosd8-2.png" alt="Owners standing by a van" /><h3>Aron + Jamie | Build #85</h3><p>Dual Workstation, Starlink & Mobile Office</p><span class="btn btn-gold small">Watch Full Video</span></a>
-            <a class="story-card linked-card" href="#"><img src="assets/svg-home/19-q4KVIi-2.png" alt="Owner inside camper van" /><h3>Derek Sarno | Build #83</h3><p>Chef Van, Mobile Kitchen & Outdoor Cooking</p><span class="btn btn-gold small">Watch Full Video</span></a>
-            <a class="story-card linked-card" href="#"><img src="assets/svg-home/20-Wz2Lvk-2.png" alt="Owner with white van" /><h3>Allison + Her Dogs | Build #81</h3><p>Marble Shower, Rattan Cabinets & Dog-Friendly</p><span class="btn btn-gold small">Watch Full Video</span></a>
-          </div>
-        </section>
+    .muted {
+      color: #6f7788;
+    }
 
-        <section class="journal-signup cream" id="drift">
-          <div>
-            <h2>The Drift:<br />A Campervan<br />Journel</h2>
-            <p>Build decisions.<br />Design thinking.<br />Owner stories.</p>
-            <form><input aria-label="Email" placeholder="ENTER YOUR EMAIL HERE" /><button class="btn btn-dark" type="submit">Sign Up</button></form>
-          </div>
-          <div class="swiper journal-slider" aria-label="The Drift image slider">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="assets/svg-home/21-_9JFm50-2.png" alt="Three white camper vans in profile" /></div>
-              <div class="swiper-slide"><img src="assets/svg-home/23-Layer_0-2.png" alt="Camper van build screen" /></div>
-              <div class="swiper-slide"><img src="assets/svg-home/24-Layer_0.png" alt="Sunset from camper van" /></div>
-            </div>
-          </div>
-        </section>
+    .pink {
+      color: #e92d86;
+    }
 
-        <section class="studio panel-dark"><img src="assets/svg-home/02-image-2.png" alt="The Owners Studio" /><h2>The Owners Studio.</h2><a class="btn btn-line-dark" href="#">Learn More</a></section>
+    .divider td {
+      font-size: 0;
+      line-height: 0;
+    }
 
-        <section class="latest cream">
-          <h2>The Latest from ‘The Drift’</h2>
-          <p>The Drift is the storytelling hub of Drifter Vans. What goes into our builds to the people living in them.</p>
-          <div class="story-grid compact linked-cards">
-            <a class="story-card linked-card" href="#"><img src="assets/svg-home/24-Layer_0.png" alt="Sunset from camper van" /><h3>Do It Sacred: A Drifter Campervan Story</h3><span class="btn btn-gold small">Read Full Story</span></a>
-            <a class="story-card linked-card" href="#"><img src="assets/svg-home/23-Layer_0-2.png" alt="Camper van build screen" /><h3>What To Expect During A Custom Campervan Build</h3><span class="btn btn-gold small">Read Full Story</span></a>
-            <a class="story-card linked-card" href="#"><img src="assets/svg-home/22-Layer_0-3.png" alt="Builder working on plans" /><h3>Custom Campervan Build Standards</h3><span class="btn btn-gold small">Read Full Story</span></a>
-          </div>
-        </section>
+    .section-card {
+      border: 1px solid #dce2ea;
+      border-radius: 7px;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(17, 25, 40, 0.04);
+    }
 
-        <section class="schedule forest-cta">
-          <img src="assets/svg-home/25-wpAfgZ-2.png" alt="DRIFTER van glowing in a forest" />
-          <div>
-            <h2>Schedule<br />A Call</h2>
-            <p class="subhead">15 Minute Discovery Call</p>
-            <p>Drifter builds twenty-four custom campervans per year. Each one is design-led, small-batch, and finished to a coachbuilt interior.</p>
-            <div class="button-row"><a class="btn btn-line-dark" href="tel:18555380093">855-538-0093</a><a class="btn btn-gold small" href="mailto:build@drifter.example">Start Your Build</a></div>
-          </div>
-        </section>
-      </main>
+    .icon-box {
+      width: 31px;
+      height: 31px;
+      border-radius: 5px;
+      background: #24334b;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 31px;
+      text-align: center;
+    }
 
-      <footer class="footer panel-dark">
-        <div>
-          <a class="wordmark footer-mark" href="#home">DRIFTER</a>
-          <div class="social-dots large" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-          <p>Drifter Camper Vans LLC.<br />24175 Telegraph Rd #100, Southfield,<br />MI 48033</p>
-        </div>
-        <div>
-          <h2>The Drift:<br />A Campervan<br />Journel</h2>
-          <form><input aria-label="Email" placeholder="ENTER YOUR EMAIL HERE" /><button class="btn btn-light" type="submit">Sign Up</button></form>
-        </div>
-      </footer>
-    </div>
-  </body>
+    .rank {
+      width: 22px;
+      height: 22px;
+      border-radius: 5px;
+      background: #25354e;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 22px;
+      text-align: center;
+    }
+
+    .pill {
+      border-radius: 12px;
+      border: 1px solid #dce2ea;
+      color: #5d6678;
+      font-size: 10px;
+      line-height: 18px;
+      white-space: nowrap;
+      background: #ffffff;
+    }
+
+    .tag-pink {
+      border-color: #ffc6df;
+      color: #d72a7c;
+      background: #fff5fa;
+    }
+
+    .tag-blue {
+      border-color: #c9dcff;
+      color: #2d64c8;
+      background: #f4f8ff;
+    }
+
+    .offer-bg {
+      background: #fff0f5;
+      border-top: 1px solid #ffe0eb;
+      border-bottom-left-radius: 7px;
+      border-bottom-right-radius: 7px;
+    }
+
+    .car-photo {
+      width: 109px;
+      height: 70px;
+      border-radius: 4px;
+      background: linear-gradient(155deg, #a7c4d6 0%, #edf4f7 47%, #253445 48%, #0d1119 100%);
+      overflow: hidden;
+    }
+
+    .car-photo.dark {
+      background: linear-gradient(160deg, #141923 0%, #2b3647 43%, #0a0d12 44%, #090b10 100%);
+    }
+
+    .car-photo.blank {
+      background: #f3f4f6;
+      border: 1px solid #c8cdd4;
+      width: 107px;
+      height: 68px;
+    }
+
+    .image-icon {
+      width: 42px;
+      height: 36px;
+      border: 4px solid #a4abb5;
+      border-radius: 4px;
+      position: relative;
+      margin: 13px auto 0;
+    }
+
+    .image-icon:before {
+      content: "";
+      position: absolute;
+      width: 9px;
+      height: 9px;
+      border: 3px solid #a4abb5;
+      border-radius: 50%;
+      top: 5px;
+      right: 6px;
+    }
+
+    .image-icon:after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      bottom: 5px;
+      width: 28px;
+      height: 22px;
+      border-left: 4px solid #a4abb5;
+      border-bottom: 4px solid #a4abb5;
+      transform: rotate(45deg);
+    }
+
+    .price-box {
+      width: 103px;
+      border: 1px solid #dce2ea;
+      border-radius: 5px;
+      background: #ffffff;
+    }
+
+    .cta {
+      display: inline-block;
+      min-width: 104px;
+      padding: 9px 13px;
+      border-radius: 15px;
+      background: #ec2d87;
+      color: #ffffff !important;
+      font-size: 11px;
+      line-height: 12px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .metric-table td {
+      border-bottom: 1px solid #edf0f4;
+    }
+
+    .metric-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .change {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 5px;
+      background: #eafff6;
+      color: #00a96b;
+      font-size: 10px;
+      line-height: 10px;
+      font-weight: 700;
+    }
+
+    @media screen and (max-width: 620px) {
+      body,
+      center,
+      .email-shell {
+        width: 100% !important;
+        min-width: 0 !important;
+        overflow-x: hidden !important;
+      }
+
+      .email-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+      }
+
+      .container {
+        width: 88% !important;
+        max-width: 88% !important;
+        min-width: 0 !important;
+      }
+
+      .stack,
+      .stack > tbody,
+      .stack > tbody > tr,
+      .stack > tbody > tr > td {
+        display: block !important;
+        width: 100% !important;
+      }
+
+      .mobile-pad-top {
+        padding-top: 12px !important;
+      }
+
+      .mobile-full,
+      .mobile-full > tbody,
+      .mobile-full > tbody > tr,
+      .mobile-full > tbody > tr > td {
+        display: block !important;
+        width: 100% !important;
+      }
+
+      .mobile-left {
+        text-align: left !important;
+        padding-top: 9px !important;
+      }
+
+      .mobile-specs,
+      .mobile-specs > tbody,
+      .mobile-specs > tbody > tr {
+        display: block !important;
+        width: 100% !important;
+      }
+
+      .mobile-specs td {
+        display: inline-block !important;
+        margin: 0 5px 6px 0 !important;
+      }
+
+      .car-photo,
+      .car-photo.blank {
+        width: 100% !important;
+        height: 118px !important;
+      }
+
+      .price-box {
+        width: 100% !important;
+      }
+
+      .price-box td {
+        text-align: right !important;
+      }
+
+      .hide-mobile {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <center role="article" aria-roledescription="email" lang="en" class="email-shell">
+    <table role="presentation" width="100%" class="email-shell">
+      <tr>
+        <td align="center" style="padding:28px 0 36px;">
+          <table role="presentation" width="600" class="email-card font">
+            <tr>
+              <td align="center">
+                <table role="presentation" width="514" class="container">
+                  <tr><td height="25" style="font-size:0;line-height:25px;">&nbsp;</td></tr>
+                  <tr>
+                    <td align="center">
+                      <table role="presentation">
+                        <tr>
+                          <td style="border:1px solid #ffd3e6;border-radius:14px;background:#fff6fa;padding:4px 12px;font-size:10px;line-height:12px;color:#d82c7c;">[Company Name]</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td height="22" style="font-size:0;line-height:22px;">&nbsp;</td></tr>
+                  <tr>
+                    <td align="center" style="font-size:28px;line-height:32px;font-weight:800;color:#151d31;">Performance Report</td>
+                  </tr>
+                  <tr><td height="16" style="font-size:0;line-height:16px;">&nbsp;</td></tr>
+                  <tr>
+                    <td align="center" style="font-size:11px;line-height:16px;color:#e92d86;font-weight:700;">Hi [First Name],</td>
+                  </tr>
+                  <tr><td height="9" style="font-size:0;line-height:9px;">&nbsp;</td></tr>
+                  <tr>
+                    <td align="center" style="font-size:11px;line-height:17px;color:#394154;">
+                      Here's your weekly performance report &ndash; a clear summary of how your dealership<br class="hide-mobile">
+                      performed last week. It highlights your key sales figures, shows which vehicles sold the<br class="hide-mobile">
+                      fastest, and includes personalized vehicle offers from us, based on what's currently<br class="hide-mobile">
+                      working best for you.
+                    </td>
+                  </tr>
+                  <tr><td height="11" style="font-size:0;line-height:11px;">&nbsp;</td></tr>
+                  <tr>
+                    <td align="center" style="font-size:11px;line-height:17px;color:#394154;">
+                      These insights are built on publicly available data to support smarter inventory decisions<br class="hide-mobile">
+                      and help you continue driving strong results.
+                    </td>
+                  </tr>
+                  <tr><td height="58" style="font-size:0;line-height:58px;">&nbsp;</td></tr>
+                  <tr class="divider">
+                    <td align="center">
+                      <table role="presentation" width="226">
+                        <tr>
+                          <td width="88" height="1" bgcolor="#edf0f3">&nbsp;</td>
+                          <td width="50" align="center" style="font-size:15px;line-height:1;color:#ec2d87;font-weight:800;">&bull;&bull;&bull;</td>
+                          <td width="88" height="1" bgcolor="#edf0f3">&nbsp;</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td height="40" style="font-size:0;line-height:40px;">&nbsp;</td></tr>
+
+                  <tr>
+                    <td>
+                      <table role="presentation" width="100%" class="section-card">
+                        <tr><td height="20" style="font-size:0;line-height:20px;">&nbsp;</td></tr>
+                        <tr>
+                          <td style="padding:0 20px;">
+                            <table role="presentation" width="100%">
+                              <tr>
+                                <td width="41" valign="top"><div class="icon-box">Q</div></td>
+                                <td valign="top">
+                                  <div style="font-size:13px;line-height:16px;font-weight:800;color:#24304a;">Your Weekly Sales Summary</div>
+                                  <div style="font-size:10px;line-height:13px;color:#798091;">An overview of your sales activity</div>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr><td height="22" style="font-size:0;line-height:22px;">&nbsp;</td></tr>
+                        <tr>
+                          <td style="padding:0 20px 15px;">
+                            <table role="presentation" width="100%" class="metric-table">
+                              <tr>
+                                <td style="padding:0 0 13px;font-size:11px;line-height:13px;color:#3c4559;font-weight:700;">Metric</td>
+                                <td align="center" style="padding:0 0 13px;font-size:11px;line-height:13px;color:#3c4559;font-weight:700;">Last week</td>
+                                <td align="center" style="padding:0 0 13px;font-size:11px;line-height:13px;color:#3c4559;font-weight:700;">Week before</td>
+                                <td align="right" style="padding:0 0 13px;font-size:11px;line-height:13px;color:#3c4559;font-weight:700;">Change</td>
+                              </tr>
+                              <tr>
+                                <td style="padding:12px 0;font-size:11px;line-height:13px;">Cars Sold</td>
+                                <td align="center" style="padding:12px 0;font-size:11px;line-height:13px;">18</td>
+                                <td align="center" style="padding:12px 0;font-size:11px;line-height:13px;">15</td>
+                                <td align="right" style="padding:12px 0;"><span class="change">+3</span></td>
+                              </tr>
+                              <tr>
+                                <td style="padding:12px 0;font-size:11px;line-height:13px;">Avg. Selling Price</td>
+                                <td align="center" style="padding:12px 0;font-size:11px;line-height:13px;">&euro;24,300</td>
+                                <td align="center" style="padding:12px 0;font-size:11px;line-height:13px;">&euro;23,800</td>
+                                <td align="right" style="padding:12px 0;"><span class="change">+&euro;500</span></td>
+                              </tr>
+                              <tr>
+                                <td style="padding:12px 0 0;font-size:11px;line-height:13px;">Avg. Days to Sell</td>
+                                <td align="center" style="padding:12px 0 0;font-size:11px;line-height:13px;">11.2 days</td>
+                                <td align="center" style="padding:12px 0 0;font-size:11px;line-height:13px;">12.5 days</td>
+                                <td align="right" style="padding:12px 0 0;"><span class="change">-1.3 days</span></td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr><td height="47" style="font-size:0;line-height:47px;">&nbsp;</td></tr>
+                  <tr class="divider">
+                    <td align="center">
+                      <table role="presentation" width="226">
+                        <tr>
+                          <td width="88" height="1" bgcolor="#edf0f3">&nbsp;</td>
+                          <td width="50" align="center" style="font-size:15px;line-height:1;color:#ec2d87;font-weight:800;">&bull;&bull;&bull;</td>
+                          <td width="88" height="1" bgcolor="#edf0f3">&nbsp;</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td height="34" style="font-size:0;line-height:34px;">&nbsp;</td></tr>
+
+                  <tr>
+                    <td>
+                      <table role="presentation" width="100%">
+                        <tr>
+                          <td width="41" valign="top"><div class="icon-box" style="font-size:13px;">S</div></td>
+                          <td valign="top">
+                            <div style="font-size:13px;line-height:16px;font-weight:800;color:#24304a;">Your Fastest-Selling Cars Last Week</div>
+                            <div style="font-size:10px;line-height:13px;color:#798091;">Effective Offers Based on Your Successful Sales</div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td height="19" style="font-size:0;line-height:19px;">&nbsp;</td></tr>
+
+                  <tr>
+                    <td>
+                      <table role="presentation" width="100%" class="section-card">
+                        <tr><td style="padding:16px 16px 0;">
+                          <table role="presentation" width="100%" class="mobile-full">
+                            <tr>
+                              <td valign="top">
+                                <table role="presentation" width="100%">
+                                  <tr>
+                                    <td width="31" valign="top"><div class="rank">1</div></td>
+                                    <td valign="top">
+                                      <div style="font-size:16px;line-height:20px;font-weight:800;color:#202a3d;">Sold in: 11 days</div>
+                                      <div style="font-size:10px;line-height:14px;color:#e92d86;font-weight:700;">High demand car that sold quickly</div>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                              <td align="right" valign="top" width="132" class="mobile-left"><span class="pill tag-pink" style="display:inline-block;padding:4px 10px;">Very High Demand</span></td>
+                            </tr>
+                          </table>
+                          <div style="height:14px;font-size:0;line-height:14px;">&nbsp;</div>
+                          <table role="presentation" width="100%" class="stack">
+                            <tr>
+                              <td width="124" valign="top"><div class="car-photo"></div></td>
+                              <td valign="top" class="mobile-pad-top">
+                                <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">BMW 330e xDrive M Sport</div>
+                                <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
+                                <table role="presentation" class="mobile-specs">
+                                  <tr>
+                                    <td class="pill" style="padding:0 8px;">2021</td>
+                                    <td width="6">&nbsp;</td>
+                                    <td class="pill" style="padding:0 8px;">23,203 km</td>
+                                    <td width="6">&nbsp;</td>
+                                    <td class="pill" style="padding:0 8px;">292 hp</td>
+                                    <td width="6">&nbsp;</td>
+                                    <td class="pill" style="padding:0 8px;">Automatic</td>
+                                  </tr>
+                                </table>
+                              </td>
+                              <td width="112" valign="bottom" align="right" class="mobile-pad-top">
+                                <table role="presentation" class="price-box">
+                                  <tr><td align="right" style="padding:10px 12px 2px;font-size:9px;line-height:12px;color:#8991a0;">Advertised Price excl. VAT</td></tr>
+                                  <tr><td align="right" style="padding:0 12px 10px;font-size:17px;line-height:20px;font-weight:800;color:#202a3d;">&euro;34,500</td></tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </td></tr>
+                        <tr><td height="14" style="font-size:0;line-height:14px;">&nbsp;</td></tr>
+                        <tr><td style="padding:0 16px;"><table role="presentation" width="100%"><tr><td style="border-top:1px solid #e7edf4;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
+                        <tr>
+                          <td class="offer-bg" style="padding:0 16px 19px;">
+                            <div style="height:19px;font-size:0;line-height:19px;">&nbsp;</div>
+                            <table role="presentation" width="100%">
+                              <tr>
+                                <td><span class="pill tag-pink" style="display:inline-block;padding:4px 10px;font-size:9px;">Based on your successful sale</span></td>
+                                <td align="center" width="28"><span class="pill tag-pink" style="display:inline-block;width:20px;height:20px;line-height:20px;padding:0;">+</span></td>
+                              </tr>
+                            </table>
+                            <div style="height:16px;font-size:0;line-height:16px;">&nbsp;</div>
+                            <table role="presentation" width="100%">
+                              <tr>
+                                <td width="28" valign="top"><div style="width:20px;height:20px;border-radius:50%;background:#ec2d87;color:#fff;font-size:11px;line-height:20px;text-align:center;font-weight:700;">B</div></td>
+                                <td valign="top" style="font-size:12px;line-height:17px;font-weight:700;color:#30394b;">Here's a similar car sourced just for you.</td>
+                              </tr>
+                            </table>
+                            <div style="height:15px;font-size:0;line-height:15px;">&nbsp;</div>
+                            <table role="presentation" width="100%" class="stack">
+                              <tr>
+                                <td width="124" valign="top"><div class="car-photo"></div></td>
+                                <td valign="top" class="mobile-pad-top">
+                                  <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">BMW 330e xDrive M Sport</div>
+                                  <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
+                                  <table role="presentation" class="mobile-specs">
+                                    <tr>
+                                      <td class="pill" style="padding:0 8px;">2021</td>
+                                      <td width="6">&nbsp;</td>
+                                      <td class="pill" style="padding:0 8px;">39,800 km</td>
+                                      <td width="6">&nbsp;</td>
+                                      <td class="pill" style="padding:0 8px;">292 hp</td>
+                                      <td width="6">&nbsp;</td>
+                                      <td class="pill" style="padding:0 8px;">Automatic</td>
+                                    </tr>
+                                  </table>
+                                  <div style="height:18px;font-size:0;line-height:18px;">&nbsp;</div>
+                                  <a class="cta" href="#">View Our Offer</a>
+                                </td>
+                                <td width="104" valign="bottom" align="right" class="mobile-pad-top">
+                                  <table role="presentation" class="price-box">
+                                    <tr><td align="right" style="padding:10px 12px 2px;font-size:9px;line-height:12px;color:#8991a0;">Price excl. VAT</td></tr>
+                                    <tr><td align="right" style="padding:0 12px 10px;font-size:17px;line-height:20px;font-weight:800;color:#202a3d;">&euro;21,900</td></tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr><td height="18" style="font-size:0;line-height:18px;">&nbsp;</td></tr>
+                  <tr>
+                    <td>
+                      <table role="presentation" width="100%" class="section-card">
+                        <tr><td style="padding:16px 16px 0;">
+                          <table role="presentation" width="100%" class="mobile-full">
+                            <tr>
+                              <td valign="top">
+                                <table role="presentation" width="100%">
+                                  <tr>
+                                    <td width="31" valign="top"><div class="rank">2</div></td>
+                                    <td valign="top">
+                                      <div style="font-size:16px;line-height:20px;font-weight:800;color:#202a3d;">Sold in: 9 days</div>
+                                      <div style="font-size:10px;line-height:14px;color:#e92d86;font-weight:700;">High demand car that sold quickly</div>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                              <td align="right" valign="top" width="112" class="mobile-left"><span class="pill tag-blue" style="display:inline-block;padding:4px 10px;">High Demand</span></td>
+                            </tr>
+                          </table>
+                          <div style="height:14px;font-size:0;line-height:14px;">&nbsp;</div>
+                          <table role="presentation" width="100%" class="stack">
+                            <tr>
+                              <td width="124" valign="top"><div class="car-photo dark"></div></td>
+                              <td valign="top" class="mobile-pad-top">
+                                <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">Audi A5 S Line</div>
+                                <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
+                                <table role="presentation" class="mobile-specs">
+                                  <tr>
+                                    <td class="pill" style="padding:0 8px;">2021</td>
+                                    <td width="6">&nbsp;</td>
+                                    <td class="pill" style="padding:0 8px;">25,000 km</td>
+                                    <td width="6">&nbsp;</td>
+                                    <td class="pill" style="padding:0 8px;">245 hp</td>
+                                    <td width="6">&nbsp;</td>
+                                    <td class="pill" style="padding:0 8px;">Automatic</td>
+                                  </tr>
+                                </table>
+                              </td>
+                              <td width="112" valign="bottom" align="right" class="mobile-pad-top">
+                                <table role="presentation" class="price-box">
+                                  <tr><td align="right" style="padding:10px 12px 2px;font-size:9px;line-height:12px;color:#8991a0;">Advertised Price excl. VAT</td></tr>
+                                  <tr><td align="right" style="padding:0 12px 10px;font-size:17px;line-height:20px;font-weight:800;color:#202a3d;">&euro;28,900</td></tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </td></tr>
+                        <tr><td height="14" style="font-size:0;line-height:14px;">&nbsp;</td></tr>
+                        <tr><td style="padding:0 16px;"><table role="presentation" width="100%"><tr><td style="border-top:1px solid #e7edf4;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
+                        <tr>
+                          <td class="offer-bg" style="padding:0 16px 19px;">
+                            <div style="height:19px;font-size:0;line-height:19px;">&nbsp;</div>
+                            <table role="presentation" width="100%">
+                              <tr>
+                                <td><span class="pill tag-pink" style="display:inline-block;padding:4px 10px;font-size:9px;">Based on your successful sale</span></td>
+                                <td align="center" width="28"><span class="pill tag-pink" style="display:inline-block;width:20px;height:20px;line-height:20px;padding:0;">+</span></td>
+                              </tr>
+                            </table>
+                            <div style="height:16px;font-size:0;line-height:16px;">&nbsp;</div>
+                            <table role="presentation" width="100%">
+                              <tr>
+                                <td width="28" valign="top"><div style="width:20px;height:20px;border-radius:50%;background:#ec2d87;color:#fff;font-size:11px;line-height:20px;text-align:center;font-weight:700;">B</div></td>
+                                <td valign="top" style="font-size:12px;line-height:17px;font-weight:700;color:#30394b;">Here's a similar car sourced just for you.</td>
+                              </tr>
+                            </table>
+                            <div style="height:15px;font-size:0;line-height:15px;">&nbsp;</div>
+                            <table role="presentation" width="100%" class="stack">
+                              <tr>
+                                <td width="124" valign="top"><div class="car-photo dark"></div></td>
+                                <td valign="top" class="mobile-pad-top">
+                                  <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">Audi A5 S Line</div>
+                                  <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
+                                  <table role="presentation" class="mobile-specs">
+                                    <tr>
+                                      <td class="pill" style="padding:0 8px;">2020</td>
+                                      <td width="6">&nbsp;</td>
+                                      <td class="pill" style="padding:0 8px;">32,000 km</td>
+                                      <td width="6">&nbsp;</td>
+                                      <td class="pill" style="padding:0 8px;">245 hp</td>
+                                      <td width="6">&nbsp;</td>
+                                      <td class="pill" style="padding:0 8px;">Automatic</td>
+                                    </tr>
+                                  </table>
+                                  <div style="height:18px;font-size:0;line-height:18px;">&nbsp;</div>
+                                  <a class="cta" href="#">View Our Offer</a>
+                                </td>
+                                <td width="104" valign="bottom" align="right" class="mobile-pad-top">
+                                  <table role="presentation" class="price-box">
+                                    <tr><td align="right" style="padding:10px 12px 2px;font-size:9px;line-height:12px;color:#8991a0;">Price excl. VAT</td></tr>
+                                    <tr><td align="right" style="padding:0 12px 10px;font-size:17px;line-height:20px;font-weight:800;color:#202a3d;">&euro;22,400</td></tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr><td height="18" style="font-size:0;line-height:18px;">&nbsp;</td></tr>
+                  <tr>
+                    <td>
+                      <table role="presentation" width="100%" class="section-card">
+                        <tr><td style="padding:16px 16px 0;">
+                          <table role="presentation" width="100%" class="mobile-full">
+                            <tr>
+                              <td valign="top">
+                                <table role="presentation" width="100%">
+                                  <tr>
+                                    <td width="31" valign="top"><div class="rank">3</div></td>
+                                    <td valign="top">
+                                      <div style="font-size:16px;line-height:20px;font-weight:800;color:#202a3d;">Sold in: 8 days</div>
+                                      <div style="font-size:10px;line-height:14px;color:#e92d86;font-weight:700;">High demand car that sold quickly</div>
+                                    </td>
+                                  </tr>
+                                </table>
+                              </td>
+                              <td align="right" valign="top" width="132" class="mobile-left"><span class="pill tag-pink" style="display:inline-block;padding:4px 10px;">Very High Demand</span></td>
+                            </tr>
+                          </table>
+                          <div style="height:14px;font-size:0;line-height:14px;">&nbsp;</div>
+                          <table role="presentation" width="100%" class="stack">
+                            <tr>
+                              <td width="124" valign="top"><div class="car-photo blank"><div class="image-icon"></div></div></td>
+                              <td valign="top" class="mobile-pad-top">
+                                <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">Mercedes-Benz C-Class AMG Line</div>
+                                <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
+                                <table role="presentation" class="mobile-specs">
+                                  <tr>
+                                    <td class="pill" style="padding:0 8px;">2019</td>
+                                    <td width="6">&nbsp;</td>
+                                    <td class="pill" style="padding:0 8px;">40,100 km</td>
+                                    <td width="6">&nbsp;</td>
+                                    <td class="pill" style="padding:0 8px;">258 hp</td>
+                                    <td width="6">&nbsp;</td>
+                                    <td class="pill" style="padding:0 8px;">Automatic</td>
+                                  </tr>
+                                </table>
+                              </td>
+                              <td width="112" valign="bottom" align="right" class="mobile-pad-top">
+                                <table role="presentation" class="price-box">
+                                  <tr><td align="right" style="padding:10px 12px 2px;font-size:9px;line-height:12px;color:#8991a0;">Advertised Price excl. VAT</td></tr>
+                                  <tr><td align="right" style="padding:0 12px 10px;font-size:17px;line-height:20px;font-weight:800;color:#202a3d;">&euro;31,200</td></tr>
+                                </table>
+                              </td>
+                            </tr>
+                          </table>
+                        </td></tr>
+                        <tr><td height="14" style="font-size:0;line-height:14px;">&nbsp;</td></tr>
+                        <tr><td style="padding:0 16px;"><table role="presentation" width="100%"><tr><td style="border-top:1px solid #e7edf4;font-size:0;line-height:0;">&nbsp;</td></tr></table></td></tr>
+                        <tr>
+                          <td class="offer-bg" style="padding:0 16px 19px;">
+                            <div style="height:19px;font-size:0;line-height:19px;">&nbsp;</div>
+                            <table role="presentation" width="100%">
+                              <tr>
+                                <td><span class="pill tag-pink" style="display:inline-block;padding:4px 10px;font-size:9px;">Based on your successful sale</span></td>
+                                <td align="center" width="28"><span class="pill tag-pink" style="display:inline-block;width:20px;height:20px;line-height:20px;padding:0;">+</span></td>
+                              </tr>
+                            </table>
+                            <div style="height:16px;font-size:0;line-height:16px;">&nbsp;</div>
+                            <table role="presentation" width="100%">
+                              <tr>
+                                <td width="28" valign="top"><div style="width:20px;height:20px;border-radius:50%;background:#ec2d87;color:#fff;font-size:11px;line-height:20px;text-align:center;font-weight:700;">B</div></td>
+                                <td valign="top" style="font-size:12px;line-height:17px;font-weight:700;color:#30394b;">Here's a similar car sourced just for you.</td>
+                              </tr>
+                            </table>
+                            <div style="height:15px;font-size:0;line-height:15px;">&nbsp;</div>
+                            <table role="presentation" width="100%" class="stack">
+                              <tr>
+                                <td width="124" valign="top"><div class="car-photo blank"><div class="image-icon"></div></div></td>
+                                <td valign="top" class="mobile-pad-top">
+                                  <div style="font-size:12px;line-height:16px;font-weight:800;color:#24304a;">Mercedes-Benz C-Class AMG Line</div>
+                                  <div style="height:13px;font-size:0;line-height:13px;">&nbsp;</div>
+                                  <table role="presentation" class="mobile-specs">
+                                    <tr>
+                                      <td class="pill" style="padding:0 8px;">2019</td>
+                                      <td width="6">&nbsp;</td>
+                                      <td class="pill" style="padding:0 8px;">42,000 km</td>
+                                      <td width="6">&nbsp;</td>
+                                      <td class="pill" style="padding:0 8px;">258 hp</td>
+                                      <td width="6">&nbsp;</td>
+                                      <td class="pill" style="padding:0 8px;">Automatic</td>
+                                    </tr>
+                                  </table>
+                                  <div style="height:18px;font-size:0;line-height:18px;">&nbsp;</div>
+                                  <a class="cta" href="#">View Our Offer</a>
+                                </td>
+                                <td width="104" valign="bottom" align="right" class="mobile-pad-top">
+                                  <table role="presentation" class="price-box">
+                                    <tr><td align="right" style="padding:10px 12px 2px;font-size:9px;line-height:12px;color:#8991a0;">Price excl. VAT</td></tr>
+                                    <tr><td align="right" style="padding:0 12px 10px;font-size:17px;line-height:20px;font-weight:800;color:#202a3d;">&euro;25,900</td></tr>
+                                  </table>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr><td height="42" style="font-size:0;line-height:42px;">&nbsp;</td></tr>
+                  <tr class="divider">
+                    <td align="center">
+                      <table role="presentation" width="226">
+                        <tr>
+                          <td width="88" height="1" bgcolor="#edf0f3">&nbsp;</td>
+                          <td width="50" align="center" style="font-size:15px;line-height:1;color:#ec2d87;font-weight:800;">&bull;&bull;&bull;</td>
+                          <td width="88" height="1" bgcolor="#edf0f3">&nbsp;</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td height="34" style="font-size:0;line-height:34px;">&nbsp;</td></tr>
+
+                  <tr>
+                    <td>
+                      <table role="presentation" width="100%" class="section-card">
+                        <tr>
+                          <td style="padding:20px;">
+                            <table role="presentation" width="100%">
+                              <tr>
+                                <td width="41" valign="top"><div class="icon-box" style="font-size:13px;">I</div></td>
+                                <td valign="top">
+                                  <div style="font-size:13px;line-height:16px;font-weight:800;color:#24304a;">Inventory Sourced to Meet Your Dealership's Needs</div>
+                                  <div style="font-size:10px;line-height:13px;color:#798091;">Data-Driven, Personalized Car Recommendations</div>
+                                </td>
+                              </tr>
+                            </table>
+                            <div style="height:22px;font-size:0;line-height:22px;">&nbsp;</div>
+                            <div style="font-size:11px;line-height:18px;color:#394154;">
+                              At B2Motive, we take a data-driven approach to offering vehicles tailored for your dealership.
+                            </div>
+                            <div style="height:12px;font-size:0;line-height:12px;">&nbsp;</div>
+                            <div style="font-size:11px;line-height:18px;color:#394154;">
+                              Our recommendations are based on your fastest-selling cars from the previous week.
+                            </div>
+                            <div style="height:12px;font-size:0;line-height:12px;">&nbsp;</div>
+                            <div style="font-size:11px;line-height:18px;color:#394154;">
+                              By analyzing data from publicly available sources, we identify the vehicles with the highest demand &ndash; ensuring we present you with offers that align perfectly with what is proven to sell best at your dealership right now.
+                            </div>
+                            <div style="height:15px;font-size:0;line-height:15px;">&nbsp;</div>
+                            <div style="font-size:11px;line-height:16px;color:#e92d86;font-weight:700;">
+                              Buying the right cars at the right prices has never been easier.
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr><td height="42" style="font-size:0;line-height:42px;">&nbsp;</td></tr>
+                  <tr class="divider">
+                    <td align="center">
+                      <table role="presentation" width="226">
+                        <tr>
+                          <td width="88" height="1" bgcolor="#edf0f3">&nbsp;</td>
+                          <td width="50" align="center" style="font-size:15px;line-height:1;color:#ec2d87;font-weight:800;">&bull;&bull;&bull;</td>
+                          <td width="88" height="1" bgcolor="#edf0f3">&nbsp;</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td height="34" style="font-size:0;line-height:34px;">&nbsp;</td></tr>
+
+                  <tr>
+                    <td>
+                      <table role="presentation" width="100%" class="section-card">
+                        <tr>
+                          <td style="padding:20px;">
+                            <table role="presentation" width="100%">
+                              <tr>
+                                <td width="41" valign="top"><div class="icon-box" style="font-size:13px;">P</div></td>
+                                <td valign="top">
+                                  <div style="font-size:13px;line-height:16px;font-weight:800;color:#24304a;">We Respect Your Privacy</div>
+                                  <div style="font-size:10px;line-height:13px;color:#798091;">Data protection and confidentiality commitment</div>
+                                </td>
+                              </tr>
+                            </table>
+                            <div style="height:22px;font-size:0;line-height:22px;">&nbsp;</div>
+                            <div style="font-size:11px;line-height:18px;color:#394154;">
+                              At B2Motive, we strictly use data that is publicly available, gathered from multiple trusted sources to aggregate meaningful insights for your dealership. This allows us to provide accurate, data-driven recommendations without ever relying on proprietary or private information.
+                            </div>
+                            <div style="height:14px;font-size:0;line-height:14px;">&nbsp;</div>
+                            <div style="font-size:11px;line-height:18px;color:#394154;">
+                              We are fully committed to protecting your privacy. Your dealership's data is never shared, sold, or disclosed in any form. Maintaining the highest standards of confidentiality and data security ensures that your information remains safe and solely used to enhance the services we provide to you.
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr><td height="43" style="font-size:0;line-height:43px;">&nbsp;</td></tr>
+                  <tr class="divider">
+                    <td align="center">
+                      <table role="presentation" width="226">
+                        <tr>
+                          <td width="88" height="1" bgcolor="#edf0f3">&nbsp;</td>
+                          <td width="50" align="center" style="font-size:15px;line-height:1;color:#ec2d87;font-weight:800;">&bull;&bull;&bull;</td>
+                          <td width="88" height="1" bgcolor="#edf0f3">&nbsp;</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td height="60" style="font-size:0;line-height:60px;">&nbsp;</td></tr>
+                  <tr>
+                    <td align="center">
+                      <table role="presentation">
+                        <tr>
+                          <td style="border:1px solid #e2e7ee;border-radius:4px;padding:8px 15px;font-size:13px;line-height:16px;color:#24304a;background:#ffffff;">
+                            B2MOTIVE Logo
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr><td height="30" style="font-size:0;line-height:30px;">&nbsp;</td></tr>
+                  <tr>
+                    <td align="center" style="font-size:11px;line-height:15px;color:#515a6d;font-style:italic;">Building the future of automotive trade</td>
+                  </tr>
+                  <tr><td height="20" style="font-size:0;line-height:20px;">&nbsp;</td></tr>
+                  <tr>
+                    <td align="center">
+                      <a href="#" style="font-size:11px;line-height:14px;color:#333c4f;text-decoration:underline;font-weight:700;">Unsubscribe</a>
+                    </td>
+                  </tr>
+                  <tr><td height="18" style="font-size:0;line-height:18px;">&nbsp;</td></tr>
+                  <tr>
+                    <td align="center" style="font-size:8px;line-height:12px;color:#9aa2af;">
+                      &copy; 2025 B2MOTIVE. All rights reserved.<br>
+                      This email was sent to you as part of our dealer performance program.
+                    </td>
+                  </tr>
+                  <tr><td height="36" style="font-size:0;line-height:36px;">&nbsp;</td></tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </center>
+</body>
 </html>
