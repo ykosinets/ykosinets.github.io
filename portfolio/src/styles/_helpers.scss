@@ -1,0 +1,99 @@
+@function calc-interpolation($min-screen, $min-value, $max-screen, $max-value, $important: false) {
+  @if (map-has-key($grid-breakpoints, $min-screen)) {
+    $min-screen: map-get($grid-breakpoints, $min-screen)
+  }
+
+  @if (map-has-key($grid-breakpoints, $max-screen)) {
+    $max-screen: map-get($grid-breakpoints, $max-screen)
+  }
+
+  $a: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $b: $min-value - $a * $min-screen;
+
+  $sign: " + ";
+  @if ($b < 0) {
+    $sign: " - ";
+    $b: abs($b);
+  }
+
+  $res: calc(#{$a*100}vw#{$sign}#{$b});
+
+  @if ($important == true) {
+    $res: #{$res} #{' !important'};
+  }
+
+  @return $res;
+}
+
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $max: map-get($breakpoints, $name);
+  @return if($max and $max > 0, $max - .02, null);
+}
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value, $important: false) {
+  @if (map-has-key($grid-breakpoints, $min-screen)) {
+    $min-screen: map-get($grid-breakpoints, $min-screen)
+  }
+
+  @if (map-has-key($grid-breakpoints, $max-screen)) {
+    $max-screen: map-get($grid-breakpoints, $max-screen)
+  }
+
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+
+    @media screen and (min-width: $min-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $min-value, $max-screen, $max-value, $important);
+      }
+    }
+
+    @media screen and (min-width: $max-screen) {
+      @each $property in $properties {
+        @if ($important == true) {
+          #{$property} : #{$max-value} #{' !important'};
+        } @else {
+          #{$property}: $max-value;
+        }
+      }
+    }
+  }
+}
+
+@mixin selection($c) {
+  *::-moz-selection {
+    background: $c;
+  }
+  *::selection {
+    background: $c;
+  }
+}
+
+@mixin media-breakpoint-down($name, $breakpoints: $grid-breakpoints) {
+  $max: breakpoint-max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: breakpoint-min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

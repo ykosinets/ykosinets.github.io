@@ -1,0 +1,74 @@
+.history {
+  padding: 30px 0;
+  margin-bottom: 56px;
+  display: block;
+
+  @media print {
+    padding-top: 86px;
+  }
+
+  @include media-breakpoint-down(md) {
+    padding-top: 86px;
+  }
+
+  @include media-breakpoint-down(sm) {
+    padding-top: 20px;
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-weight: 400;
+    margin-bottom: 10px;
+
+    @include media-breakpoint-down(sm) {
+      margin-bottom: 0;
+    }
+  }
+
+  li {
+    padding: 20px 0 10px;
+    border-bottom: 1px solid #efefef;
+
+    @include media-breakpoint-down(sm) {
+      padding: 10px 0;
+    }
+
+    &:last-child {
+      border: none;
+    }
+
+  }
+
+  .office {
+    &-name {
+      position: relative;
+      padding-left: .6666em;
+      margin-left: .25em;
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 20px;
+        border: 1px solid #efefef;
+      }
+    }
+  }
+
+  .period {
+    font-size: var(--p-small);
+    color: #656565;
+    margin-bottom: 0;
+  }
+
+  .duties {
+    font-size: var(--p-small);
+
+  }
+}

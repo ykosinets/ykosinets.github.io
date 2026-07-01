@@ -1,0 +1,34 @@
+// paths
+$path: (
+  font: '../fonts',
+  img: '../images'
+);
+
+// states
+$state-active: '&:hover, &:focus, &:active, &:active:hover, &:active:focus';
+
+// grid
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+) !default;
+
+// css
+:root{
+  --link-color: #f00;
+
+  @include interpolate(--sections-vertical-gap, sm, xl, 30px, 50px);
+  @include interpolate(--n-sections-vertical-gap, sm, xl, -30px, -50px);
+  @include interpolate(--sections-horizontal-gap, sm, xl, 15px, 0);
+  @include interpolate(--n-sections-horizontal-gap, sm, xl, -15px, 0);
+}

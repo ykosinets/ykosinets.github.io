@@ -1,0 +1,12 @@
+// main styling
+@import "./helpers";
+@import "./variables";
+@import "./base";
+@import "./typorgaphy";
+@import "./layout";
+@import "./content";
+// components
+@import "./component/header";
+@import "component/aside";
+@import "component/main";
+@import "component/history";
