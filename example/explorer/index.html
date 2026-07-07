@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Beamiie researches marine and freshwater environments to support healthier waters and resilient ecosystems.">
+  <title>Beamiie Research Group</title>
+  <style>
+    :root {
+      --ink: #123344;
+      --ink-strong: #063f54;
+      --teal: #007f96;
+      --teal-dark: #00677d;
+      --mist: #eaf7f8;
+      --white: #fff;
+      --shadow: 0 24px 70px rgba(7, 68, 82, .18);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(255,255,255,.95) 0 8%, transparent 28%),
+        linear-gradient(135deg, #e6f5fb 0%, #e3f6ee 100%);
+    }
+
+    a { color: inherit; }
+
+    .site-header {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 28px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: var(--teal-dark);
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+
+    nav { display: flex; gap: 30px; }
+
+    nav a {
+      font-size: .95rem;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    nav a:hover, nav a:focus-visible { color: var(--teal); }
+
+    main {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: calc(100vh - 164px);
+      padding: 52px 0 80px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(380px, .86fr);
+      align-items: center;
+      gap: clamp(48px, 7vw, 92px);
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--teal-dark);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 0;
+      color: var(--ink-strong);
+      font-size: clamp(3rem, 5.4vw, 5.2rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    .intro {
+      max-width: 670px;
+      margin: 28px 0 0;
+      font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+      line-height: 1.7;
+    }
+
+    .card {
+      max-width: 600px;
+      margin-top: 34px;
+      padding: 27px 30px;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 20px;
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 12px 38px rgba(8, 76, 91, .10);
+      backdrop-filter: blur(12px);
+    }
+
+    .card h2 {
+      margin: 0 0 10px;
+      color: var(--teal-dark);
+      font-size: 1.32rem;
+    }
+
+    .card p { margin: 0; line-height: 1.65; }
+    .card p + p { margin-top: 13px; }
+
+    .email {
+      color: var(--teal-dark);
+      font-weight: 750;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .photo-wrap {
+      position: relative;
+      padding: 14px;
+      border-radius: 30px;
+      background: rgba(255,255,255,.85);
+      box-shadow: var(--shadow);
+      transform: rotate(1.2deg);
+    }
+
+    .photo-wrap::before {
+      content: "Field research";
+      position: absolute;
+      z-index: 1;
+      left: 30px;
+      bottom: 30px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      color: var(--white);
+      background: rgba(4, 55, 72, .8);
+      font-size: .78rem;
+      font-weight: 750;
+      letter-spacing: .04em;
+      backdrop-filter: blur(8px);
+    }
+
+    .photo-wrap img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: 49% center;
+    }
+
+    footer {
+      width: min(1180px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 26px 0 32px;
+      border-top: 1px solid rgba(7, 77, 94, .14);
+      color: #56737f;
+      font-size: .86rem;
+      text-align: center;
+    }
+
+    @media (max-width: 880px) {
+      .site-header, main, footer { width: min(100% - 32px, 680px); }
+      nav { display: none; }
+      .hero { min-height: auto; grid-template-columns: 1fr; padding: 42px 0 64px; gap: 50px; }
+      .hero-copy { text-align: center; }
+      .intro, .card { margin-left: auto; margin-right: auto; }
+      .photo-wrap { max-width: 560px; margin: 0 auto; transform: none; }
+      .photo-wrap img { aspect-ratio: 4 / 3; }
+    }
+
+    @media (max-width: 520px) {
+      .site-header { padding: 22px 0; }
+      .hero { padding-top: 30px; }
+      h1 { font-size: clamp(2.6rem, 13vw, 3.5rem); }
+      .intro { font-size: 1rem; }
+      .card { padding: 23px 21px; }
+      .photo-wrap { padding: 9px; border-radius: 22px; }
+      .photo-wrap img { border-radius: 15px; aspect-ratio: 1 / 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Beamiie home">beamiie</a>
+    <nav aria-label="Primary navigation">
+      <a href="#research">Research</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Marine &amp; freshwater science</p>
+        <h1 id="hero-title">Exploring waters and the life within them.</h1>
+        <p class="intro" id="about">
+          Beamiie is a research group focused on understanding marine and freshwater environments. We study oceans, lakes, water systems, ecosystems, and the changing relationship between people and aquatic environments.
+        </p>
+
+        <div class="card" id="research">
+          <h2>Research with purpose</h2>
+          <p>We combine observation, data, and environmental science to support healthier waters and better knowledge of aquatic ecosystems.</p>
+          <p id="contact">For more information, email <a class="email" href="mailto:support@beamiie.com">support@beamiie.com</a>.</p>
+        </div>
+      </div>
+
+      <figure class="photo-wrap">
+        <img src="research-team.jpg" alt="Researchers in high-visibility clothing collecting samples from a lake" width="1448" height="1086">
+      </figure>
+    </section>
+  </main>
+
+  <footer>© 2026 Beamiie Research Group. All rights reserved.</footer>
+</body>
+</html>

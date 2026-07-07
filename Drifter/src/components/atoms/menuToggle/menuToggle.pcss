@@ -1,8 +1,0 @@
-.menu-toggle, .menu-toggle-fixed { display: none; }
-@media (max-width: 820px) {
-  .menu-toggle { display: inline-flex; width: 46px; height: 42px; align-items: center; justify-content: center; flex-direction: column; gap: 7px; border: 1px solid var(--gold); background: rgba(35,31,32,.92); color: var(--gold); transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, opacity 180ms ease, transform 180ms ease; }
-  .menu-toggle span { width: 20px; height: 2px; background: currentColor; display: block; transform-origin: center; transition: transform 180ms ease, opacity 180ms ease; }
-  .menu-open .menu-toggle span:first-child { transform: translateY(4.5px) rotate(45deg); }
-  .menu-open .menu-toggle span:last-child { transform: translateY(-4.5px) rotate(-45deg); }
-  .menu-toggle-fixed { display: none !important; }
-}

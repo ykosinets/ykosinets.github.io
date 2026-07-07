@@ -1,0 +1,25 @@
+{
+  "name": "sanity-studio-starter",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "dev": "sanity dev",
+    "start": "sanity start"
+  },
+  "dependencies": {
+    "@sanity/vision": "6.3.0",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
+    "sanity": "6.3.0",
+    "styled-components": "^6.1.19"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.9",
+    "typescript": "6.0.3"
+  }
+}

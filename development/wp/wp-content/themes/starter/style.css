@@ -1,0 +1,16 @@
+/*
+Theme Name: Starter
+Description: Minimal block theme for new client projects.
+Version: 1.0.0
+Requires at least: 7.0
+Requires PHP: 7.4
+Text Domain: starter
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
