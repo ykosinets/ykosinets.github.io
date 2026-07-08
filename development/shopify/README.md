@@ -70,17 +70,17 @@ None of the template types are required, and not all of them are included in the
 
 [Sections](https://shopify.dev/docs/storefronts/themes/architecture/sections) are Liquid files that allow you to create reusable modules of content that can be customized by merchants. They can also include blocks which allow merchants to add, remove, and reorder content within a section.
 
-Sections are made customizable by including a `{% schema %}` in the body. For more information, refer to the [section schema documentation](https://shopify.dev/docs/storefronts/themes/architecture/sections/section-schema).
+Sections are made customizable by including a `{%  %}` in the body. For more information, refer to the [section  documentation](https://shopify.dev/docs/storefronts/themes/architecture/sections/section-).
 
 ### Blocks
 
 [Blocks](https://shopify.dev/docs/storefronts/themes/architecture/blocks) let developers create flexible layouts by breaking down sections into smaller, reusable pieces of Liquid. Each block has its own set of settings, and can be added, removed, and reordered within a section.
 
-Blocks are made customizable by including a `{% schema %}` in the body. For more information, refer to the [block schema documentation](https://shopify.dev/docs/storefronts/themes/architecture/blocks/theme-blocks/schema).
+Blocks are made customizable by including a `{%  %}` in the body. For more information, refer to the [block  documentation](https://shopify.dev/docs/storefronts/themes/architecture/blocks/theme-blocks/).
 
-## Schemas
+## s
 
-When developing components defined by schema settings, we recommend these guidelines to simplify your code:
+When developing components defined by  settings, we recommend these guidelines to simplify your code:
 
 - **Single property settings**: For settings that correspond to a single CSS property, use CSS variables:
 
@@ -95,7 +95,7 @@ When developing components defined by schema settings, we recommend these guidel
     }
   {% endstylesheet %}
 
-  {% schema %}
+  {%  %}
   {
     "settings": [{
       "type": "range",
@@ -107,7 +107,7 @@ When developing components defined by schema settings, we recommend these guidel
       "default": 0,
     }]
   }
-  {% endschema %}
+  {% end %}
   ```
 
 - **Multiple property settings**: For settings that control multiple CSS properties, use CSS classes:
@@ -126,7 +126,7 @@ When developing components defined by schema settings, we recommend these guidel
     }
   {% endstylesheet %}
 
-  {% schema %}
+  {%  %}
   {
     "settings": [{
       "type": "select",
@@ -138,7 +138,7 @@ When developing components defined by schema settings, we recommend these guidel
       ]
     }]
   }
-  {% endschema %}
+  {% end %}
   ```
 
 ## CSS & JavaScript
