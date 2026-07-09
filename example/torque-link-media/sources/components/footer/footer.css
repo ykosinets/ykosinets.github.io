@@ -1,0 +1,18 @@
+.footer {
+    padding: 28px 0;
+    background: #050b14;
+    color: var(--color-steel-300);
+    font-size: 0.9rem;
+}
+
+.footer__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    @media screen and (max-width: 575px) {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+

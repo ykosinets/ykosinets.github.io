@@ -1,0 +1,78 @@
+.infinite-slider {
+    overflow: hidden;
+}
+
+.infinite-slider .container {
+    padding-top: 18px;
+    padding-bottom: 18px;
+    overflow: hidden;
+    mask-image: linear-gradient(90deg, transparent 0, #000 40%, #000 60%, transparent 100%);
+}
+
+.infinite-slider__track {
+    display: flex;
+    width: max-content;
+    gap: clamp(18px, 3vw, 34px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: infinite-slider-scroll 34s linear infinite;
+
+    @media screen and (max-width: 575px) {
+        gap: 16px;
+        animation-duration: 24s;
+    }
+}
+
+.infinite-slider__track li {
+    min-width: 100px;
+    width: 5vw;
+}
+
+.infinite-slider__track:hover {
+    animation-play-state: paused;
+}
+
+.infinite-slider__track a {
+    display: grid;
+    margin: 0 auto;
+    place-items: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--color-white);
+    color: var(--color-red);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+    transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+
+    @media screen and (max-width: 575px) {
+        width: 42px;
+        height: 42px;
+    }
+}
+
+.infinite-slider__track a:hover {
+    background: var(--color-red);
+    color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.infinite-slider__track svg {
+    width: 21px;
+    height: 21px;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.8;
+}
+
+@keyframes infinite-slider-scroll {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}

@@ -1,0 +1,90 @@
+.hero {
+    position: relative;
+    min-height: 92vh;
+    display: grid;
+    align-items: center;
+    overflow: hidden;
+    padding: 134px 0 80px;
+    background: var(--color-navy-950);
+
+    @media screen and (max-width: 992px) {
+        min-height: 86vh;
+    }
+
+    @media screen and (max-width: 575px) {
+        min-height: 820px;
+        align-items: end;
+        padding: 112px 0 58px;
+    }
+}
+
+.hero__media,
+.hero__shade {
+    position: absolute;
+    inset: 0;
+}
+
+.hero__media img,
+.hero__media video {
+    width: 100%;
+    height: calc(100% + 140px);
+    object-fit: cover;
+    object-position: center right;
+    filter: saturate(0.88) contrast(1.06);
+    transform: translate3d(0, var(--hero-parallax, 0), 0) scale(1.04);
+    will-change: transform;
+
+    @media screen and (max-width: 575px) {
+        object-position: 62% center;
+    }
+}
+
+.hero__shade {
+    background: linear-gradient(90deg, rgba(6, 16, 31, 0.96) 0%, rgba(6, 16, 31, 0.82) 38%, rgba(6, 16, 31, 0.42) 74%, rgba(6, 16, 31, 0.26) 100%),
+    linear-gradient(0deg, rgba(6, 16, 31, 0.98) 0%, rgba(6, 16, 31, 0.18) 44%, rgba(6, 16, 31, 0.78) 100%);
+
+    @media screen and (max-width: 575px) {
+        background:
+            linear-gradient(180deg, rgba(6, 16, 31, 0.48) 0%, rgba(6, 16, 31, 0.84) 42%, rgba(6, 16, 31, 0.99) 100%),
+            linear-gradient(90deg, rgba(6, 16, 31, 0.9), rgba(6, 16, 31, 0.28));
+    }
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}
+
+.hero__tagline {
+    max-width: 780px;
+    margin: 22px 0 0;
+    color: var(--color-white);
+    font-size: clamp(1.35rem, 3vw, 2.45rem);
+    font-weight: 700;
+    line-height: 1.15;
+
+    @media screen and (max-width: 575px) {
+        font-size: 1.45rem;
+    }
+}
+
+.hero__copy {
+    max-width: 640px;
+    margin: 24px 0 0;
+    color: var(--color-steel-200);
+    font-size: 1.08rem;
+}
+
+.hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 34px;
+
+    @media screen and (max-width: 575px) {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
