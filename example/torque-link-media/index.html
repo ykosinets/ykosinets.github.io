@@ -14,31 +14,32 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
             rel="stylesheet"
     >
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="site-header">
+<header class="header">
     <div class="container">
-        <a class="brand" href="#top" aria-label="TorqueLink Media home">
-        <span class="brand-mark" aria-hidden="true">
+        <a class="header__brand" href="#top" aria-label="TorqueLink Media home">
+        <span class="header__brand-mark" aria-hidden="true">
           <span></span>
         </span>
             <span>TorqueLink Media</span>
         </a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"
+        <button class="header__toggle" type="button" aria-expanded="false" aria-controls="primary-nav"
                 aria-label="Open menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-        <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <nav class="header__nav" id="primary-nav" aria-label="Primary navigation">
             <a href="#services">Services</a>
             <a href="#why">Why us</a>
             <a href="#process">Process</a>
             <a href="#contact">Contact</a>
         </nav>
-        <a class="nav-cta" href="#contact" aria-label="Book a discovery call">
-            <svg class="phone-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <a class="header__cta" href="#contact" aria-label="Book a discovery call">
+            <svg class="header__phone-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.35 1.89.66 2.78a2 2 0 0 1-.45 2.11L8.05 9.88a16 16 0 0 0 6.07 6.07l1.27-1.27a2 2 0 0 1 2.11-.45c.89.31 1.82.53 2.78.66A2 2 0 0 1 22 16.92z"></path>
             </svg>
             <span>Book a call</span>
@@ -48,34 +49,34 @@
 
 <main id="top">
     <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-media" aria-hidden="true">
+        <div class="hero__media" aria-hidden="true">
             <img src="assets/torquelink-hero.png" alt="">
         </div>
-        <div class="hero-shade" aria-hidden="true"></div>
-        <div class="hero-content">
+        <div class="hero__shade" aria-hidden="true"></div>
+        <div class="hero__content">
             <div class="container">
-                <p class="eyebrow">Automotive creator sponsorships</p>
+                <p class="section__eyebrow">Automotive creator sponsorships</p>
                 <h1 id="hero-title">TorqueLink Media</h1>
-                <p class="tagline">Precision YouTube sponsorships engineered for automotive brands.</p>
-                <p class="hero-copy">
+                <p class="hero__tagline">Precision YouTube sponsorships engineered for automotive brands.</p>
+                <p class="hero__copy">
                     We help aftermarket, car-care, tools, accessories, and hands-on automotive product
                     companies reach the right YouTube audiences through focused creator partnerships.
                 </p>
-                <div class="hero-actions" aria-label="Primary actions">
-                    <a class="button button-primary" href="#contact">Book a discovery call</a>
-                    <a class="button button-secondary" href="#services">Explore services</a>
+                <div class="hero__actions" aria-label="Primary actions">
+                    <a class="button button--primary" href="#contact">Book a discovery call</a>
+                    <a class="button button--secondary" href="#services">Explore services</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="intro section-pad">
-        <div class="container intro-grid">
+    <section class="section intro">
+        <div class="container intro__grid">
             <div>
-                <p class="eyebrow">Positioning</p>
+                <p class="section__eyebrow">Positioning</p>
                 <h2>YouTube sponsorship strategy built for automotive products, not generic influencer spend.</h2>
             </div>
-            <div class="intro-copy">
+            <div class="intro__copy">
                 <p>
                     TorqueLink Media is a specialist sponsorship partner for automotive product brands
                     that need credible creator fit, practical campaign support, and clear coordination
@@ -90,14 +91,72 @@
     </section>
 
 
+
+    <section class="section proof" aria-labelledby="proof-title">
+        <div class="container">
+            <div class="section__heading section__heading--compact" data-reveal>
+                <p class="section__eyebrow">Planning signals</p>
+                <h2 id="proof-title">A practical view of campaign inputs before money is committed.</h2>
+            </div>
+            <div class="proof__table" role="table" aria-label="Campaign planning benchmarks">
+                <div class="proof__row proof__row--head" role="row" data-reveal>
+                    <span role="columnheader">Signal</span>
+                    <span role="columnheader">Planning range</span>
+                    <span role="columnheader">Why it matters</span>
+                </div>
+                <div class="proof__row" role="row" data-reveal>
+                    <span role="cell">Qualified channels reviewed</span>
+                    <strong role="cell"><span data-count-to="80">0</span>+</strong>
+                    <span role="cell">A wider map helps avoid paying for audience size without product fit.</span>
+                </div>
+                <div class="proof__row" role="row" data-reveal>
+                    <span role="cell">Audience-fit threshold</span>
+                    <strong role="cell"><span data-count-to="70">0</span>%</strong>
+                    <span role="cell">Campaigns start with relevance, format quality, and buyer intent.</span>
+                </div>
+                <div class="proof__row" role="row" data-reveal>
+                    <span role="cell">Creator response window</span>
+                    <strong role="cell"><span data-count-to="14">0</span> days</strong>
+                    <span role="cell">Outreach is tracked so brands know when to follow up or move on.</span>
+                </div>
+                <div class="proof__row" role="row" data-reveal>
+                    <span role="cell">Sample launch budget</span>
+                    <strong role="cell">$<span data-count-to="5000">0</span>+</strong>
+                    <span role="cell">Useful for testing several creators before scaling spend.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="channels" aria-label="Automotive YouTube channel examples">
+        <div class="channels__track">
+            <a href="https://www.youtube.com/@Donut" target="_blank" rel="noreferrer">Donut</a>
+            <a href="https://www.youtube.com/@chrisfix" target="_blank" rel="noreferrer">ChrisFix</a>
+            <a href="https://www.youtube.com/@EngineeringExplained" target="_blank" rel="noreferrer">Engineering Explained</a>
+            <a href="https://www.youtube.com/@Hagerty" target="_blank" rel="noreferrer">Hagerty</a>
+            <a href="https://www.youtube.com/@MightyCarMods" target="_blank" rel="noreferrer">Mighty Car Mods</a>
+            <a href="https://www.youtube.com/@TheDetailGeek" target="_blank" rel="noreferrer">The Detail Geek</a>
+            <a href="https://www.youtube.com/@ProjectFarm" target="_blank" rel="noreferrer">Project Farm</a>
+            <a href="https://www.youtube.com/@TheStraightPipes" target="_blank" rel="noreferrer">The Straight Pipes</a>
+            <a href="https://www.youtube.com/@Donut" target="_blank" rel="noreferrer" aria-hidden="true">Donut</a>
+            <a href="https://www.youtube.com/@chrisfix" target="_blank" rel="noreferrer" aria-hidden="true">ChrisFix</a>
+            <a href="https://www.youtube.com/@EngineeringExplained" target="_blank" rel="noreferrer" aria-hidden="true">Engineering Explained</a>
+            <a href="https://www.youtube.com/@Hagerty" target="_blank" rel="noreferrer" aria-hidden="true">Hagerty</a>
+            <a href="https://www.youtube.com/@MightyCarMods" target="_blank" rel="noreferrer" aria-hidden="true">Mighty Car Mods</a>
+            <a href="https://www.youtube.com/@TheDetailGeek" target="_blank" rel="noreferrer" aria-hidden="true">The Detail Geek</a>
+            <a href="https://www.youtube.com/@ProjectFarm" target="_blank" rel="noreferrer" aria-hidden="true">Project Farm</a>
+            <a href="https://www.youtube.com/@TheStraightPipes" target="_blank" rel="noreferrer" aria-hidden="true">The Straight Pipes</a>
+        </div>
+    </section>
+
     <section class="media-band" aria-labelledby="media-title">
         <div class="container">
-            <div class="section-heading compact">
-                <p class="eyebrow">Campaign context</p>
+            <div class="section__heading section__heading--compact">
+                <p class="section__eyebrow">Campaign context</p>
                 <h2 id="media-title">Built around products that need to be seen, handled, and trusted.</h2>
             </div>
-            <div class="media-grid">
-                <figure class="media-card media-card-large">
+            <div class="media-band__grid">
+                <figure class="media-band__card media-band__card--large">
                     <img
                             src="assets/workshop-tools.jpg"
                             alt="Automotive tools and parts collected in a workshop"
@@ -108,7 +167,7 @@
                         Creator shortlists are grounded in real automotive use cases, not broad lifestyle reach.
                     </figcaption>
                 </figure>
-                <figure class="media-card">
+                <figure class="media-band__card">
                     <img
                             src="assets/auto-detailing.jpg"
                             alt="Car detailing product work on a vehicle surface"
@@ -119,7 +178,7 @@
                         Sponsorships work best when viewers can see the product solve a practical problem.
                     </figcaption>
                 </figure>
-                <figure class="media-card">
+                <figure class="media-band__card">
                     <img
                             src="assets/photo-studio.jpg"
                             alt="A product photography and video studio setup"
@@ -134,39 +193,39 @@
         </div>
     </section>
 
-    <section class="section-pad section-dark" id="services" aria-labelledby="services-title">
+    <section class="section section--dark services" id="services" aria-labelledby="services-title">
         <div class="container">
-            <div class="section-heading">
-                <p class="eyebrow">Services</p>
+            <div class="section__heading">
+                <p class="section__eyebrow">Services</p>
                 <h2 id="services-title">A lean sponsorship system for automotive brands.</h2>
             </div>
-            <div class="service-grid">
-                <article class="service-card">
-                    <span class="card-index">01</span>
+            <div class="services__grid">
+                <article class="services__card">
+                    <span class="services__index">01</span>
                     <h3>Creator sourcing and matching</h3>
                     <p>
                         Identify relevant automotive YouTube creators by audience fit, content quality,
                         product context, and brand suitability.
                     </p>
                 </article>
-                <article class="service-card">
-                    <span class="card-index">02</span>
+                <article class="services__card">
+                    <span class="services__index">02</span>
                     <h3>Outreach and negotiation</h3>
                     <p>
                         Run structured creator outreach, collect availability, manage rate discussions,
                         and align deliverables before commitments are made.
                     </p>
                 </article>
-                <article class="service-card">
-                    <span class="card-index">03</span>
+                <article class="services__card">
+                    <span class="services__index">03</span>
                     <h3>Campaign coordination</h3>
                     <p>
                         Keep products, talking points, timelines, approvals, tracking links, and content
                         requirements moving without adding operational drag.
                     </p>
                 </article>
-                <article class="service-card">
-                    <span class="card-index">04</span>
+                <article class="services__card">
+                    <span class="services__index">04</span>
                     <h3>Reporting and support</h3>
                     <p>
                         Provide practical post-campaign summaries that help brands understand delivery,
@@ -177,10 +236,45 @@
         </div>
     </section>
 
-    <section class="section-pad" id="why" aria-labelledby="why-title">
-        <div class="container split">
-            <div class="split-copy">
-                <p class="eyebrow">Why TorqueLink</p>
+
+    <section class="section testimonials" aria-labelledby="testimonials-title">
+        <div class="container testimonials__grid">
+            <div data-reveal>
+                <p class="section__eyebrow">Campaign lens</p>
+                <h2 id="testimonials-title">What brands should expect from creator fit.</h2>
+                <p class="testimonials__copy">The best sponsorships feel native to the channel while still giving the product enough room to be understood.</p>
+            </div>
+            <div class="testimonial-slider" data-slider data-reveal>
+                <div class="testimonial-slider__viewport">
+                    <article class="testimonial-slider__slide is-active">
+                        <img src="assets/workshop-tools.jpg" alt="Workshop tools and product campaign planning" loading="lazy">
+                        <blockquote>“The strongest creator brief is specific enough to protect the brand and flexible enough to let the creator sound like themselves.”</blockquote>
+                        <cite>Creator outreach note</cite>
+                    </article>
+                    <article class="testimonial-slider__slide">
+                        <img src="assets/auto-detailing.jpg" alt="Detailing product demonstration" loading="lazy">
+                        <blockquote>“A product demo needs a practical reason to exist: before-and-after, install time, repeatable workflow, or a clear problem solved.”</blockquote>
+                        <cite>Campaign strategy note</cite>
+                    </article>
+                    <article class="testimonial-slider__slide">
+                        <img src="assets/photo-studio.jpg" alt="Video production studio setup" loading="lazy">
+                        <blockquote>“Production quality matters, but trust usually comes from creator consistency, audience expectation, and honest product context.”</blockquote>
+                        <cite>Channel-fit note</cite>
+                    </article>
+                </div>
+                <div class="testimonial-slider__controls" aria-label="Campaign notes slider controls">
+                    <button type="button" data-slider-prev aria-label="Previous note">Prev</button>
+                    <div class="testimonial-slider__dots" aria-hidden="true"></div>
+                    <button type="button" data-slider-next aria-label="Next note">Next</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section why" id="why" aria-labelledby="why-title">
+        <div class="container why__grid">
+            <div class="why__copy">
+                <p class="section__eyebrow">Why TorqueLink</p>
                 <h2 id="why-title">Automotive buying decisions are built on proof, context, and trust.</h2>
                 <p>
                     YouTube remains one of the strongest places for automotive products because viewers
@@ -189,15 +283,15 @@
                     a place in the garage.
                 </p>
             </div>
-            <div class="visual-proof">
-                <figure class="insight-image">
+            <div class="why__proof">
+                <figure class="why__image">
                     <img
                             src="assets/auto-detailing.jpg"
                             alt="Automotive detailing work showing product demonstration context"
                             loading="lazy"
                     >
                 </figure>
-                <div class="proof-panel" aria-label="Key benefits">
+                <div class="why__panel" aria-label="Key benefits">
                     <div>
                         <strong>Niche fit</strong>
                         <span>Campaigns built around automotive audiences and product use cases.</span>
@@ -215,13 +309,13 @@
         </div>
     </section>
 
-    <section class="section-pad section-light" id="process" aria-labelledby="process-title">
+    <section class="section section--light process" id="process" aria-labelledby="process-title">
         <div class="container">
-            <div class="section-heading compact">
-                <p class="eyebrow">Process</p>
+            <div class="section__heading section__heading--compact">
+                <p class="section__eyebrow">Process</p>
                 <h2 id="process-title">Simple, controlled, and built for speed.</h2>
             </div>
-            <ol class="process-list">
+            <ol class="process__list">
                 <li>
                     <span>01</span>
                     <h3>Define the campaign brief</h3>
@@ -243,7 +337,7 @@
                     <p>Summarize delivery and performance signals so the next campaign starts smarter.</p>
                 </li>
             </ol>
-            <figure class="process-media">
+            <figure class="process__media">
                 <img
                         src="assets/photo-studio.jpg"
                         alt="Studio equipment used for product photography and video production"
@@ -258,44 +352,176 @@
         </div>
     </section>
 
-    <section class="cta-band" aria-labelledby="cta-title">
-        <div class="container cta-grid">
-            <div>
-                <p class="eyebrow">For product-led automotive brands</p>
-                <h2 id="cta-title">Bring your next product campaign to the channels buyers already trust.</h2>
+
+    <section class="section faq" aria-labelledby="faq-title">
+        <div class="container faq__grid">
+            <div data-reveal>
+                <p class="section__eyebrow">Common questions</p>
+                <h2 id="faq-title">Designed for brands that want a serious first campaign, not hype.</h2>
             </div>
-            <a class="button button-primary" href="#contact">Discuss your campaign</a>
+            <div class="faq__list" data-accordion>
+                <article class="faq__item is-open" data-reveal>
+                    <button class="faq__question" type="button" aria-expanded="true">
+                        How do you choose creator fit?
+                        <span></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Creator selection starts with product category, audience intent, content format, past sponsorship behavior, production quality, and whether the product can be demonstrated naturally.</p>
+                    </div>
+                </article>
+                <article class="faq__item" data-reveal>
+                    <button class="faq__question" type="button" aria-expanded="false">
+                        Can this work without case studies yet?
+                        <span></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Yes. The site can present a credible operating method, clear positioning, and transparent campaign process without pretending there are results that do not exist yet.</p>
+                    </div>
+                </article>
+                <article class="faq__item" data-reveal>
+                    <button class="faq__question" type="button" aria-expanded="false">
+                        What gets updated later?
+                        <span></span>
+                    </button>
+                    <div class="faq__answer">
+                        <p>The logo, email address, social links, creator examples, case studies, and proof points can all be swapped in without rebuilding the page structure.</p>
+                    </div>
+                </article>
+            </div>
         </div>
     </section>
 
-    <section class="section-pad contact-section" id="contact" aria-labelledby="contact-title">
-        <div class="container contact-grid">
+    <section class="section gallery" aria-labelledby="gallery-title">
+        <div class="container">
+            <div class="section__heading" data-reveal>
+                <div>
+                    <p class="section__eyebrow">Visual proof</p>
+                    <h2 id="gallery-title">Gallery structure for product, creator, and campaign imagery.</h2>
+                </div>
+                <p class="gallery__note">Click any image to open the PhotoSwipe lightbox.</p>
+            </div>
+            <div class="gallery__grid" id="campaign-gallery">
+                <a href="assets/workshop-tools.jpg" data-pswp-width="1280" data-pswp-height="853" target="_blank" data-reveal>
+                    <img src="assets/workshop-tools.jpg" alt="Automotive workshop tools and parts" loading="lazy">
+                    <span>Workshop context</span>
+                </a>
+                <a href="assets/auto-detailing.jpg" data-pswp-width="1280" data-pswp-height="854" target="_blank" data-reveal>
+                    <img src="assets/auto-detailing.jpg" alt="Automotive detailing demonstration" loading="lazy">
+                    <span>Product demonstration</span>
+                </a>
+                <a href="assets/photo-studio.jpg" data-pswp-width="800" data-pswp-height="513" target="_blank" data-reveal>
+                    <img src="assets/photo-studio.jpg" alt="Product video production setup" loading="lazy">
+                    <span>Production quality</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section--dark videos" aria-labelledby="videos-title">
+        <div class="container">
+            <div class="section__heading" data-reveal>
+                <div>
+                    <p class="section__eyebrow">Recent video formats</p>
+                    <h2 id="videos-title">A YouTube grid for future creator placements and reference videos.</h2>
+                </div>
+                <p class="videos__note">Replace these placeholders with real embed URLs once campaigns or reference videos are approved.</p>
+            </div>
+            <div class="videos__grid">
+                <article class="videos__card" data-reveal>
+                    <iframe title="Product install video placeholder" loading="lazy" srcdoc="<style>body{margin:0;background:#081729;color:white;font-family:Arial,sans-serif}a{display:grid;place-items:center;min-height:100vh;color:white;text-decoration:none;background:linear-gradient(rgba(6,16,31,.25),rgba(6,16,31,.8)),url('assets/workshop-tools.jpg') center/cover}.play{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:#d72f2f;font-weight:700}</style><a href='https://www.youtube.com/results?search_query=automotive+product+install+review' target='_blank'><span class='play'>Play</span></a>"></iframe>
+                    <h3>Install-led product review</h3>
+                    <p>Best for parts, accessories, fitment products, and workshop upgrades.</p>
+                </article>
+                <article class="videos__card" data-reveal>
+                    <iframe title="Detailing video placeholder" loading="lazy" srcdoc="<style>body{margin:0;background:#081729;color:white;font-family:Arial,sans-serif}a{display:grid;place-items:center;min-height:100vh;color:white;text-decoration:none;background:linear-gradient(rgba(6,16,31,.25),rgba(6,16,31,.8)),url('assets/auto-detailing.jpg') center/cover}.play{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:#d72f2f;font-weight:700}</style><a href='https://www.youtube.com/results?search_query=car+care+product+review+detailing' target='_blank'><span class='play'>Play</span></a>"></iframe>
+                    <h3>Before-and-after demonstration</h3>
+                    <p>Useful for car-care, coating, cleaning, and restoration products.</p>
+                </article>
+                <article class="videos__card" data-reveal>
+                    <iframe title="Tool test video placeholder" loading="lazy" srcdoc="<style>body{margin:0;background:#081729;color:white;font-family:Arial,sans-serif}a{display:grid;place-items:center;min-height:100vh;color:white;text-decoration:none;background:linear-gradient(rgba(6,16,31,.25),rgba(6,16,31,.8)),url('assets/photo-studio.jpg') center/cover}.play{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:#d72f2f;font-weight:700}</style><a href='https://www.youtube.com/results?search_query=automotive+tool+test+review' target='_blank'><span class='play'>Play</span></a>"></iframe>
+                    <h3>Tool test and comparison</h3>
+                    <p>Strong for tools, garage equipment, diagnostics, and maintenance products.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section vertical-video" aria-labelledby="vertical-video-title">
+        <div class="container vertical-video__grid">
+            <div data-reveal>
+                <p class="section__eyebrow">Short-form layer</p>
+                <h2 id="vertical-video-title">Vertical video concepts for clips, shorts, and repurposed creator content.</h2>
+                <p class="vertical-video__copy">The slider advances automatically. Hover a card to play the video preview and pause the rotation.</p>
+            </div>
+            <div class="vertical-video__slider" data-vertical-slider data-reveal>
+                <article class="vertical-video__card is-active">
+                    <video muted loop playsinline preload="metadata" poster="assets/torquelink-hero.png">
+                        <source src="assets/video-01.mp4" type="video/mp4">
+                    </video>
+                    <span>Garage hook</span>
+                </article>
+                <article class="vertical-video__card">
+                    <video muted loop playsinline preload="metadata" poster="assets/workshop-tools.jpg">
+                        <source src="assets/video-01.mp4" type="video/mp4">
+                    </video>
+                    <span>Tool demo</span>
+                </article>
+                <article class="vertical-video__card">
+                    <video muted loop playsinline preload="metadata" poster="assets/auto-detailing.jpg">
+                        <source src="assets/video-01.mp4" type="video/mp4">
+                    </video>
+                    <span>Detailing proof</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-title">
+        <div class="container cta__grid">
             <div>
-                <p class="eyebrow">Contact</p>
+                <p class="section__eyebrow">For product-led automotive brands</p>
+                <h2 id="cta-title">Bring your next product campaign to the channels buyers already trust.</h2>
+            </div>
+            <a class="button button--primary" href="#contact">Discuss your campaign</a>
+        </div>
+    </section>
+
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="container contact__grid">
+            <div>
+                <p class="section__eyebrow">Contact</p>
                 <h2 id="contact-title">Start with a focused discovery call.</h2>
                 <p>
                     Share a few details about your product category and campaign goals. TorqueLink Media
                     will respond with next steps for a practical sponsorship discussion.
                 </p>
-                <div class="contact-links">
+                <div class="contact__links">
                     <a href="mailto:hello@torquelinkmedia.com">hello@torquelinkmedia.com</a>
                     <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
                 </div>
+                <ul class="socials" aria-label="Social links">
+                    <li><a href="mailto:hello@torquelinkmedia.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4z"></path><path d="m4 7 8 6 8-6"></path></svg></a></li>
+                    <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 10v8"></path><path d="M6.5 6.5v.1"></path><path d="M11 18v-8"></path><path d="M11 13.5c0-2.1 1.2-3.5 3.1-3.5 1.8 0 2.9 1.2 2.9 3.5V18"></path></svg></a></li>
+                    <li><a href="https://www.facebook.com/" target="_blank" rel="noreferrer" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.6.4-1 1-1z"></path></svg></a></li>
+                    <li><a href="https://www.youtube.com/" target="_blank" rel="noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12s0-4-1-5c-.6-.7-1.3-.8-2-.9C16.2 5 12 5 12 5s-4.2 0-7 .1c-.7.1-1.4.2-2 .9-1 1-1 5-1 5s0 4 1 5c.6.7 1.3.8 2 .9 2.8.1 7 .1 7 .1s4.2 0 7-.1c.7-.1 1.4-.2 2-.9 1-1 1-5 1-5z"></path><path d="m10 9 5 3-5 3z"></path></svg></a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="5"></rect><circle cx="12" cy="12" r="3.5"></circle><path d="M17 7h.1"></path></svg></a></li>
+                    <li><a href="https://www.tiktok.com/" target="_blank" rel="noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4v10.2a4 4 0 1 1-4-4"></path><path d="M14 4c.7 2.7 2.4 4.5 5 5"></path></svg></a></li>
+                </ul>
             </div>
-            <form class="contact-form" action="mailto:hello@torquelinkmedia.com" method="post" enctype="text/plain">
-                <label>
+            <form class="contact__form" action="mailto:hello@torquelinkmedia.com" method="post" enctype="text/plain">
+                <label class="contact__field">
                     Name
                     <input type="text" name="name" autocomplete="name" required>
                 </label>
-                <label>
+                <label class="contact__field">
                     Work email
                     <input type="email" name="email" autocomplete="email" required>
                 </label>
-                <label>
+                <label class="contact__field">
                     Company
                     <input type="text" name="company" autocomplete="organization">
                 </label>
-                <label>
+                <label class="contact__field">
                     Product category
                     <select name="product-category" required>
                         <option value="">Select one</option>
@@ -306,18 +532,18 @@
                         <option>Other automotive product</option>
                     </select>
                 </label>
-                <label class="full">
+                <label class="contact__field contact__field--full">
                     Campaign notes
                     <textarea name="message" rows="5"
                               placeholder="Tell us what you are launching or trying to improve."></textarea>
                 </label>
-                <button class="button button-primary full" type="submit">Send enquiry</button>
-                <p class="form-note" role="status" aria-live="polite"></p>
+                <button class="button button--primary contact__field--full" type="submit">Send enquiry</button>
+                <p class="contact__note" role="status" aria-live="polite"></p>
             </form>
         </div>
     </section>
 
-    <section class="asset-credits" aria-labelledby="credits-title">
+    <section class="media-credits" aria-labelledby="credits-title">
         <div class="container">
             <h2 id="credits-title">Media Credits</h2>
             <ul>
@@ -347,8 +573,8 @@
     </section>
 </main>
 
-<footer class="site-footer">
-    <div class="container footer-inner">
+<footer class="footer">
+    <div class="container footer__inner">
         <span>&copy; 2026 TorqueLink Media. All rights reserved.</span>
         <a href="#top">Back to top</a>
     </div>

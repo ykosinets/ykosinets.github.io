@@ -1,0 +1,15 @@
+.intro {
+  background: var(--color-navy-950);
+}
+
+.intro__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  gap: clamp(36px, 7vw, 92px);
+  align-items: start;
+}
+
+.intro__copy p {
+  margin: 18px 0 0;
+  color: var(--color-steel-300);
+}

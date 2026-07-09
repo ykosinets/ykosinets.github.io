@@ -1,0 +1,34 @@
+.channels {
+  overflow: hidden;
+  padding: 18px 0;
+  background: #050b14;
+  border-block: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.channels__track {
+  display: flex;
+  width: max-content;
+  gap: 14px;
+  animation: channels-scroll 36s linear infinite;
+}
+
+.channels__track:hover {
+  animation-play-state: paused;
+}
+
+.channels__track a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 42px;
+  padding: 0 18px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-steel-200);
+  font-size: 0.86rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+@keyframes channels-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}

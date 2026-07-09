@@ -1,0 +1,29 @@
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.services__card {
+  min-height: 300px;
+  padding: 28px;
+  border: 1px solid var(--surface-line);
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: var(--surface-shadow);
+}
+
+.services__index {
+  display: inline-flex;
+  color: #ff8a8a;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.services__card h3 {
+  margin-top: 44px;
+}
+
+.services__card p {
+  margin: 18px 0 0;
+  color: var(--color-steel-300);
+}

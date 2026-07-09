@@ -1,0 +1,37 @@
+.proof {
+  background: #081421;
+}
+
+.proof__table {
+  display: grid;
+  margin-top: 42px;
+  border: 1px solid var(--surface-line);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: var(--surface-shadow);
+}
+
+.proof__row {
+  display: grid;
+  grid-template-columns: 1fr 0.55fr 1.35fr;
+  gap: 20px;
+  align-items: center;
+  padding: 22px 24px;
+  background: var(--color-navy-900);
+}
+
+.proof__row + .proof__row {
+  border-top: 1px solid var(--surface-line);
+}
+
+.proof__row--head {
+  color: var(--color-steel-300);
+  font-size: 0.76rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.proof__row strong {
+  color: var(--color-white);
+  font-size: clamp(1.65rem, 4vw, 3.1rem);
+  line-height: 1;
+}
