@@ -2,14 +2,14 @@
   overflow: hidden;
   padding: 18px 0;
   background: #050b14;
-  border-block: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .channels__track {
   display: flex;
   width: max-content;
-  gap: 14px;
-  animation: channels-scroll 36s linear infinite;
+  gap: clamp(28px, 5vw, 72px);
+  padding-left: 0;
+  animation: channels-scroll 42s linear infinite;
 }
 
 .channels__track:hover {
@@ -19,13 +19,19 @@
 .channels__track a {
   display: inline-flex;
   align-items: center;
-  min-height: 42px;
-  padding: 0 18px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: var(--color-steel-200);
-  font-size: 0.86rem;
-  font-weight: 800;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-script);
+  font-size: clamp(1rem, 1vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
   white-space: nowrap;
+}
+
+.channels__track a::before {
+  content: "@";
+  color: var(--color-red);
+  margin-right: 2px;
 }
 
 @keyframes channels-scroll {

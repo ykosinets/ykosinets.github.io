@@ -84,3 +84,11 @@ textarea:focus {
   border-color: var(--color-red);
   box-shadow: 0 0 0 3px rgba(215, 47, 47, 0.18);
 }
+
+.section__eyebrow.badge {
+  background: #f06f6f66;
+  border-radius: 20px;
+  padding: 7px 12px 6px 12px;
+  display: inline-block;
+  color: #fff;
+}
