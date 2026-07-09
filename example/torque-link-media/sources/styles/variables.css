@@ -12,6 +12,8 @@
   --color-white: #ffffff;
   --color-red: #d72f2f;
   --color-red-dark: #9f2025;
+  --color-amber: #ffb454;
+  --color-mint: #83e6c7;
 
   --surface-line: rgba(255, 255, 255, 0.08);
   --surface-soft: rgba(255, 255, 255, 0.055);

@@ -1,5 +1,7 @@
 .faq {
-    background: #07111e;
+    background:
+        radial-gradient(circle at 82% 12%, rgba(131, 230, 199, 0.12), transparent 24%),
+        #07111e;
 }
 
 .faq__grid {
@@ -23,6 +25,12 @@
     background: var(--surface-soft);
     box-shadow: var(--surface-shadow);
     overflow: hidden;
+    transition: transform 180ms ease, background 180ms ease;
+
+    &:hover {
+        transform: translateX(4px);
+        background: rgba(255, 255, 255, 0.072);
+    }
 }
 
 .faq__question {

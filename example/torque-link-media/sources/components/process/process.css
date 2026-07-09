@@ -92,7 +92,7 @@
         padding: clamp(24px, 4vw, 42px);
     }
 
-    &:before {
+    &::before {
         content: '';
         position: absolute;
         top: 0;

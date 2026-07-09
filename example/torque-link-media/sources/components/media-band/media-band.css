@@ -23,6 +23,15 @@
     border-radius: var(--radius-lg);
     background: #071120;
     box-shadow: var(--surface-shadow);
+    transform-origin: center;
+
+    &:nth-child(2) {
+        rotate: 0.8deg;
+    }
+
+    &:nth-child(3) {
+        rotate: -0.8deg;
+    }
 
     @media screen and (max-width: 575px) {
         min-height: 310px;
@@ -64,9 +73,20 @@
 }
 
 .media-band__card strong {
-    display: block;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     color: var(--color-white);
     font-size: 1.02rem;
     line-height: 1.2;
+}
+
+.media-band__card strong::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-amber);
+    box-shadow: 0 0 18px rgba(255, 180, 84, 0.5);
 }
 
