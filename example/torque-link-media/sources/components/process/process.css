@@ -1,0 +1,118 @@
+.process__list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin: 42px 0 0;
+    padding: 0;
+    list-style: none;
+    background: transparent;
+
+    @media screen and (max-width: 992px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media screen and (max-width: 575px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.process__list li {
+    min-height: 250px;
+
+    @media screen and (max-width: 575px) {
+        min-height: 220px;
+        padding: 22px;
+    }
+}
+
+.process__list span {
+    display: inline-flex;
+    color: #ff8a8a;
+    font-size: 0.78rem;
+    font-weight: 800;
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 50px;
+        left: calc(100% + 10px);
+        position: absolute;
+        top: 50%;
+        margin-top: -1px;
+        border: 1px solid;
+    }
+}
+
+.process__list h3 {
+    margin-top: 18px;
+}
+
+.process__list p {
+    margin: 18px 0 0;
+    color: #536171;
+}
+
+.process__media {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(280px, 0.5fr);
+    align-items: stretch;
+    margin: 18px 0 0;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+    background: #101927;
+    box-shadow: 0 24px 70px rgba(13, 23, 37, 0.18);
+
+    @media screen and (max-width: 992px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.process__media img {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    object-fit: cover;
+    filter: saturate(0.78) contrast(1.04);
+
+    @media screen and (max-width: 575px) {
+        min-height: 230px;
+    }
+}
+
+.process__media figcaption {
+    display: grid;
+    align-content: center;
+    gap: 10px;
+    margin: 0;
+    padding: clamp(24px, 4vw, 42px) clamp(24px, 4vw, 42px) clamp(24px, 4vw, 42px) clamp(14px, 3.75vw, 32px);
+    color: #c7d0dd;
+    position: relative;
+
+    @media screen and (max-width: 992px) {
+        padding: clamp(24px, 4vw, 42px);
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 40px;
+        transform: skewX(-5deg);
+        transform-origin: top right;
+        background: #101927;
+
+        @media screen and (max-width: 992px) {
+            display: none;
+        }
+    }
+}
+
+.process__media strong {
+    display: block;
+    color: var(--color-white);
+    font-size: 1.02rem;
+    line-height: 1.2;
+}
+

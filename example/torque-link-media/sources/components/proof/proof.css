@@ -1,0 +1,71 @@
+.proof {
+    background: #081421;
+}
+
+.proof__table {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+
+    @media screen and (max-width: 992px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media screen and (max-width: 575px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.proof__row {
+    display: grid;
+    align-content: space-between;
+    min-height: 214px;
+
+    @media screen and (max-width: 992px) {
+        align-items: start;
+    }
+
+    @media screen and (max-width: 575px) {
+        gap: 10px;
+    }
+}
+
+.proof__row--head {
+    display: none;
+}
+
+.proof__row span:first-child {
+    color: var(--color-steel-200);
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.proof__row strong {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin: 26px 0 14px;
+    color: var(--color-white);
+    font-size: clamp(1.75rem, 3.4vw, 2.75rem);
+    line-height: 0.95;
+
+    @media screen and (max-width: 575px) {
+        font-size: 2rem;
+    }
+}
+
+.proof__row strong small {
+    color: var(--color-steel-300);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+}
+
+.proof__row span:last-child {
+    color: var(--color-steel-300);
+    font-size: 0.8rem;
+    line-height: 1.45;
+}
+

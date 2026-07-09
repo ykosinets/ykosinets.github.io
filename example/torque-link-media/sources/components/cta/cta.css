@@ -1,0 +1,34 @@
+.cta {
+    padding: 58px 0;
+    background: var(--color-red-dark);
+}
+
+.cta__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 28px;
+    align-items: center;
+
+    @media screen and (max-width: 992px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cta .section__eyebrow {
+    color: #ffd1d1;
+}
+
+.cta .button--primary {
+    background: var(--color-white);
+    color: #111827;
+    box-shadow: none;
+
+    @media screen and (max-width: 992px) {
+        width: fit-content;
+    }
+
+    @media screen and (max-width: 575px) {
+        width: 100%;
+    }
+}
+
