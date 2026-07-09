@@ -1,26 +1,50 @@
+.services__heading {
+  margin-bottom: 24px;
+}
+
 .services__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .services__card {
+  position: relative;
   min-height: 300px;
   padding: 28px;
-  border: 1px solid var(--surface-line);
-  background: rgba(255, 255, 255, 0.035);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
   box-shadow: var(--surface-shadow);
+  overflow: hidden;
 }
 
-.services__index {
-  display: inline-flex;
-  color: #ff8a8a;
-  font-size: 0.78rem;
-  font-weight: 800;
+.services__icon {
+  position: absolute;
+  right: -12%;
+  bottom: -18%;
+  width: 58%;
+  height: auto;
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.14);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.35;
+  transform: rotate(-12deg);
+}
+
+.services__card:nth-child(even) .services__icon {
+  right: -8%;
+  transform: rotate(10deg);
+}
+
+.services__card h3,
+.services__card p {
+  position: relative;
+  z-index: 1;
 }
 
 .services__card h3 {
-  margin-top: 44px;
+  margin-top: 0;
 }
 
 .services__card p {

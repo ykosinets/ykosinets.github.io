@@ -16,6 +16,7 @@
 }
 
 .testimonial-slider {
+  position: relative;
   min-width: 0;
 }
 
@@ -23,6 +24,7 @@
   position: relative;
   min-height: 520px;
   overflow: hidden;
+  border-radius: var(--radius-lg);
   background: #071120;
   box-shadow: var(--surface-shadow);
 }
@@ -63,9 +65,12 @@
   max-width: 620px;
   margin: 0;
   color: var(--color-white);
-  font-size: clamp(1.4rem, 3vw, 2.4rem);
-  font-weight: 800;
+  font-size: clamp(1.5rem, 2vw, 2.4rem);
+  font-weight: 400;
   line-height: 1.12;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 520ms ease 140ms, transform 520ms ease 140ms;
 }
 
 .testimonial-slider__slide cite {
@@ -76,35 +81,51 @@
 }
 
 .testimonial-slider__controls {
+  position: absolute;
+  z-index: 2;
+  top: 18px;
+  right: 18px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  margin-top: 16px;
+  gap: 10px;
 }
 
 .testimonial-slider__controls button {
-  min-height: 42px;
-  border: 1px solid var(--surface-line);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--color-white);
-  font: inherit;
-  font-weight: 800;
-  padding: 0 16px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--color-white);
+  color: var(--color-navy-950);
+  font-size: 0;
   cursor: pointer;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+}
+
+.testimonial-slider__controls button::before {
+  content: "";
+  display: block;
+  width: 11px;
+  height: 11px;
+  margin: auto;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+}
+
+.testimonial-slider__controls [data-slider-prev]::before {
+  transform: rotate(-45deg);
+}
+
+.testimonial-slider__controls [data-slider-next]::before {
+  transform: rotate(135deg);
 }
 
 .testimonial-slider__dots {
-  display: flex;
-  gap: 8px;
+  display: none;
 }
 
-.testimonial-slider__dots span {
-  width: 28px;
-  height: 3px;
-  background: rgba(255, 255, 255, 0.18);
-}
 
-.testimonial-slider__dots .is-active {
-  background: var(--color-red);
+.testimonial-slider__slide.is-active blockquote {
+  opacity: 1;
+  transform: translateY(0);
 }

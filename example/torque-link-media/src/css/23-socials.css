@@ -12,15 +12,15 @@
   place-items: center;
   width: 42px;
   height: 42px;
-  border: 1px solid var(--surface-line);
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.045);
-  color: var(--color-white);
-  transition: background 160ms ease, transform 160ms ease;
+  background: var(--color-white);
+  color: var(--color-red);
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease;
 }
 
 .socials a:hover {
   background: var(--color-red);
+  color: var(--color-white);
   transform: translateY(-2px);
 }
 

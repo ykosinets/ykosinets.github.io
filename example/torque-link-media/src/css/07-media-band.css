@@ -17,7 +17,7 @@
   min-height: 300px;
   margin: 0;
   overflow: hidden;
-  border: 1px solid var(--surface-line);
+  border-radius: var(--radius-lg);
   background: #071120;
   box-shadow: var(--surface-shadow);
 }

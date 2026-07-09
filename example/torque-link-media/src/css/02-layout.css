@@ -3,6 +3,14 @@
   margin: 0 auto;
 }
 
+.container--narrow {
+  --layout-max: 980px;
+}
+
+.container--wide {
+  --layout-max: 1320px;
+}
+
 .section {
   padding: clamp(72px, 9vw, 128px) 0;
 }
@@ -47,4 +55,9 @@
   font-weight: 800;
   letter-spacing: 0;
   text-transform: uppercase;
+}
+
+.slim-title {
+  font-weight: 300;
+  font-size: clamp(1.5rem, 3.2vw, 3rem)
 }

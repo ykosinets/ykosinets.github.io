@@ -9,40 +9,110 @@
 }
 
 .gallery__grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr 0.9fr;
-  gap: 16px;
+  --gallery-columns: 4;
+  --gallery-gutter: 18px;
 }
 
-.gallery__grid a {
+.gallery__grid::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.gallery__sizer,
+.gallery__item {
+  width: calc((100% - (var(--gallery-gutter) * (var(--gallery-columns) - 1))) / var(--gallery-columns));
+}
+
+.gallery__gutter {
+  width: var(--gallery-gutter);
+}
+
+.gallery__item {
   position: relative;
-  min-height: 360px;
+  display: block;
+  height: 220px;
+  margin-bottom: var(--gallery-gutter);
   overflow: hidden;
+  border-radius: var(--radius-lg);
   background: #071120;
   box-shadow: var(--surface-shadow);
 }
 
-.gallery__grid a:first-child {
-  min-height: 520px;
+
+.gallery__item span svg {
+  width: 22px;
+  fill: #fff;
+  display: inline-block;
+  vertical-align: middle;
+  transition: .2s translate .05s ease-in-out;
 }
 
-.gallery__grid img {
+.gallery__item:hover span svg {
+  translate: 3px 0;
+}
+
+.gallery__item--width2 {
+  width: calc((((100% - (var(--gallery-gutter) * (var(--gallery-columns) - 1))) / var(--gallery-columns)) * 2) + var(--gallery-gutter));
+}
+
+.gallery__item--height2 {
+  height: 458px;
+}
+
+.gallery__item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   filter: saturate(0.78) contrast(1.04);
   transition: transform 420ms ease;
 }
 
-.gallery__grid a:hover img {
+.gallery__item:hover img {
   transform: scale(1.04);
 }
 
-.gallery__grid span {
+.gallery__item span {
   position: absolute;
   left: 18px;
   right: 18px;
   bottom: 18px;
   color: var(--color-white);
   font-weight: 800;
+  transition: opacity 160ms ease;
+}
+
+@media (max-width: 980px) {
+  .gallery__grid {
+    --gallery-columns: 3;
+  }
+
+  .gallery__item {
+    height: 210px;
+  }
+
+  .gallery__item--height2 {
+    height: 438px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery__grid {
+    --gallery-columns: 1;
+    --gallery-gutter: 14px;
+  }
+
+  .gallery__item,
+  .gallery__item--width2 {
+    width: 100%;
+  }
+
+  .gallery__item {
+    height: 300px;
+  }
+
+  .gallery__item--height2 {
+    height: 430px;
+  }
 }

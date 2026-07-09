@@ -13,11 +13,18 @@
   --color-red: #d72f2f;
   --color-red-dark: #9f2025;
 
-  --surface-line: rgba(255, 255, 255, 0.12);
-  --surface-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+  --surface-line: rgba(255, 255, 255, 0.08);
+  --surface-soft: rgba(255, 255, 255, 0.055);
+  --surface-shadow: 0 26px 70px rgba(0, 0, 0, 0.26);
+  --surface-shadow-lift: 0 34px 90px rgba(0, 0, 0, 0.34);
+  --radius-sm: 14px;
+  --radius-md: 22px;
+  --radius-lg: 34px;
+  --radius-squircle: 28px;
   --layout-max: 1180px;
   --container-gutter: 40px;
   --font-sans: Inter, Arial, sans-serif;
+  --font-script: "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive;
 }
 
 @media (max-width: 640px) {

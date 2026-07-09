@@ -15,8 +15,10 @@
 }
 
 .faq__item {
-  border: 1px solid var(--surface-line);
-  background: rgba(255, 255, 255, 0.035);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+  box-shadow: var(--surface-shadow);
+  overflow: hidden;
 }
 
 .faq__question {

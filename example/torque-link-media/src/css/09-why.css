@@ -19,7 +19,7 @@
   height: 310px;
   margin: 0;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-lg);
   box-shadow: var(--surface-shadow);
 }
 
@@ -32,15 +32,15 @@
 
 .why__panel {
   display: grid;
-  gap: 1px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.12);
+  gap: 12px;
+  background: transparent;
   box-shadow: var(--surface-shadow);
 }
 
 .why__panel div {
   padding: 28px;
-  background: #0b1829;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.055);
 }
 
 .why__panel strong,

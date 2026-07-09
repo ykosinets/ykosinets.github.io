@@ -7,6 +7,7 @@
   border: 1px solid transparent;
   font-weight: 800;
   line-height: 1.1;
+  border-radius: 999px;
   transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
 }
 
