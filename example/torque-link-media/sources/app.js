@@ -1,4 +1,5 @@
 // @include ./scripts/smooth-scroll.js
+// @include ./scripts/scrollspy.js
 // @include ./scripts/reveal.js
 // @include ./scripts/counts.js
 // @include ./components/header/header.js
@@ -10,19 +11,20 @@
 // @include ./components/testimonials/testimonials.js
 // @include ./components/why/why.js
 // @include ./components/process/process.js
-// @include ./components/faq/faq.js
-// @include ./components/gallery/gallery.js
-// @include ./components/videos/videos.js
-// @include ./components/vertical-video/vertical-video.js
+// ./components/faq/faq.js
+// ./components/gallery/gallery.js
+// ./components/videos/videos.js
+// ./components/vertical-video/vertical-video.js
 // @include ./components/cta/cta.js
 // @include ./components/contact/contact.js
-// @include ./components/socials/socials.js
-// @include ./components/media-credits/media-credits.js
+// ./components/socials/socials.js
+// ./components/media-credits/media-credits.js
 // @include ./components/footer/footer.js
 
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initSmoothScroll();
+  initScrollspy();
   initRevealAnimations();
   initCountAnimations();
   initHeroParallax();
@@ -33,13 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
   initTestimonialSliders();
   initWhySection();
   initProcessSection();
-  initAccordions();
-  initGallery();
-  initVideosMarquee();
-  initVerticalVideoSliders();
+  // initAccordions();
+  // initGallery();
+  // initVideosMarquee();
+  // initVerticalVideoSliders();
   initCtaSection();
   initContactForm();
-  initSocialLinks();
-  initMediaCredits();
+  // initSocialLinks();
   initFooter();
 });

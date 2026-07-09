@@ -1,0 +1,30 @@
+<svg width="256" height="160" viewBox="0 0 256 160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <style>
+            .black { fill: #ffffff; }
+            .red { fill: #e53935; }
+        </style>
+    </defs>
+
+    <!-- T -->
+    <path class="black"
+          d="M24 34
+           H132
+           L122 54
+           H88
+           L62 122
+           H34
+           L60 54
+           H14
+           Z"/>
+
+    <!-- L -->
+    <path class="red"
+          d="M104 74
+           H132
+           L116 114
+           H186
+           L176 136
+           H84
+           Z"/>
+</svg>

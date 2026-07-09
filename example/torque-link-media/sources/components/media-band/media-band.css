@@ -10,7 +10,7 @@
     gap: 16px;
     margin-top: 42px;
 
-    @media screen and (max-width: 992px) {
+    @media screen and (max-width: 768px) {
         grid-template-columns: 1fr;
     }
 }
@@ -24,14 +24,6 @@
     background: #071120;
     box-shadow: var(--surface-shadow);
     transform-origin: center;
-
-    &:nth-child(2) {
-        rotate: 0.8deg;
-    }
-
-    &:nth-child(3) {
-        rotate: -0.8deg;
-    }
 
     @media screen and (max-width: 575px) {
         min-height: 310px;

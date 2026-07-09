@@ -5,7 +5,7 @@ const { execFileSync } = require("child_process");
 const root = path.resolve(__dirname, "..");
 const zipName = "torque-link-media-site.zip";
 const zipPath = path.join(root, zipName);
-const files = ["index.html", "style.css", "app.js", "assets"];
+const files = ["index.html", "new.html", "style.css", "app.js", "assets"];
 
 fs.rmSync(zipPath, { force: true });
 

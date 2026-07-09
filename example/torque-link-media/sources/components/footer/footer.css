@@ -9,6 +9,8 @@
     display: flex;
     justify-content: space-between;
     gap: 20px;
+    position: relative;
+    align-items: flex-start;
 
     @media screen and (max-width: 575px) {
         flex-direction: column;
@@ -16,3 +18,42 @@
     }
 }
 
+.footer__brand-mark {
+    width: 120px;
+    display: block;
+}
+
+.footer__nav {
+    display: flex;
+    margin: -7px auto 0 0;
+}
+
+.footer__nav ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0 16px;
+    gap: 4px;
+}
+
+.footer a.top {
+    position: absolute;
+    bottom: 16px;
+    right: 0;
+
+    svg {
+        display: inline-block;
+        vertical-align: bottom;
+        width: 19px;
+        margin-bottom: -1px;
+        margin-left: -2px;
+    }
+
+    @media screen and (max-width: 575px) {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        float: right;
+        margin-left: 16px;
+    }
+}

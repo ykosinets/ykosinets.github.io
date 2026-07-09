@@ -12,12 +12,15 @@
 @import "./components/why/why.css";
 @import "./components/process/process.css";
 @import "./components/faq/faq.css";
-@import "./components/gallery/gallery.css";
-@import "./components/videos/videos.css";
-@import "./components/vertical-video/vertical-video.css";
+
+/* @import "./components/gallery/gallery.css"; */
+
+/* @import "./components/videos/videos.css"; */
+
+/* @import "./components/vertical-video/vertical-video.css"; */
 @import "./components/cta/cta.css";
 @import "./components/contact/contact.css";
-@import "./components/socials/socials.css";
-@import "./components/media-credits/media-credits.css";
+
+/* @import "./components/socials/socials.css"; */
 @import "./components/footer/footer.css";
 @import "./styles/animations.css";

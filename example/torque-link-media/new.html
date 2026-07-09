@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TorqueLink Media | Version 2</title>
+  <meta name="description" content="TorqueLink Media connects automotive product brands with YouTube creators for focused sponsorship campaigns.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy-950: #020914;
+      --navy-900: #06101d;
+      --navy-850: #091624;
+      --ink: #101827;
+      --muted: #677382;
+      --line: rgba(15, 23, 42, 0.16);
+      --white: #ffffff;
+      --paper: #f4f7fb;
+      --red: #e31d24;
+      --red-dark: #a8151b;
+      --glow: 0 28px 80px rgba(0, 0, 0, 0.34);
+      --soft-glow: 0 22px 70px rgba(8, 18, 32, 0.15);
+      --max: 1180px;
+      --gutter: 48px;
+      font-family: Inter, Arial, sans-serif;
+
+      @media screen and (max-width: 575px) {
+        --gutter: 28px;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    img { display: block; max-width: 100%; }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    .container {
+      width: min(calc(100% - var(--gutter)), var(--max));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: fixed;
+      z-index: 20;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(2, 9, 20, 0.88);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+    }
+
+    .site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 92px;
+      gap: 24px;
+
+      @media screen and (max-width: 768px) {
+        min-height: 78px;
+      }
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--white);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .brand__mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: var(--white);
+      font-size: 1.5rem;
+      font-weight: 900;
+      line-height: 1;
+      transform: skewX(-12deg);
+    }
+
+    .brand__mark span {
+      color: var(--red);
+    }
+
+    .brand__text {
+      display: grid;
+      gap: 0;
+      line-height: 1;
+    }
+
+    .brand__text small {
+      color: var(--red);
+      font-size: 0.84rem;
+      letter-spacing: 0.06em;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2.6vw, 38px);
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 0.74rem;
+      font-weight: 900;
+      text-transform: uppercase;
+
+      @media screen and (max-width: 992px) {
+        display: none;
+      }
+    }
+
+    .nav a {
+      position: relative;
+      padding: 10px 0;
+      transition: color 180ms ease;
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      height: 2px;
+      background: var(--red);
+      border-radius: 999px;
+      transform: scaleX(0);
+      transform-origin: left center;
+      transition: transform 180ms ease;
+    }
+
+    .nav a:hover,
+    .nav a:focus-visible,
+    .nav a.is-active {
+      color: var(--white);
+    }
+
+    .nav a:hover::after,
+    .nav a:focus-visible::after,
+    .nav a.is-active::after {
+      transform: scaleX(1);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 54px;
+      padding: 0 24px;
+      border: 0;
+      background: var(--red);
+      color: var(--white);
+      font: inherit;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 18px 42px rgba(227, 29, 36, 0.28);
+      transition: transform 180ms ease, background 180ms ease;
+
+      &:hover { transform: translateY(-2px); background: #f2262e; }
+
+      @media screen and (max-width: 575px) {
+        width: 100%;
+      }
+    }
+
+    .button--ghost {
+      min-height: auto;
+      padding: 0;
+      background: transparent;
+      box-shadow: none;
+      color: var(--white);
+    }
+
+    .button--ghost::after,
+    .button::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-top: 2px solid currentColor;
+      border-right: 2px solid currentColor;
+      rotate: 45deg;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 720px;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      padding: 148px 0 96px;
+      background: var(--navy-950);
+      color: var(--white);
+
+      @media screen and (max-width: 768px) {
+        min-height: 760px;
+        padding-top: 132px;
+      }
+    }
+
+    .hero__image {
+      position: absolute;
+      inset: 0;
+      opacity: 0.86;
+    }
+
+    .hero__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 74% center;
+      filter: saturate(0.88) contrast(1.04) brightness(0.82);
+    }
+
+    .hero__shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(2, 9, 20, 0.98) 0%, rgba(2, 9, 20, 0.9) 38%, rgba(2, 9, 20, 0.44) 67%, rgba(2, 9, 20, 0.34) 100%),
+        linear-gradient(180deg, rgba(2, 9, 20, 0.46), rgba(2, 9, 20, 0.88));
+    }
+
+    .hero__content {
+      position: relative;
+      max-width: 610px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      color: var(--white);
+      font-size: clamp(2.9rem, 5.4vw, 5.15rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span { color: var(--red); }
+
+    .hero p {
+      max-width: 480px;
+      margin: 28px 0 0;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 1rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 26px;
+      margin-top: 36px;
+    }
+
+    .eyebrow {
+      margin-bottom: 22px;
+      color: var(--red);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      padding: clamp(72px, 8vw, 118px) 0;
+    }
+
+    .section--dark {
+      background:
+        radial-gradient(circle at 50% 0, rgba(227, 29, 36, 0.1), transparent 32%),
+        var(--navy-950);
+      color: var(--white);
+    }
+
+    .section--light { background: var(--paper); }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(380px, 1fr);
+      gap: clamp(42px, 8vw, 110px);
+      align-items: center;
+
+      @media screen and (max-width: 992px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section h2 {
+      margin-bottom: 22px;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+    }
+
+    .section p { color: var(--muted); }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+
+      @media screen and (max-width: 575px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .feature {
+      display: grid;
+      grid-template-columns: 54px minmax(0, 1fr);
+      gap: 18px;
+      padding: 30px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .feature svg,
+    .service svg {
+      width: 42px;
+      height: 42px;
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-width: 1.8;
+    }
+
+    .feature h3,
+    .service h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      line-height: 1.15;
+      text-transform: uppercase;
+    }
+
+    .feature p,
+    .service p { margin: 0; font-size: 0.88rem; }
+
+    .services-head {
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .services-head h2::after,
+    .process-head h2::after {
+      content: "";
+      display: block;
+      width: 74px;
+      height: 3px;
+      margin: 18px auto 0;
+      background: var(--red);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+
+      @media screen and (max-width: 992px) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      @media screen and (max-width: 575px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .service {
+      min-height: 286px;
+      padding: 42px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      text-align: center;
+      transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .service:hover {
+      transform: translateY(-6px);
+      border-color: rgba(227, 29, 36, 0.7);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .service svg {
+      margin: 0 auto 28px;
+      color: var(--red);
+      width: 54px;
+      height: 54px;
+    }
+
+    .service p { color: rgba(255, 255, 255, 0.68); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) 320px;
+      gap: 34px;
+      align-items: center;
+
+      @media screen and (max-width: 1180px) {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      }
+
+      @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .why-image {
+      overflow: hidden;
+      box-shadow: var(--soft-glow);
+    }
+
+    .why-image img {
+      width: 100%;
+      min-height: 330px;
+      object-fit: cover;
+    }
+
+    .check-list { display: grid; gap: 0; }
+
+    .check-item {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 16px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .check-item__icon {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      border: 2px solid var(--red);
+      border-radius: 50%;
+      color: var(--red);
+      font-size: 0.86rem;
+      font-weight: 900;
+    }
+
+    .phone {
+      position: relative;
+      width: min(310px, 82vw);
+      margin-inline: auto;
+      padding: 14px;
+      border-radius: 44px;
+      background: #060a11;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+
+      @media screen and (max-width: 1180px) {
+        grid-column: 1 / -1;
+        width: min(330px, 76vw);
+      }
+    }
+
+    .phone::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      width: 84px;
+      height: 18px;
+      border-radius: 999px;
+      background: #05070d;
+      transform: translateX(-50%);
+    }
+
+    .phone__screen {
+      overflow: hidden;
+      border-radius: 32px;
+      background: var(--white);
+    }
+
+    .phone__hero {
+      min-height: 330px;
+      padding: 70px 26px 28px;
+      background:
+        linear-gradient(90deg, rgba(2, 9, 20, 0.95), rgba(2, 9, 20, 0.62)),
+        url("assets/torquelink-hero.png") center / cover;
+      color: var(--white);
+    }
+
+    .phone__hero strong {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 1.6rem;
+      line-height: 1.02;
+      text-transform: uppercase;
+    }
+
+    .phone__hero span { color: var(--red); }
+
+    .phone__body { padding: 30px 26px; }
+
+    .process {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-head { text-align: center; margin-bottom: 54px; }
+
+    .process-line {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 28px;
+      position: relative;
+
+      @media screen and (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .process-line::before {
+      content: "";
+      position: absolute;
+      top: 30px;
+      left: 6%;
+      right: 6%;
+      border-top: 1px dashed rgba(255, 255, 255, 0.36);
+
+      @media screen and (max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .step {
+      position: relative;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .step__num {
+      display: grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 24px;
+      border: 2px solid var(--white);
+      border-radius: 50%;
+      background: var(--red);
+      color: var(--white);
+      font-weight: 900;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step h3 { color: var(--white); text-transform: uppercase; font-size: 0.95rem; }
+
+    .contact-band {
+      background: var(--paper);
+      padding: 72px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(420px, 1fr);
+      gap: 56px;
+      align-items: start;
+
+      @media screen and (max-width: 992px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+      font-weight: 700;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+
+      @media screen and (max-width: 575px) {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid #d5dbe4;
+      background: var(--white);
+      padding: 16px;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    textarea { grid-column: 1 / -1; resize: vertical; min-height: 122px; }
+
+    .form-grid .button { width: max-content; }
+
+    .footer {
+      padding: 34px 0;
+      background: var(--navy-950);
+      color: rgba(255, 255, 255, 0.68);
+      font-size: 0.86rem;
+    }
+
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: center;
+
+      @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#top" aria-label="TorqueLink Media home">
+        <span class="brand__mark">T<span>L</span></span>
+        <span class="brand__text">TorqueLink <small>Media</small></span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="is-active" href="#top" data-scrollspy-link>Home</a>
+        <a href="#about" data-scrollspy-link>About</a>
+        <a href="#services" data-scrollspy-link>Services</a>
+        <a href="#why" data-scrollspy-link>Why us</a>
+        <a href="#process" data-scrollspy-link>Process</a>
+        <a href="#contact" data-scrollspy-link>Contact</a>
+      </nav>
+      <a class="button" href="#contact">Book a discovery call</a>
+    </div>
+  </header>
+
+  <main id="top" data-scrollspy-section>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__image" aria-hidden="true"><img src="assets/torquelink-hero.png" alt=""></div>
+      <div class="hero__shade" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero__content">
+          <h1 id="hero-title">Precision YouTube sponsorships engineered for <span>automotive brands.</span></h1>
+          <p>TorqueLink Media connects automotive product brands with relevant YouTube creators for authentic content, cleaner campaign execution, and useful campaign learning.</p>
+          <div class="hero__actions">
+            <a class="button" href="#contact">Book a discovery call</a>
+            <a class="button button--ghost" href="#services">Discuss your campaign</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--light" id="about" data-scrollspy-section>
+      <div class="container split">
+        <div>
+          <div class="eyebrow">Built for automotive brands</div>
+          <h2>We specialize in YouTube sponsorship campaigns for automotive product brands.</h2>
+          <p>We understand your products, your audience, and your market. Our niche focus helps connect you with creators who can show practical product value to real buyers.</p>
+        </div>
+        <div class="feature-grid" aria-label="Positioning points">
+          <article class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 2v4M12 18v4M2 12h4M18 12h4"></path></svg>
+            <div><h3>Niche focus</h3><p>Deep automotive specialization helps screen creator matches with more context.</p></div>
+          </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 11a4 4 0 1 0-8 0"></path><path d="M4 20a8 8 0 0 1 16 0"></path><path d="M20 8a3 3 0 0 1 2 5"></path><path d="M4 8a3 3 0 0 0-2 5"></path></svg>
+            <div><h3>Real connections</h3><p>Creator fit is assessed by audience trust, content style, and product relevance.</p></div>
+          </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="m7 15 4-5 3 3 5-7"></path></svg>
+            <div><h3>Clear learning</h3><p>Early campaigns are structured to generate better inputs for future spend.</p></div>
+          </article>
+          <article class="feature">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 5 6v5c0 5 3.2 8.8 7 10 3.8-1.2 7-5 7-10V6z"></path><path d="m9 12 2 2 4-5"></path></svg>
+            <div><h3>Brand safe</h3><p>Outreach, terms, deliverables, usage, and approvals are handled with care.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="services" data-scrollspy-section>
+      <div class="container">
+        <div class="services-head">
+          <div class="eyebrow">Services</div>
+          <h2>End-to-end campaign management</h2>
+        </div>
+        <div class="service-grid">
+          <article class="service">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"></circle><path d="m15 15 5 5"></path></svg>
+            <h3>Creator sourcing and matching</h3>
+            <p>Identify YouTube creators by audience fit, content style, product context, and brand suitability.</p>
+          </article>
+          <article class="service">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 12 3 3 5-5"></path><path d="M4 13 2 11l5-5 4 4"></path><path d="m20 13 2-2-5-5-4 4"></path></svg>
+            <h3>Sponsorship outreach and negotiation</h3>
+            <p>Run outreach, collect availability, discuss rates, and align deliverables before commitments.</p>
+          </article>
+          <article class="service">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16v14H4z"></path><path d="M4 10h16"></path><path d="m8 2 2 4"></path><path d="m14 2 2 4"></path></svg>
+            <h3>Campaign coordination</h3>
+            <p>Manage timelines, talking points, product shipments, tracking links, approvals, and go-live dates.</p>
+          </article>
+          <article class="service">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5"></path><path d="M4 19h16"></path><path d="M8 16v-4"></path><path d="M12 16V8"></path><path d="M16 16v-6"></path></svg>
+            <h3>Reporting and campaign support</h3>
+            <p>Summarize delivery and campaign signals so the next creator decision starts sharper.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--light" id="why" data-scrollspy-section>
+      <div class="container why-grid">
+        <figure class="why-image"><img src="assets/auto-detailing.jpg" alt="Automotive detail work close-up"></figure>
+        <div>
+          <div class="eyebrow">Why TorqueLink Media</div>
+          <h2>YouTube works. Our niche focus makes it work better.</h2>
+          <div class="check-list">
+            <article class="check-item"><span class="check-item__icon">✓</span><div><h3>Automotive is what we do</h3><p>We understand enthusiast attention, product demonstration, and practical buying context.</p></div></article>
+            <article class="check-item"><span class="check-item__icon">✓</span><div><h3>Access to the right creators</h3><p>We help identify creators who can credibly show and recommend automotive products.</p></div></article>
+            <article class="check-item"><span class="check-item__icon">✓</span><div><h3>Better content context</h3><p>Creator partnerships are shaped around trust, usefulness, and product fit.</p></div></article>
+            <article class="check-item"><span class="check-item__icon">✓</span><div><h3>A true partner</h3><p>We treat every campaign like a structured step toward smarter sponsorship decisions.</p></div></article>
+          </div>
+        </div>
+        <aside class="phone" aria-label="Mobile preview mockup">
+          <div class="phone__screen">
+            <div class="phone__hero">
+              <strong>Precision YouTube sponsorships engineered for <span>automotive brands.</span></strong>
+              <p>Focused creator partnerships for product-led automotive brands.</p>
+              <a class="button" href="#contact">Book a call</a>
+            </div>
+            <div class="phone__body">
+              <div class="eyebrow">Built for automotive brands</div>
+              <h3>We specialize in YouTube sponsorship campaigns.</h3>
+              <p>Creator fit, campaign structure, and product context in one focused workflow.</p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--dark process" id="process" data-scrollspy-section>
+      <div class="container">
+        <div class="process-head">
+          <div class="eyebrow">Our process</div>
+          <h2>Simple, transparent, effective</h2>
+        </div>
+        <div class="process-line">
+          <article class="step"><span class="step__num">1</span><h3>Discovery call</h3><p>We learn about your brand, product, target audience, and campaign goals.</p></article>
+          <article class="step"><span class="step__num">2</span><h3>Strategy and creator plan</h3><p>We build a focused creator list and campaign strategy tailored to your objectives.</p></article>
+          <article class="step"><span class="step__num">3</span><h3>Outreach and negotiation</h3><p>We handle creator outreach, align placements, and clarify terms.</p></article>
+          <article class="step"><span class="step__num">4</span><h3>Campaign execution</h3><p>We coordinate the workflow from product delivery to content go-live.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact" data-scrollspy-section>
+      <div class="container contact-grid">
+        <div>
+          <div class="eyebrow">Let us work together</div>
+          <h2>Ready to grow your brand with YouTube sponsorships?</h2>
+          <p>Book a discovery call or send us a message. We will discuss your goals and how we can help.</p>
+          <div class="contact-links">
+            <a href="mailto:hello@torquelinkmedia.com">hello@torquelinkmedia.com</a>
+            <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">linkedin.com/company/torquelink-media</a>
+          </div>
+        </div>
+        <form class="form-grid" action="mailto:hello@torquelinkmedia.com" method="post" enctype="text/plain">
+          <input type="text" name="name" placeholder="Full Name" autocomplete="name" required>
+          <input type="text" name="company" placeholder="Company" autocomplete="organization">
+          <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+          <input type="text" name="website" placeholder="Website / Social (Optional)">
+          <textarea name="message" placeholder="Tell us about your brand and campaign goals"></textarea>
+          <button class="button" type="submit">Book a discovery call</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a class="brand" href="#top" aria-label="TorqueLink Media home">
+        <span class="brand__mark">T<span>L</span></span>
+        <span class="brand__text">TorqueLink <small>Media</small></span>
+      </a>
+      <span>Precision YouTube sponsorships engineered for automotive brands.</span>
+      <span>&copy; 2026 TorqueLink Media. All rights reserved.</span>
+    </div>
+  </footer>
+  <script>
+    (() => {
+      const header = document.querySelector(".site-header");
+      const links = [...document.querySelectorAll("[data-scrollspy-link]")];
+      const sections = links
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+      if (!links.length || !sections.length) return;
+
+      const setActiveLink = (id) => {
+        links.forEach((link) => {
+          const isActive = link.getAttribute("href") === "#" + id;
+          link.classList.toggle("is-active", isActive);
+          if (isActive) {
+            link.setAttribute("aria-current", "page");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      };
+
+      const updateScrollspy = () => {
+        const headerHeight = header?.offsetHeight || 0;
+        const scrollPoint = window.scrollY + headerHeight + 80;
+        let activeId = sections[0].id;
+
+        sections.forEach((section) => {
+          if (section.offsetTop <= scrollPoint) {
+            activeId = section.id;
+          }
+        });
+
+        setActiveLink(activeId);
+      };
+
+      links.forEach((link) => {
+        link.addEventListener("click", () => {
+          const id = link.getAttribute("href").slice(1);
+          setActiveLink(id);
+        });
+      });
+
+      updateScrollspy();
+      window.addEventListener("scroll", updateScrollspy, { passive: true });
+      window.addEventListener("resize", updateScrollspy);
+    })();
+  </script>
+</body>
+</html>

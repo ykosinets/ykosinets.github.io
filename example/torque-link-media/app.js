@@ -26,6 +26,53 @@ function initSmoothScroll() {
   });
 }
 
+function initScrollspy() {
+    const header = document.querySelector(".header");
+    const links = [...document.querySelectorAll("[data-scrollspy-link]")];
+    const sections = links
+        .map((link) => document.querySelector(link.getAttribute("href")))
+        .filter(Boolean);
+
+    if (!links.length || !sections.length) return;
+
+    const setActiveLink = (id) => {
+        links.forEach((link) => {
+            const isActive = link.getAttribute("href") === "#" + id;
+            link.classList.toggle("is-active", isActive);
+
+            if (isActive) {
+                link.setAttribute("aria-current", "page");
+            } else {
+                link.removeAttribute("aria-current");
+            }
+        });
+    };
+
+    const updateScrollspy = () => {
+        const headerHeight = header?.offsetHeight || 0;
+        const scrollPoint = window.scrollY + headerHeight + 96;
+        let activeId = sections[0].id;
+
+        sections.forEach((section) => {
+            if (section.offsetTop <= scrollPoint) {
+                activeId = section.id;
+            }
+        });
+
+        setActiveLink(activeId);
+    };
+
+    links.forEach((link) => {
+        link.addEventListener("click", () => {
+            setActiveLink(link.getAttribute("href").slice(1));
+        });
+    });
+
+    updateScrollspy();
+    window.addEventListener("scroll", updateScrollspy, { passive: true });
+    window.addEventListener("resize", updateScrollspy);
+}
+
 function initRevealAnimations() {
   const revealItems = [...document.querySelectorAll("[data-reveal], .services__card, .process__list li")];
   const groupSelectors = [
@@ -182,137 +229,10 @@ function initWhySection() {
 function initProcessSection() {
 }
 
-function initAccordions() {
-    document.querySelectorAll("[data-accordion]").forEach((accordion) => {
-        accordion.querySelectorAll(".faq__question").forEach((button) => {
-            button.addEventListener("click", () => {
-                const item = button.closest(".faq__item");
-                const isOpen = item.classList.contains("is-open");
-
-                accordion.querySelectorAll(".faq__item").forEach((panel) => {
-                    panel.classList.remove("is-open");
-                    panel.querySelector(".faq__question")?.setAttribute("aria-expanded", "false");
-                });
-
-                if (!isOpen) {
-                    item.classList.add("is-open");
-                    button.setAttribute("aria-expanded", "true");
-                }
-            });
-        });
-    });
-}
-
-function initGallery() {
-    const gallery = document.querySelector("#campaign-gallery");
-    let galleryIsotope;
-
-    function initIsotopeGallery() {
-        if (!gallery || !window.Isotope) return;
-
-        if (galleryIsotope) {
-            galleryIsotope.layout();
-            return;
-        }
-
-        galleryIsotope = new Isotope(gallery, {
-            itemSelector: ".gallery__item",
-            layoutMode: "masonry",
-            percentPosition: true,
-            transitionDuration: "0.45s",
-            masonry: {
-                columnWidth: ".gallery__sizer",
-                gutter: ".gallery__gutter",
-            },
-        });
-
-        gallery.querySelectorAll("img").forEach((image) => {
-            if (image.complete) return;
-            image.addEventListener("load", () => galleryIsotope?.layout(), {once: true});
-        });
-    }
-
-    initIsotopeGallery();
-    window.addEventListener("load", initIsotopeGallery);
-
-    if (!gallery) return;
-
-    import("https://unpkg.com/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.js")
-        .then(({default: PhotoSwipeLightbox}) => {
-            const lightbox = new PhotoSwipeLightbox({
-                gallery: "#campaign-gallery",
-                children: "a",
-                showHideAnimationType: "zoom",
-                pswpModule: () => import("https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.esm.js"),
-            });
-            lightbox.init();
-        })
-        .catch(() => {
-            gallery.dataset.lightbox = "fallback";
-        });
-}
-
-function initVideosMarquee() {
-}
-
-function initVerticalVideoSliders() {
-    document.querySelectorAll("[data-vertical-slider]").forEach((slider) => {
-        const cards = [...slider.querySelectorAll(".vertical-video__card")];
-        let active = Math.max(0, cards.findIndex((card) => card.classList.contains("is-active")));
-        let slideTimer;
-
-        function resetVideo(card) {
-            const video = card?.querySelector("video");
-
-            if (!video) return;
-
-            video.pause();
-            video.currentTime = 0;
-        }
-
-        function queueNext() {
-            const card = cards[active];
-            const video = card?.querySelector("video");
-
-            window.clearTimeout(slideTimer);
-
-            if (!video) {
-                slideTimer = window.setTimeout(() => setActive(active + 1), 4000);
-                return;
-            }
-
-            video.loop = false;
-            video.currentTime = 0;
-            video.play().catch(() => {
-                slideTimer = window.setTimeout(() => setActive(active + 1), 4000);
-            });
-        }
-
-        function setActive(nextIndex) {
-            const previous = active;
-
-            cards.forEach((card) => card.classList.remove("was-active"));
-            cards[previous]?.classList.remove("is-active");
-            cards[previous]?.classList.add("was-active");
-            resetVideo(cards[previous]);
-
-            active = (nextIndex + cards.length) % cards.length;
-            cards[active]?.classList.add("is-active");
-            queueNext();
-        }
-
-        cards.forEach((card, index) => {
-            const video = card.querySelector("video");
-
-            video?.addEventListener("ended", () => {
-                if (index === active) setActive(active + 1);
-            });
-        });
-
-        queueNext();
-    });
-}
-
+// ./components/faq/faq.js
+// ./components/gallery/gallery.js
+// ./components/videos/videos.js
+// ./components/vertical-video/vertical-video.js
 function initCtaSection() {
 }
 
@@ -327,12 +247,8 @@ function initContactForm() {
     });
 }
 
-function initSocialLinks() {
-}
-
-function initMediaCredits() {
-}
-
+// ./components/socials/socials.js
+// ./components/media-credits/media-credits.js
 function initFooter() {
 }
 
@@ -340,6 +256,7 @@ function initFooter() {
 document.addEventListener("DOMContentLoaded", () => {
   initHeader();
   initSmoothScroll();
+  initScrollspy();
   initRevealAnimations();
   initCountAnimations();
   initHeroParallax();
@@ -350,13 +267,12 @@ document.addEventListener("DOMContentLoaded", () => {
   initTestimonialSliders();
   initWhySection();
   initProcessSection();
-  initAccordions();
-  initGallery();
-  initVideosMarquee();
-  initVerticalVideoSliders();
+  // initAccordions();
+  // initGallery();
+  // initVideosMarquee();
+  // initVerticalVideoSliders();
   initCtaSection();
   initContactForm();
-  initSocialLinks();
-  initMediaCredits();
+  // initSocialLinks();
   initFooter();
 });

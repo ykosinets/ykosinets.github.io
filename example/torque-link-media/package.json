@@ -8,19 +8,22 @@
     "build": "node tools/build.js",
     "final": "node tools/package.js",
     "lint:css": "stylelint \"sources/style.css\" \"sources/styles/**/*.css\" \"sources/components/**/*.css\"",
-    "format": "prettier --write \"sources/**/*.{html,css,js}\" \"*.{html,css,js,json,md}\" \"tools/**/*.{js,cjs}\""
+    "format": "prettier --write \"sources/**/*.{html,css,js}\" \"*.{html,css,js,json,md}\" \"tools/**/*.{js,cjs}\"",
+    "optimize:assets": "node tools/optimize-assets.js",
+    "final:optimized": "npm run optimize:assets && npm run final"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "browser-sync": "^3.0.3",
+    "chokidar": "^3.6.0",
     "cssnano": "^7.0.6",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.1.0",
     "prettier": "^3.4.2",
+    "sharp": "^0.35.3",
     "stylelint": "^16.12.0",
-    "stylelint-config-standard": "^36.0.1",
-    "chokidar": "^3.6.0"
+    "stylelint-config-standard": "^36.0.1"
   },
   "browserslist": [
     "> 0.5%",

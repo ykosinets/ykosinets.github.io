@@ -1,6 +1,40 @@
 <footer class="footer">
     <div class="container footer__inner">
-        <span>&copy; 2026 TorqueLink Media. All rights reserved.</span>
-        <a href="#top">Back to top</a>
+        <a class="footer__brand" href="#top" aria-label="TorqueLink Media home">
+            <img class="footer__brand-mark" src="./assets/logo.svg" alt="TL"/>
+        </a>
+
+        <nav class="footer__nav" id="primary-nav" aria-label="Primary navigation">
+            <ul>
+                <li><a href="#top" data-scrollspy-link>Home</a></li>
+                <li><a href="#services" data-scrollspy-link>Services</a></li>
+                <li><a href="#why" data-scrollspy-link>Why us</a></li>
+            </ul>
+            <ul>
+                <li><a href="#process" data-scrollspy-link>Process</a></li>
+                <li><a href="#contact" data-scrollspy-link>Contact</a></li>
+            </ul>
+        </nav>
+
+        <div>
+            <a class="top" href="#top">Back to top
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24"
+                     height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="1.6"
+                     stroke-linecap="round"
+                     stroke-linejoin="round">
+                    <path d="M12 20V5"/>
+                    <path d="M6.5 10.5L12 5l5.5 5.5"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <div class="container">
+        <p><small><span>&copy; 2026 TorqueLink Media. All rights reserved.</span></small></p>
     </div>
 </footer>
