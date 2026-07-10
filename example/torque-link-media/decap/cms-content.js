@@ -153,8 +153,8 @@ function updateContact(contact) {
     setText(".contact__grid > div > p", contact.text);
 
     const form = document.querySelector(".contact__form");
-    if (form && contact.formEmail) {
-        form.setAttribute("action", "mailto:" + contact.formEmail);
+    if (form && form.getAttribute("action") === "contact.php") {
+        form.setAttribute("action", "../contact.php");
     }
 }
 

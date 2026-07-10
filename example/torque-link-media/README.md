@@ -63,7 +63,26 @@ The archive includes:
 - `new.html`
 - `style.css`
 - `app.js`
+- `contact.php`
+- `contact-config.sample.php`
 - `assets/`
+
+## Contact Form Integration
+
+The contact form posts to `contact.php`, verifies reCAPTCHA v3, then sends the enquiry by email to `info@torquelinkmedia.com`.
+
+Before uploading to production:
+
+1. Create a reCAPTCHA v3 key for the production domain.
+2. Replace `REPLACE_WITH_RECAPTCHA_SITE_KEY` in `sources/index.html`.
+3. Copy `contact-config.sample.php` to `contact-config.php`.
+4. Fill in the reCAPTCHA secret key and confirm the recipient/from email values.
+5. Run `npm run build` or `npm run final:optimized`.
+6. Upload `index.html`, `style.css`, `app.js`, `contact.php`, `contact-config.php`, and `assets/`.
+
+Keep `contact-config.php` private because it contains the reCAPTCHA secret key.
+
+Note: PHP `mail()` depends on the hosting provider's mail configuration. If delivery is unreliable, switch the same handler to SMTP through the hosting provider's mailbox.
 
 ## Decap CMS Prototype
 

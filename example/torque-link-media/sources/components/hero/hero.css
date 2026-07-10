@@ -18,6 +18,10 @@
     }
 }
 
+#hero-title small {
+    font-size: 90%;
+}
+
 .hero__media,
 .hero__shade {
     position: absolute;
