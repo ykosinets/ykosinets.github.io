@@ -4,7 +4,7 @@
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(6, 16, 31, 0.76);
+    background: rgba(255, 255, 255, 0.86);
     backdrop-filter: blur(18px);
 }
 
@@ -27,40 +27,24 @@
 .header__brand {
     display: inline-flex;
     align-items: center;
-    gap: 0;
-    color: var(--color-white);
-    font-size: 0.95rem;
-    font-weight: 800;
-    line-height: 1.33;
+    margin: -18px 0;
 
     @media screen and (max-width: 575px) {
-        font-size: 0.86rem;
-    }
-
-    span {
-        padding-top: 2px;
+        margin: -14px 0;
     }
 }
 
 .header__brand-mark {
     display: grid;
     place-items: center;
-    width: 78px;
-    height: 78px;
-    margin: -18px -10px -18px 0;
-
-    @media screen and (max-width: 575px) {
-        width: 70px;
-        height: 70px;
-        margin: -14px -8px -14px 0;
-    }
+    width: 225px;
 }
 
 .header__nav {
     display: flex;
     align-items: center;
     gap: clamp(12px, 2.2vw, 24px);
-    color: var(--color-steel-300);
+    color: #12385a;
     font-size: 0.82rem;
     font-weight: 600;
 
@@ -75,7 +59,7 @@
         max-height: 0;
         overflow: hidden;
         padding: 0 clamp(20px, 4vw, 48px);
-        background: rgba(6, 16, 31, 0.96);
+        background: rgba(255, 255, 255, 0.94);
         opacity: 0;
         pointer-events: none;
         transition: max-height 220ms ease, opacity 180ms ease, padding 180ms ease;
@@ -89,8 +73,8 @@
     padding: 0;
     border: 0;
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--color-white);
+    background: rgba(18, 56, 90, 0.1);
+    color: #12385a;
     cursor: pointer;
 
     @media screen and (max-width: 992px) {
@@ -134,7 +118,7 @@
         display: flex;
         min-height: 46px;
         align-items: center;
-        color: var(--color-white);
+        color: #12385a;
         font-size: 1rem;
     }
 }
@@ -147,7 +131,7 @@
     bottom: 6px;
     height: 2px;
     border-radius: 999px;
-    background: var(--color-red);
+    background: var(--color-logo-blue);
     transform: scaleX(0);
     transform-origin: left center;
     transition: transform 180ms ease;
@@ -161,7 +145,10 @@
 
 .header__nav a:hover,
 .header__nav a:focus-visible,
-.header__nav a.is-active,
+.header__nav a.is-active {
+    color: var(--color-logo-blue);
+}
+
 .footer a:hover,
 .contact__links a:hover {
     color: var(--color-white);
@@ -183,7 +170,7 @@
     border-radius: 999px;
     background: var(--color-red);
     color: var(--color-white);
-    box-shadow: 0 14px 32px rgba(215, 47, 47, 0.24);
+    box-shadow: 0 14px 32px rgba(33, 103, 171, 0.24);
     font-size: 0.88rem;
     font-weight: 700;
 

@@ -65,6 +65,16 @@ The archive includes:
 - `app.js`
 - `assets/`
 
+## Decap CMS Prototype
+
+An isolated Decap CMS implementation lives in `decap/`. It does not replace the current root presentation.
+
+```sh
+npm run cms:start
+```
+
+See `decap/README.md` for local editing and deployment notes.
+
 ## Image Optimization
 
 Create WebP versions in `assets/optimized/`. Smaller same-format JPG/PNG copies are kept only when they beat the original file size.

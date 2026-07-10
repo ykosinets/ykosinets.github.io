@@ -22,11 +22,11 @@
 .button--primary {
   background: var(--color-red);
   color: var(--color-white);
-  box-shadow: 0 16px 34px rgba(215, 47, 47, 0.24);
+  box-shadow: 0 16px 34px rgba(33, 103, 171, 0.24);
 }
 
 .button--primary:hover {
-  background: #ef3c3c;
+  background: #2d78c4;
 }
 
 .button--secondary {

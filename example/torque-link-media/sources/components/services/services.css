@@ -33,7 +33,7 @@
         position: absolute;
         top: 18px;
         left: 22px;
-        width: 42px;
+        width: 36px;
         height: 7px;
         border-radius: 999px;
         background: var(--color-red);
@@ -41,13 +41,15 @@
     }
 
     &:nth-child(2)::before {
-        width: 24px;
         background: var(--color-amber);
     }
 
     &:nth-child(3)::before {
-        width: 34px;
         background: var(--color-mint);
+    }
+
+    &:nth-child(4)::before {
+        background: #af0623;
     }
 
     &:hover {

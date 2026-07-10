@@ -89,12 +89,12 @@ textarea {
 input:focus,
 select:focus,
 textarea:focus {
-  border-color: var(--color-red);
-  box-shadow: 0 0 0 3px rgba(215, 47, 47, 0.18);
+  border-color: var(--color-logo-blue);
+  box-shadow: 0 0 0 3px rgba(0, 80, 255, 0.16);
 }
 
 .section__eyebrow.badge {
-  background: #f06f6f66;
+  background: rgba(0, 80, 255, 0.12);
   border-radius: 20px;
   padding: 7px 12px 6px;
   display: inline-block;

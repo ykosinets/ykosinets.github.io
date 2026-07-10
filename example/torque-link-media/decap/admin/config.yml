@@ -1,0 +1,142 @@
+local_backend: true
+
+backend:
+  name: github
+  repo: owner-name/torquelink-media
+  branch: main
+
+media_folder: "decap/uploads"
+public_folder: "uploads"
+
+collections:
+  - name: "site"
+    label: "Site"
+    files:
+      - name: "homepage"
+        label: "Homepage Content"
+        file: "decap/content/site.json"
+        format: "json"
+        fields:
+          - label: "Meta"
+            name: "meta"
+            widget: "object"
+            fields:
+              - { label: "Browser Title", name: "title", widget: "string" }
+              - { label: "Meta Description", name: "description", widget: "text" }
+          - label: "Brand"
+            name: "brand"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
+          - label: "Navigation"
+            name: "navigation"
+            widget: "list"
+            fields:
+              - { label: "Label", name: "label", widget: "string" }
+              - { label: "URL", name: "url", widget: "string" }
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Tagline", name: "tagline", widget: "string" }
+              - { label: "Copy", name: "copy", widget: "text" }
+              - { label: "Primary CTA", name: "primaryCta", widget: "string" }
+              - { label: "Secondary CTA", name: "secondaryCta", widget: "string" }
+          - label: "Framework"
+            name: "framework"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "Media Band"
+            name: "mediaBand"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Image Alt", name: "alt", widget: "string" }
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - label: "Notes Slider"
+            name: "notes"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Copy", name: "copy", widget: "text" }
+              - label: "Slides"
+                name: "slides"
+                widget: "list"
+                fields:
+                  - { label: "Quote", name: "quote", widget: "text" }
+                  - { label: "Cite", name: "cite", widget: "string" }
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Image Alt", name: "alt", widget: "string" }
+          - label: "Why"
+            name: "why"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Image Alt", name: "imageAlt", widget: "string" }
+              - label: "Benefits"
+                name: "benefits"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+          - label: "Process"
+            name: "process"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Text", name: "text", widget: "text" }
+              - { label: "Media Image", name: "mediaImage", widget: "image" }
+              - { label: "Media Alt", name: "mediaAlt", widget: "string" }
+              - { label: "Media Title", name: "mediaTitle", widget: "string" }
+              - { label: "Media Text", name: "mediaText", widget: "text" }
+          - label: "CTA"
+            name: "cta"
+            widget: "object"
+            fields:
+              - { label: "Eyebrow", name: "eyebrow", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Button", name: "button", widget: "string" }
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+              - { label: "Form Email", name: "formEmail", widget: "string" }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Copyright", name: "copyright", widget: "string" }

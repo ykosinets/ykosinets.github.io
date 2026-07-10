@@ -21,8 +21,8 @@
 
 .section--light {
   background:
-    linear-gradient(135deg, rgba(215, 47, 47, 0.09), transparent 34%),
-    #f4f6f8;
+    linear-gradient(135deg, rgba(0, 80, 255, 0.055), transparent 34%),
+    #f4f7fb;
   color: #26303c;
 }
 
@@ -32,7 +32,7 @@
 }
 
 .section--light .section__eyebrow {
-  color: var(--color-red-dark);
+  color: var(--color-navy-500);
 }
 
 .section__heading {
@@ -50,7 +50,7 @@
 
 .section__eyebrow {
   margin: 0 0 14px;
-  color: #f06f6f;
+  color: var(--color-red);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0;

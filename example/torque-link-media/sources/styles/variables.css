@@ -10,8 +10,11 @@
   --color-steel-300: #aab4c2;
   --color-steel-200: #d5dce6;
   --color-white: #ffffff;
-  --color-red: #d72f2f;
-  --color-red-dark: #9f2025;
+  --color-logo-blue: #0050ff;
+  --color-logo-blue-soft: #eaf1ff;
+  --color-logo-gray: #8f9094;
+  --color-red: #2167ab;
+  --color-red-dark: #2167ab;
   --color-amber: #ffb454;
   --color-mint: #83e6c7;
 
@@ -32,4 +35,3 @@
     --container-gutter: 32px;
   }
 }
-

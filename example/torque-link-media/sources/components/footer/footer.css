@@ -13,19 +13,25 @@
     align-items: flex-start;
 
     @media screen and (max-width: 575px) {
-        flex-direction: column;
-        align-items: stretch;
+        flex-wrap: wrap;
+        gap: 0;
     }
 }
 
 .footer__brand-mark {
-    width: 120px;
+    width: 125px;
     display: block;
+    fill: #fff;
+    margin-top: -14px;
 }
 
 .footer__nav {
     display: flex;
-    margin: -7px auto 0 0;
+    margin: 0 auto 0 0;
+
+    @media screen and (max-width: 575px) {
+        margin: 0 0 0 auto;
+    }
 }
 
 .footer__nav ul {
@@ -36,24 +42,35 @@
     gap: 4px;
 }
 
-.footer a.top {
-    position: absolute;
-    bottom: 16px;
-    right: 0;
-
-    svg {
-        display: inline-block;
-        vertical-align: bottom;
-        width: 19px;
-        margin-bottom: -1px;
-        margin-left: -2px;
+.footer .top {
+    @media screen and (max-width: 575px) {
+        width: 100%;
+        text-align: right;
     }
 
+    a {
+        position: absolute;
+        bottom: 16px;
+        right: 0;
+
+        svg {
+            display: inline-block;
+            vertical-align: bottom;
+            width: 19px;
+            margin-bottom: -1px;
+            margin-left: -2px;
+        }
+
+        @media screen and (max-width: 575px) {
+            position: relative;
+            bottom: auto;
+            right: auto;
+        }
+    }
+}
+
+.copy-right {
     @media screen and (max-width: 575px) {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        float: right;
-        margin-left: 16px;
+        text-align: right;
     }
 }
