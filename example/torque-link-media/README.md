@@ -5,9 +5,11 @@ Static one-page site for TorqueLink Media.
 The main generated files live in the project root:
 
 - `index.html`
+- `index.php`
 - `new.html`
 - `style.css`
 - `app.js`
+- `content/site.json`
 
 Source files live in `sources/`:
 
@@ -60,39 +62,53 @@ npm run final:optimized
 The archive includes:
 
 - `index.html`
+- `index.php`
 - `new.html`
 - `style.css`
 - `app.js`
 - `contact.php`
 - `contact-config.sample.php`
+- `content/`
+- `admin/`
 - `assets/`
 
 ## Contact Form Integration
 
-The contact form posts to `contact.php`, verifies reCAPTCHA v3, then sends the enquiry by email to `info@torquelinkmedia.com`.
+The contact form posts to `contact.php`, uses a honeypot field and minimum submit-time check for basic spam protection, then sends the enquiry by email to `info@torquelinkmedia.com`.
 
 Before uploading to production:
 
-1. Create a reCAPTCHA v3 key for the production domain.
-2. Replace `REPLACE_WITH_RECAPTCHA_SITE_KEY` in `sources/index.html`.
-3. Copy `contact-config.sample.php` to `contact-config.php`.
-4. Fill in the reCAPTCHA secret key and confirm the recipient/from email values.
-5. Run `npm run build` or `npm run final:optimized`.
-6. Upload `index.html`, `style.css`, `app.js`, `contact.php`, `contact-config.php`, and `assets/`.
+1. Copy `contact-config.sample.php` to `contact-config.php`.
+2. Confirm the recipient/from email values.
+3. Run `npm run build` or `npm run final:optimized`.
+4. Upload `index.html`, `index.php`, `style.css`, `app.js`, `contact.php`, `contact-config.php`, `content/`, `admin/`, and `assets/`.
 
-Keep `contact-config.php` private because it contains the reCAPTCHA secret key.
+Keep `contact-config.php` out of public source control when it contains live email settings.
 
 Note: PHP `mail()` depends on the hosting provider's mail configuration. If delivery is unreliable, switch the same handler to SMTP through the hosting provider's mailbox.
 
-## Decap CMS Prototype
+## Tiny PHP Admin
 
-An isolated Decap CMS implementation lives in `decap/`. It does not replace the current root presentation.
+The site includes a small PHP content editor at `/admin/`. It edits `content/site.json`, and `index.php` renders that content into the HTML before the page is sent to the browser. `index.html` remains a static fallback.
+
+Production setup:
+
+1. Upload `admin/` and `content/` with the rest of the site.
+2. On the hosting server, copy `admin/config.sample.php` to `admin/config.php`.
+3. Generate a password hash:
 
 ```sh
-npm run cms:start
+php -r 'echo password_hash("your-password-here", PASSWORD_DEFAULT), PHP_EOL;'
 ```
 
-See `decap/README.md` for local editing and deployment notes.
+4. Paste the generated hash into `admin/config.php` as `password_hash`.
+5. Make sure PHP can write to `content/site.json`.
+
+Keep `admin/config.php` out of public source control because it contains the admin password hash.
+
+If saving fails, adjust permissions for `content/` or `content/site.json` through the hosting file manager or FTP client.
+
+If your host serves `index.html` before `index.php`, set the directory index order to prefer `index.php`, or remove `index.html` after confirming `index.php` works.
 
 ## Image Optimization
 

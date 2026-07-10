@@ -10,15 +10,13 @@
     "lint:css": "stylelint \"sources/style.css\" \"sources/styles/**/*.css\" \"sources/components/**/*.css\"",
     "format": "prettier --write \"sources/**/*.{html,css,js}\" \"*.{html,css,js,json,md}\" \"tools/**/*.{js,cjs}\"",
     "optimize:assets": "node tools/optimize-assets.js",
-    "final:optimized": "npm run optimize:assets && npm run final",
-    "cms:start": "node tools/cms-dev.js"
+    "final:optimized": "npm run optimize:assets && npm run final"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
     "browser-sync": "^3.0.3",
     "chokidar": "^3.6.0",
     "cssnano": "^7.0.6",
-    "decap-server": "^3.9.1",
     "postcss": "^8.4.49",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.1.0",

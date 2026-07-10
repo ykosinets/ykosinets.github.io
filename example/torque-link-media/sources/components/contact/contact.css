@@ -68,3 +68,12 @@
     font-size: 0.92rem;
 }
 
+
+
+.contact__anti-spam {
+    position: absolute;
+    left: -100vw;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}

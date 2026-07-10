@@ -7,7 +7,7 @@
                 will respond with next steps for a practical sponsorship discussion.
             </p>
         </div>
-        <form class="contact__form" action="contact.php" method="post" data-recaptcha-action="contact">
+        <form class="contact__form" action="contact.php" method="post">
             <label class="contact__field">
                 Name
                 <input type="text" name="name" autocomplete="name" required>
@@ -36,6 +36,11 @@
                 <textarea name="message" rows="5"
                           placeholder="Tell us what you are launching or trying to improve."></textarea>
             </label>
+            <label class="contact__anti-spam" aria-hidden="true">
+                Website
+                <input type="text" name="website" tabindex="-1" autocomplete="off">
+            </label>
+            <input type="hidden" name="started_at" value="">
             <button class="button button--primary contact__field--full" type="submit">Send enquiry</button>
             <p class="contact__note" role="status" aria-live="polite"></p>
         </form>

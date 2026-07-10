@@ -1,0 +1,154 @@
+{
+  "meta": {
+    "title": "TorqueLink Media | YouTube Sponsorships for Automotive Brands",
+    "description": "TorqueLink Media connects automotive product brands with high-performing YouTube creators for focused sponsorship campaigns."
+  },
+  "hero": {
+    "eyebrow": "Automotive creator sponsorships",
+    "title": "TorqueLink Media",
+    "tagline": "Precision YouTube sponsorships engineered for automotive brands.",
+    "copy": "We help aftermarket, car-care, tools, accessories, and hands-on automotive product companies reach the right YouTube audiences through focused creator partnerships.",
+    "primaryCta": "Book a discovery call",
+    "secondaryCta": "Explore services"
+  },
+  "framework": {
+    "title": "A practical framework for planning sponsorships before spend is committed.",
+    "rows": [
+      {
+        "label": "Creator-market fit",
+        "value": "Fit",
+        "text": "Shortlists prioritize channels where product use, audience intent, and creator format naturally overlap."
+      },
+      {
+        "label": "Brief clarity",
+        "value": "Brief",
+        "text": "Campaigns start with the product story, must-say points, creative guardrails, and decision criteria."
+      },
+      {
+        "label": "Commercial control",
+        "value": "Terms",
+        "text": "Rates, deliverables, usage rights, timelines, product logistics, and approvals are aligned before launch."
+      },
+      {
+        "label": "Learning loop",
+        "value": "Learn",
+        "text": "Early campaigns are treated as structured tests that create cleaner inputs for the next sponsorship decision."
+      }
+    ]
+  },
+  "mediaBand": {
+    "eyebrow": "Campaign context",
+    "title": "Built around products that need to be seen, handled, and trusted.",
+    "cards": [
+      {
+        "title": "Product relevance",
+        "text": "Creator shortlists are grounded in real automotive use cases, not broad lifestyle reach."
+      },
+      {
+        "title": "Hands-on value",
+        "text": "Sponsorships are clearer when viewers can see the product solve a practical problem."
+      },
+      {
+        "title": "Content fit",
+        "text": "Campaigns are shaped for creator formats where product proof can be shown clearly."
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Services",
+    "cards": [
+      {
+        "title": "Creator sourcing and matching",
+        "text": "Identify relevant automotive YouTube creators by audience fit, content quality, product context, and brand suitability."
+      },
+      {
+        "title": "Outreach and negotiation",
+        "text": "Run structured creator outreach, collect availability, manage rate discussions, and align deliverables before commitments are made."
+      },
+      {
+        "title": "Campaign coordination",
+        "text": "Keep products, talking points, timelines, approvals, tracking links, and content requirements moving without adding operational drag."
+      },
+      {
+        "title": "Reporting and support",
+        "text": "Provide practical post-campaign summaries that help brands understand delivery, audience response, and next sponsorship opportunities."
+      }
+    ]
+  },
+  "notes": {
+    "eyebrow": "Campaign lens",
+    "title": "What brands should expect from creator fit.",
+    "copy": "The best sponsorships feel native to the channel while still giving the product enough room to be understood.",
+    "slides": [
+      {
+        "quote": "The strongest creator brief is specific enough to protect the brand and flexible enough to let the creator sound like themselves.",
+        "cite": "Creator outreach note"
+      },
+      {
+        "quote": "A product demo needs a practical reason to exist: before-and-after, install time, repeatable workflow, or a clear problem solved.",
+        "cite": "Campaign strategy note"
+      },
+      {
+        "quote": "Production quality matters, but trust usually comes from creator consistency, audience expectation, and honest product context.",
+        "cite": "Channel-fit note"
+      }
+    ]
+  },
+  "why": {
+    "title": "Automotive buying decisions are built on context, demonstration, and trust.",
+    "paragraphs": [
+      "YouTube remains one of the strongest places for automotive products because viewers can see parts installed, tools used, finishes tested, and real-world problems solved. The right creator can do more than create awareness; they can show why a product earns a place in the garage.",
+      "TorqueLink Media is a specialist sponsorship partner for automotive product brands that need credible creator fit, practical campaign support, and clear coordination from outreach through reporting. The focus is narrow by design: products that benefit from demonstration, trust, installation context, tool use, and enthusiast attention."
+    ],
+    "benefits": [
+      {
+        "title": "Niche fit",
+        "text": "Campaigns built around automotive audiences and product use cases."
+      },
+      {
+        "title": "Creator relevance",
+        "text": "Shortlists shaped by trust, content format, and audience intent."
+      },
+      {
+        "title": "Operational clarity",
+        "text": "Outreach, coordination, and deliverables managed with a B2B standard."
+      }
+    ]
+  },
+  "process": {
+    "title": "Simple, controlled, and built for speed.",
+    "steps": [
+      {
+        "title": "Define the campaign brief",
+        "text": "Clarify product category, audience, goals, budget range, timing, and creator criteria."
+      },
+      {
+        "title": "Build the creator shortlist",
+        "text": "Map relevant channels and prioritize creators with strong automotive content fit."
+      },
+      {
+        "title": "Secure the sponsorships",
+        "text": "Manage outreach, rates, deliverables, product logistics, approvals, and campaign dates."
+      },
+      {
+        "title": "Track and report",
+        "text": "Summarize delivery and performance signals so the next campaign starts smarter."
+      }
+    ],
+    "mediaTitle": "Creator production standards matter.",
+    "mediaText": "TorqueLink prioritizes channels where the product can be shown with enough clarity, context, and credibility to support buying decisions."
+  },
+  "cta": {
+    "eyebrow": "For product-led automotive brands",
+    "title": "Bring your next product campaign to the channels buyers already trust.",
+    "button": "Discuss your campaign"
+  },
+  "contact": {
+    "title": "Start with a focused discovery call.",
+    "text": "Share a few details about your product category and campaign goals. TorqueLink Media will respond with next steps for a practical sponsorship discussion.",
+    "button": "Send enquiry"
+  },
+  "footer": {
+    "copyright": "© 2026 TorqueLink Media. All rights reserved."
+  }
+}

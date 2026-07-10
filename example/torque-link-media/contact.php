@@ -21,6 +21,11 @@ function clean_text(string $value): string
     return trim(str_replace(["\0"], '', $value));
 }
 
+function silently_accept(): void
+{
+    respond(200, ['message' => 'Thanks. Your enquiry was sent.']);
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     respond(405, ['message' => 'Method not allowed.']);
 }
@@ -35,7 +40,6 @@ $config = require $configPath;
 $requiredConfig = [
     'recipient_email',
     'from_email',
-    'recaptcha_secret_key',
 ];
 
 foreach ($requiredConfig as $key) {
@@ -58,47 +62,30 @@ $email = strtolower(clean_header_value((string) ($_POST['email'] ?? '')));
 $company = clean_text((string) ($_POST['company'] ?? ''));
 $category = clean_text((string) ($_POST['product-category'] ?? ''));
 $message = clean_text((string) ($_POST['message'] ?? ''));
-$recaptchaToken = clean_text((string) ($_POST['recaptcha_token'] ?? ''));
-$recaptchaAction = clean_text((string) ($_POST['recaptcha_action'] ?? 'contact'));
+$honeypot = clean_text((string) ($_POST['website'] ?? ''));
+$startedAt = (int) ($_POST['started_at'] ?? 0);
 
-if ($name === '' || !filter_var($email, FILTER_VALIDATE_EMAIL) || $category === '') {
-    respond(422, ['message' => 'Please complete the required fields.']);
+if ($honeypot !== '') {
+    silently_accept();
 }
 
-if ($recaptchaToken === '') {
-    respond(422, ['message' => 'reCAPTCHA verification is missing.']);
+$minimumSubmitSeconds = (int) ($config['minimum_submit_seconds'] ?? 3);
+$elapsedSeconds = $startedAt > 0 ? (time() - (int) floor($startedAt / 1000)) : 0;
+
+if ($minimumSubmitSeconds > 0 && $elapsedSeconds > 0 && $elapsedSeconds < $minimumSubmitSeconds) {
+    silently_accept();
 }
 
-$verifyHandle = curl_init('https://www.google.com/recaptcha/api/siteverify');
-
-curl_setopt_array($verifyHandle, [
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_POST => true,
-    CURLOPT_POSTFIELDS => http_build_query([
-        'secret' => $config['recaptcha_secret_key'],
-        'response' => $recaptchaToken,
-        'remoteip' => $_SERVER['REMOTE_ADDR'] ?? null,
-    ]),
-    CURLOPT_TIMEOUT => 10,
-]);
-
-$verifyBody = curl_exec($verifyHandle);
-$verifyError = curl_error($verifyHandle);
-curl_close($verifyHandle);
-
-if ($verifyBody === false || $verifyError) {
-    respond(502, ['message' => 'Could not verify reCAPTCHA.']);
+if ($name === '') {
+    respond(422, ['message' => 'Please enter your name.']);
 }
 
-$recaptcha = json_decode($verifyBody, true);
-$minimumScore = (float) ($config['recaptcha_min_score'] ?? 0.5);
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    respond(422, ['message' => 'Please enter a valid work email address.']);
+}
 
-if (
-    empty($recaptcha['success']) ||
-    (isset($recaptcha['score']) && (float) $recaptcha['score'] < $minimumScore) ||
-    (isset($recaptcha['action']) && $recaptcha['action'] !== $recaptchaAction)
-) {
-    respond(400, ['message' => 'reCAPTCHA verification failed.']);
+if ($category === '') {
+    respond(422, ['message' => 'Please select a product category.']);
 }
 
 $subject = sprintf('%s: %s', $subjectPrefix, clean_header_value($company !== '' ? $company : $name));

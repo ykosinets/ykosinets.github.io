@@ -7,11 +7,15 @@ const zipName = "torque-link-media-site.zip";
 const zipPath = path.join(root, zipName);
 const files = [
   "index.html",
+  "index.php",
   "new.html",
   "style.css",
   "app.js",
   "contact.php",
   "contact-config.sample.php",
+  "content",
+  "admin/index.php",
+  "admin/config.sample.php",
   "assets",
 ];
 

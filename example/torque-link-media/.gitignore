@@ -1,2 +1,4 @@
 *.zip
 contact-config.php
+contact-submissions.local.log
+admin/config.php
