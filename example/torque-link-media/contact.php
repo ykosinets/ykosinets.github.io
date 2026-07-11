@@ -81,12 +81,9 @@ if ($name === '') {
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    respond(422, ['message' => 'Please enter a valid work email address.']);
+    respond(422, ['message' => 'Please enter a valid email address.']);
 }
 
-if ($category === '') {
-    respond(422, ['message' => 'Please select a product category.']);
-}
 
 $subject = sprintf('%s: %s', $subjectPrefix, clean_header_value($company !== '' ? $company : $name));
 $submittedAt = gmdate('Y-m-d H:i:s') . ' UTC';
@@ -98,7 +95,7 @@ $plainTextLines = [
     'Name: ' . $name,
     'Email: ' . $email,
     'Company: ' . ($company !== '' ? $company : '-'),
-    'Product category: ' . $category,
+    'Product category: ' . ($category !== '' ? $category : '-'),
     '',
     'Campaign notes:',
     $message !== '' ? $message : '-',
@@ -110,7 +107,7 @@ $plainTextLines = [
 $safeName = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
 $safeEmail = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
 $safeCompany = htmlspecialchars($company !== '' ? $company : '-', ENT_QUOTES, 'UTF-8');
-$safeCategory = htmlspecialchars($category, ENT_QUOTES, 'UTF-8');
+$safeCategory = htmlspecialchars($category !== '' ? $category : '-', ENT_QUOTES, 'UTF-8');
 $safeMessage = nl2br(htmlspecialchars($message !== '' ? $message : '-', ENT_QUOTES, 'UTF-8'));
 $safeSubmittedAt = htmlspecialchars($submittedAt, ENT_QUOTES, 'UTF-8');
 $safeIpAddress = htmlspecialchars($ipAddress, ENT_QUOTES, 'UTF-8');

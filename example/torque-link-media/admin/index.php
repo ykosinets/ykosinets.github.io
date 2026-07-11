@@ -129,29 +129,72 @@ function render_login(string $error): string
 
 function render_editor(array $content, string $message, string $error): string
 {
-    return '<header class="admin-header">' .
+    $toast = '';
+
+    if ($message || $error) {
+        $toastType = $error ? 'error' : 'success';
+        $toastText = $error ?: $message;
+        $toast = '<div class="toast toast--' . $toastType . '" role="status" aria-live="polite">' . e($toastText) . '</div>';
+    }
+
+    return $toast .
+        '<header class="admin-header">' .
         '<div><p>TorqueLink Media</p><h1>Content editor</h1></div>' .
         '<a href="?logout=1">Log out</a>' .
         '</header>' .
-        ($message ? '<p class="notice notice--success">' . e($message) . '</p>' : '') .
-        ($error ? '<p class="notice notice--error">' . e($error) . '</p>' : '') .
-        '<form class="editor" method="post">' .
+        '<form class="admin-layout" method="post">' .
         '<input type="hidden" name="action" value="save">' .
-        render_fields($content, 'content') .
+        render_side_nav($content) .
+        '<div class="editor">' .
+        render_fields($content, 'content', 'Site content', 0) .
         '<div class="save-bar"><button type="submit">Save changes</button><a href="../" target="_blank" rel="noopener">Open site</a></div>' .
+        '</div>' .
         '</form>';
 }
 
-function render_fields(array $data, string $namePrefix, string $title = 'Site content'): string
+function render_side_nav(array $content): string
 {
-    $html = '<section class="group"><h2>' . e(format_label($title)) . '</h2>';
+    $html = '<aside class="side-nav" aria-label="Content sections"><p>Sections</p><nav>';
+
+    foreach ($content as $key => $value) {
+        if (is_array($value)) {
+            $id = section_id((string) $key);
+            $html .= '<a href="#' . e($id) . '" data-admin-nav>' . e(format_label((string) $key)) . '</a>';
+        }
+    }
+
+    return $html . '</nav></aside>';
+}
+
+function render_fields(array $data, string $namePrefix, string $title = 'Site content', int $depth = 0, int $index = 0): string
+{
+    if ($depth === 0) {
+        $html = '';
+
+        foreach ($data as $key => $value) {
+            if (!is_array($value)) {
+                continue;
+            }
+
+            $html .= render_fields($value, $namePrefix . '[' . e((string) $key) . ']', format_label((string) $key), 1, $index);
+            $index++;
+        }
+
+        return $html;
+    }
+
+    $id = $depth === 1 ? ' id="' . e(section_id($title)) . '"' : '';
+    $open = $depth === 1 && $index === 0 ? ' open' : '';
+    $html = '<details class="group group--depth-' . $depth . '"' . $id . $open . ' data-admin-section>' .
+        '<summary><span>' . e(format_label($title)) . '</span><span class="group__chevron" aria-hidden="true"></span></summary>' .
+        '<div class="group__body">';
 
     foreach ($data as $key => $value) {
         $fieldName = $namePrefix . '[' . e((string) $key) . ']';
         $label = format_label((string) $key);
 
         if (is_array($value)) {
-            $html .= render_fields($value, $fieldName, $label);
+            $html .= render_fields($value, $fieldName, $label, $depth + 1, 0);
             continue;
         }
 
@@ -161,7 +204,15 @@ function render_fields(array $data, string $namePrefix, string $title = 'Site co
             '</label>';
     }
 
-    return $html . '</section>';
+    return $html . '</div></details>';
+}
+
+function section_id(string $value): string
+{
+    $value = strtolower(trim(preg_replace('/(?<!^)[A-Z]/', '-$0', $value) ?? $value));
+    $value = preg_replace('/[^a-z0-9]+/', '-', $value) ?? $value;
+
+    return 'section-' . trim($value, '-');
 }
 
 function format_label(string $value): string
@@ -180,7 +231,7 @@ function render_page(string $title, string $body, bool $wide): void
         '<meta name="viewport" content="width=device-width, initial-scale=1">' .
         '<title>' . e($title) . '</title>' .
         '<style>' . admin_css() . '</style>' .
-        '</head><body><main class="' . $class . '">' . $body . '</main></body></html>';
+        '</head><body><main class="' . $class . '">' . $body . '</main><script>' . admin_js() . '</script></body></html>';
 }
 
 function admin_css(): string
@@ -203,6 +254,10 @@ function admin_css(): string
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: var(--bg);
@@ -212,7 +267,7 @@ body {
 }
 
 main {
-  width: min(100% - 32px, 1120px);
+  width: min(100% - 32px, 1240px);
   margin: 0 auto;
   padding: 40px 0;
 }
@@ -224,9 +279,9 @@ main.narrow {
 }
 
 .panel,
-.group,
 .admin-header,
-.notice,
+.side-nav,
+.group,
 .save-bar {
   background: var(--panel);
   border-radius: 22px;
@@ -247,10 +302,6 @@ p {
 h1 {
   font-size: clamp(30px, 4vw, 46px);
   line-height: 1;
-}
-
-h2 {
-  font-size: 20px;
 }
 
 p {
@@ -279,6 +330,10 @@ pre {
   gap: 8px;
   color: var(--blue-dark);
   font-weight: 750;
+}
+
+.panel.login label {
+  margin-top: 20px;
 }
 
 .login input,
@@ -341,25 +396,160 @@ button,
   margin: 0;
 }
 
+.admin-layout {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.side-nav {
+  position: sticky;
+  top: 18px;
+  display: grid;
+  gap: 14px;
+  padding: 18px;
+}
+
+.side-nav p {
+  margin: 0;
+  color: var(--blue-dark);
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.side-nav nav {
+  display: grid;
+  gap: 4px;
+}
+
+.side-nav a {
+  border-radius: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 750;
+  padding: 10px 12px;
+  text-decoration: none;
+}
+
+.side-nav a:hover,
+.side-nav a.is-active {
+  background: #e7f0fa;
+  color: var(--blue);
+}
+
 .editor {
   display: grid;
-  gap: 18px;
+  gap: 14px;
+  min-width: 0;
 }
 
 .group {
+  scroll-margin-top: 24px;
+  overflow: hidden;
+}
+
+.group[open] {
+  box-shadow: 0 18px 50px rgba(7, 29, 54, 0.1);
+}
+
+.group summary {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  list-style: none;
+  padding: 20px 22px;
+  color: var(--blue-dark);
+  font-size: 19px;
+  font-weight: 850;
+}
+
+.group summary::-webkit-details-marker {
+  display: none;
+}
+
+.group__chevron {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  rotate: 45deg;
+  transition: rotate 180ms ease, translate 180ms ease;
+}
+
+.group[open] > summary .group__chevron {
+  rotate: 225deg;
+  translate: 0 4px;
+}
+
+.group__body {
   display: grid;
   gap: 16px;
-  padding: 22px;
+  padding: 0 22px 22px;
 }
 
 .group .group {
   border: 1px solid var(--line);
   box-shadow: none;
-  padding: 18px;
+}
+
+.group .group summary {
+  padding: 16px 18px;
+  font-size: 16px;
+}
+
+.group .group .group__body {
+  padding: 0 18px 18px;
+}
+
+.group--depth-3,
+.group--depth-4 {
+  background: #f8fbff;
 }
 
 .field span {
   font-size: 14px;
+}
+
+.toast {
+  position: fixed;
+  z-index: 20;
+  top: 18px;
+  right: 18px;
+  max-width: min(360px, calc(100vw - 36px));
+  border-radius: 18px;
+  background: var(--panel);
+  box-shadow: 0 18px 50px rgba(7, 29, 54, 0.18);
+  color: var(--blue-dark);
+  font-weight: 800;
+  padding: 14px 18px;
+  animation: toast-in 220ms ease both;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.toast--success {
+  border-left: 5px solid var(--good);
+}
+
+.toast--error {
+  border-left: 5px solid var(--bad);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .notice {
@@ -368,15 +558,12 @@ button,
   font-weight: 750;
 }
 
-.notice--success {
-  color: var(--good);
-}
-
 .notice--error {
   color: var(--bad);
 }
 
 .save-bar {
+  margin-left: auto;
   position: sticky;
   bottom: 18px;
   display: flex;
@@ -389,6 +576,26 @@ button,
   background: var(--blue-dark);
 }
 
+@media screen and (max-width: 992px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .side-nav {
+    position: static;
+  }
+
+  .side-nav nav {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .side-nav a {
+    white-space: nowrap;
+  }
+}
+
 @media screen and (max-width: 768px) {
   main {
     width: min(100% - 20px, 1120px);
@@ -397,9 +604,18 @@ button,
 
   .panel,
   .group,
-  .admin-header {
+  .admin-header,
+  .side-nav {
     border-radius: 16px;
-    padding: 18px;
+  }
+
+  .panel,
+  .admin-header,
+  .side-nav,
+  .group summary,
+  .group__body {
+    padding-left: 18px;
+    padding-right: 18px;
   }
 
   .admin-header,
@@ -409,6 +625,61 @@ button,
   }
 }
 CSS;
+}
+
+function admin_js(): string
+{
+    return <<<'JS'
+const navLinks = [...document.querySelectorAll("[data-admin-nav]")];
+const sections = [...document.querySelectorAll(".group--depth-1")];
+const toast = document.querySelector(".toast");
+
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    const id = link.getAttribute("href");
+    const section = id ? document.querySelector(id) : null;
+
+    if (section && section.tagName === "DETAILS") {
+      section.open = true;
+    }
+  });
+});
+
+if (sections.length && "IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+      if (!visible) {
+        return;
+      }
+
+      navLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.getAttribute("href") === "#" + visible.target.id);
+      });
+    },
+    {
+      rootMargin: "-15% 0px -70% 0px",
+      threshold: [0.1, 0.4, 0.8],
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+}
+
+if (toast) {
+  window.setTimeout(() => {
+    toast.style.opacity = "0";
+    toast.style.transform = "translateY(-8px)";
+  }, 2800);
+
+  window.setTimeout(() => {
+    toast.remove();
+  }, 3100);
+}
+JS;
 }
 
 function e(string $value): string
