@@ -14,6 +14,7 @@ if (!file_exists($configPath)) {
 
 $config = require $configPath;
 $contentFile = $config['content_file'] ?? (__DIR__ . '/../content/site.json');
+$settingsFile = $config['settings_file'] ?? (__DIR__ . '/../content/settings.json');
 $passwordHash = $config['password_hash'] ?? '';
 $message = '';
 $error = '';
@@ -42,23 +43,33 @@ if (empty($_SESSION['tlm_admin'])) {
 }
 
 $content = read_content($contentFile);
+$settings = read_settings($settingsFile);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'save') {
     $incoming = $_POST['content'] ?? [];
+    $incomingSettings = $_POST['settings'] ?? [];
 
-    if (is_array($incoming)) {
+    if (is_array($incoming) && is_array($incomingSettings)) {
         $content = sanitize_content($incoming);
-        $saved = save_content($contentFile, $content);
+        $settings = sanitize_settings($incomingSettings);
+        $destinationEmail = (string) ($settings['contact']['recipient_email'] ?? '');
 
-        if ($saved) {
-            $message = 'Content saved.';
+        if (!filter_var($destinationEmail, FILTER_VALIDATE_EMAIL)) {
+            $error = 'Please enter a valid destination email.';
         } else {
-            $error = 'Could not save content. Check file permissions for content/site.json.';
+            $contentSaved = save_content($contentFile, $content);
+            $settingsSaved = save_settings($settingsFile, $settings);
+
+            if ($contentSaved && $settingsSaved) {
+                $message = 'Changes saved.';
+            } else {
+                $error = 'Could not save changes. Check file permissions for content files.';
+            }
         }
     }
 }
 
-render_page('TorqueLink Admin', render_editor($content, $message, $error), true);
+render_page('TorqueLink Admin', render_editor($content, $settings, $message, $error), true);
 
 function read_content(string $file): array
 {
@@ -72,7 +83,39 @@ function read_content(string $file): array
     return is_array($content) ? $content : [];
 }
 
+function read_settings(string $file): array
+{
+    $defaults = [
+        'contact' => [
+            'recipient_email' => 'info@torquelinkmedia.com',
+        ],
+    ];
+
+    if (!file_exists($file)) {
+        return $defaults;
+    }
+
+    $json = file_get_contents($file);
+    $settings = json_decode((string) $json, true);
+
+    if (!is_array($settings)) {
+        return $defaults;
+    }
+
+    return array_replace_recursive($defaults, $settings);
+}
+
+function save_settings(string $file, array $settings): bool
+{
+    return save_json($file, $settings);
+}
+
 function save_content(string $file, array $content): bool
+{
+    return save_json($file, $content);
+}
+
+function save_json(string $file, array $content): bool
 {
     $directory = dirname($file);
 
@@ -87,6 +130,22 @@ function save_content(string $file, array $content): bool
     }
 
     return file_put_contents($file, $json . PHP_EOL, LOCK_EX) !== false;
+}
+
+function sanitize_settings(array $settings): array
+{
+    $email = clean_admin_email((string) ($settings['contact']['recipient_email'] ?? ''));
+
+    return [
+        'contact' => [
+            'recipient_email' => $email,
+        ],
+    ];
+}
+
+function clean_admin_email(string $value): string
+{
+    return trim(str_replace(["\r", "\n"], '', $value));
 }
 
 function sanitize_content(mixed $value): mixed
@@ -127,7 +186,7 @@ function render_login(string $error): string
         '</form>';
 }
 
-function render_editor(array $content, string $message, string $error): string
+function render_editor(array $content, array $settings, string $message, string $error): string
 {
     $toast = '';
 
@@ -144,17 +203,22 @@ function render_editor(array $content, string $message, string $error): string
         '</header>' .
         '<form class="admin-layout" method="post">' .
         '<input type="hidden" name="action" value="save">' .
-        render_side_nav($content) .
+        render_side_nav($content, true) .
         '<div class="editor">' .
+        render_settings($settings) .
         render_fields($content, 'content', 'Site content', 0) .
         '<div class="save-bar"><button type="submit">Save changes</button><a href="../" target="_blank" rel="noopener">Open site</a></div>' .
         '</div>' .
         '</form>';
 }
 
-function render_side_nav(array $content): string
+function render_side_nav(array $content, bool $includeSettings = false): string
 {
     $html = '<aside class="side-nav" aria-label="Content sections"><p>Sections</p><nav>';
+
+    if ($includeSettings) {
+        $html .= '<a href="#section-form-settings" data-admin-nav>Form Settings</a>';
+    }
 
     foreach ($content as $key => $value) {
         if (is_array($value)) {
@@ -164,6 +228,20 @@ function render_side_nav(array $content): string
     }
 
     return $html . '</nav></aside>';
+}
+
+function render_settings(array $settings): string
+{
+    $email = (string) ($settings['contact']['recipient_email'] ?? 'info@torquelinkmedia.com');
+
+    return '<details class="group group--depth-1" id="section-form-settings" open data-admin-section>' .
+        '<summary><span>Form Settings</span><span class="group__chevron" aria-hidden="true"></span></summary>' .
+        '<div class="group__body">' .
+        '<label class="field"><span>Destination Email</span>' .
+        '<input type="email" name="settings[contact][recipient_email]" value="' . e($email) . '" required>' .
+        '<small>Contact form enquiries will be sent to this address.</small>' .
+        '</label>' .
+        '</div></details>';
 }
 
 function render_fields(array $data, string $namePrefix, string $title = 'Site content', int $depth = 0, int $index = 0): string
@@ -184,7 +262,7 @@ function render_fields(array $data, string $namePrefix, string $title = 'Site co
     }
 
     $id = $depth === 1 ? ' id="' . e(section_id($title)) . '"' : '';
-    $open = $depth === 1 && $index === 0 ? ' open' : '';
+    $open = '';
     $html = '<details class="group group--depth-' . $depth . '"' . $id . $open . ' data-admin-section>' .
         '<summary><span>' . e(format_label($title)) . '</span><span class="group__chevron" aria-hidden="true"></span></summary>' .
         '<div class="group__body">';
@@ -337,7 +415,8 @@ pre {
 }
 
 .login input,
-textarea {
+textarea,
+.field input {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 14px;
@@ -347,6 +426,11 @@ textarea {
 }
 
 .login input {
+  min-height: 50px;
+  padding: 0 14px;
+}
+
+.field input {
   min-height: 50px;
   padding: 0 14px;
 }
@@ -514,6 +598,12 @@ button,
 
 .field span {
   font-size: 14px;
+}
+
+.field small {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500;
 }
 
 .toast {

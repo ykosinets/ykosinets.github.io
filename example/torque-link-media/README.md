@@ -69,12 +69,14 @@ The archive includes:
 - `contact.php`
 - `contact-config.sample.php`
 - `content/`
+  - `site.json`
+  - `settings.json`
 - `admin/`
 - `assets/`
 
 ## Contact Form Integration
 
-The contact form posts to `contact.php`, uses a honeypot field and minimum submit-time check for basic spam protection, then sends the enquiry by email to `info@torquelinkmedia.com`.
+The contact form posts to `contact.php`, uses a honeypot field and minimum submit-time check for basic spam protection, then sends the enquiry by email. The destination email can also be changed in the custom admin under Form Settings.
 
 Before uploading to production:
 

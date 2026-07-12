@@ -26,6 +26,32 @@ function silently_accept(): void
     respond(200, ['message' => 'Thanks. Your enquiry was sent.']);
 }
 
+function read_contact_settings(string $file): array
+{
+    $settings = [
+        'recipient_email' => '',
+    ];
+
+    if (!is_file($file)) {
+        return $settings;
+    }
+
+    $json = file_get_contents($file);
+    $data = json_decode((string) $json, true);
+
+    if (!is_array($data)) {
+        return $settings;
+    }
+
+    $email = trim(str_replace(["\r", "\n"], '', (string) ($data['contact']['recipient_email'] ?? '')));
+
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $settings['recipient_email'] = $email;
+    }
+
+    return $settings;
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     respond(405, ['message' => 'Method not allowed.']);
 }
@@ -37,6 +63,8 @@ if (!is_file($configPath)) {
 }
 
 $config = require $configPath;
+$settingsPath = __DIR__ . '/content/settings.json';
+$settings = read_contact_settings($settingsPath);
 $requiredConfig = [
     'recipient_email',
     'from_email',
@@ -48,7 +76,7 @@ foreach ($requiredConfig as $key) {
     }
 }
 
-$recipientEmail = clean_header_value((string) $config['recipient_email']);
+$recipientEmail = clean_header_value((string) ($settings['recipient_email'] ?: $config['recipient_email']));
 $fromEmail = clean_header_value((string) $config['from_email']);
 $fromName = clean_header_value((string) ($config['from_name'] ?? 'Website'));
 $subjectPrefix = clean_header_value((string) ($config['subject_prefix'] ?? 'Website enquiry'));
@@ -82,6 +110,10 @@ if ($name === '') {
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     respond(422, ['message' => 'Please enter a valid email address.']);
+}
+
+if ($message === '') {
+    respond(422, ['message' => 'Please add a short campaign note.']);
 }
 
 
