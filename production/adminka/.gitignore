@@ -1,0 +1,5 @@
+.claude
+.idea
+/backups
+/assets/*.*
+/data/passkeys.json

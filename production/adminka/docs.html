@@ -1,0 +1,1068 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adminka — Documentation</title>
+<style>
+  :root{
+    --ink:#10312b; --ink-soft:#1c463d; --cream:#f5f4f0; --paper:#fff;
+    --accent:#e07b00; --accent-soft:#fdf3e7; --line:#e2e0da; --muted:#6b6b66;
+    --code-bg:#12332c; --code-ink:#e9e6dc; --tok:#e5b168; --tok2:#8fc8a0; --tok3:#9bbce0;
+    --sidebar:280px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:#2a2a28;background:var(--cream);
+  }
+  a{color:#0b6b57;text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em}
+  :not(pre)>code{background:#ece9e1;padding:.12em .4em;border-radius:4px;color:#8a4a00;white-space:nowrap}
+
+  /* ---- layout ---- */
+  .wrap{display:flex;max-width:1180px;margin:0 auto;align-items:flex-start}
+  .sidebar{
+    width:var(--sidebar);flex:0 0 var(--sidebar);position:sticky;top:0;height:100vh;
+    overflow-y:auto;background:var(--ink);color:#d9e3df;padding:26px 20px 40px;
+  }
+  .sidebar .brand{display:flex;align-items:baseline;gap:8px;margin-bottom:4px}
+  .sidebar .brand b{font-size:1.35rem;color:#fff;letter-spacing:.02em}
+  .sidebar .brand span{font-size:.72rem;color:#7fa598;text-transform:uppercase;letter-spacing:.12em}
+  .sidebar .tag{font-size:.82rem;color:#9fbcb1;margin:0 0 22px;line-height:1.5}
+  .toc{list-style:none;margin:0;padding:0}
+  .toc li{margin:0}
+  .toc>li>a{
+    display:block;padding:6px 10px;border-radius:6px;color:#cdd9d4;font-size:.9rem;
+    border-left:2px solid transparent;
+  }
+  .toc>li>a:hover{background:rgba(255,255,255,.06);text-decoration:none;color:#fff}
+  .toc .sub{list-style:none;margin:2px 0 8px;padding:0}
+  .toc .sub>li>a{
+    display:block;padding:3px 10px 3px 20px;color:#9fb4ad;font-size:.83rem;border-left:2px solid transparent;
+  }
+  .toc .sub>li>a:hover{color:#fff;text-decoration:none}
+  .toc a.active{color:#fff;background:rgba(224,123,0,.18);border-left-color:var(--accent);font-weight:600}
+  .toc .grouptitle{
+    font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:#6f9184;
+    margin:18px 0 6px;padding:0 10px;
+  }
+
+  .content{flex:1 1 auto;min-width:0;padding:48px 56px 120px;background:var(--cream)}
+  section{scroll-margin-top:24px;padding-bottom:14px;margin-bottom:26px;border-bottom:1px solid var(--line)}
+  section:last-child{border-bottom:0}
+  h1{font-size:2.3rem;line-height:1.1;margin:0 0 6px;color:var(--ink)}
+  .lede{font-size:1.12rem;color:#54544f;margin:0 0 8px;max-width:62ch}
+  h2{font-size:1.5rem;color:var(--ink);margin:8px 0 10px;padding-top:8px}
+  h3{font-size:1.12rem;color:var(--ink-soft);margin:22px 0 6px}
+  p{max-width:70ch}
+  ul,ol{max-width:70ch}
+  li{margin:3px 0}
+
+  .pill{display:inline-block;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+    padding:2px 8px;border-radius:20px;background:var(--accent-soft);color:#a85a00;vertical-align:middle;margin-left:8px}
+  .note{background:var(--accent-soft);border:1px solid #f0d9b8;border-left:4px solid var(--accent);
+    padding:12px 16px;border-radius:6px;margin:14px 0;font-size:.95rem}
+  .note.warn{background:#fdecec;border-color:#f2c4c4;border-left-color:#b00020}
+  .note b{color:var(--ink)}
+
+  pre{background:var(--code-bg);color:var(--code-ink);border-radius:8px;padding:16px 18px;overflow-x:auto;
+    margin:12px 0;font-size:.86rem;line-height:1.55;position:relative}
+  pre code{color:inherit;font-size:inherit;white-space:pre}
+  .c-tag{color:var(--tok3)}     /* html tag/attr accents via manual spans */
+  .c-attr{color:var(--tok)}
+  .c-str{color:var(--tok2)}
+  .c-com{color:#6f8b81;font-style:italic}
+  .codelabel{display:inline-block;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
+    color:#8aa79b;margin:16px 0 -4px}
+
+  table{border-collapse:collapse;width:100%;margin:14px 0;font-size:.9rem;display:block;overflow-x:auto}
+  th,td{border:1px solid var(--line);padding:8px 12px;text-align:left;vertical-align:top}
+  th{background:#eceae3;color:var(--ink);font-weight:600}
+  td code{white-space:nowrap}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin:14px 0}
+  .card{border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:var(--paper)}
+  .card h4{margin:0 0 4px;font-size:1rem;color:var(--ink)}
+  .card p{margin:0;font-size:.86rem;color:var(--muted)}
+  .card code{font-size:.8rem}
+
+  .type-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .type-head code{background:var(--ink);color:#fff;padding:3px 10px;border-radius:6px;font-size:.9rem}
+
+  .totop{position:fixed;right:22px;bottom:22px;background:var(--ink);color:#fff;border:0;border-radius:50%;
+    width:44px;height:44px;font-size:1.1rem;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.25);
+    opacity:0;pointer-events:none;transition:opacity .2s}
+  .totop.show{opacity:.9;pointer-events:auto}
+
+  .menu-btn{display:none}
+
+  /* ---- live demos ---- */
+  .demo{border:1px solid var(--line);border-radius:8px;background:var(--paper);margin:12px 0 4px;overflow:hidden}
+  .demo-bar{display:flex;align-items:center;gap:8px;padding:7px 12px;background:#eef4f1;border-bottom:1px solid var(--line);
+    font-size:.75rem;color:#5c7d72;letter-spacing:.02em}
+  .demo-bar .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .demo-bar b{color:var(--ink);font-weight:600}
+  .demo-bar .reset{margin-left:auto;border:1px solid #c9d6d0;background:#fff;border-radius:5px;padding:3px 9px;
+    font:inherit;font-size:.75rem;color:#3a544b;cursor:pointer}
+  .demo-bar .reset:hover{border-color:var(--accent);color:var(--accent)}
+  .demo-stage{padding:22px 20px}
+  .demo-stage :focus{outline:none}
+  /* editor affordances, mirrored from the real edit mode */
+  .demo-stage [data-editable]{outline:2px dashed rgba(30,120,220,.5);outline-offset:3px;min-height:1em;border-radius:2px}
+  .demo-stage [data-editable]:hover{outline-color:var(--accent);outline-style:solid}
+  .demo-stage [data-editable][contenteditable]{cursor:text}
+  .demo-stage [data-editable-type=image],
+  .demo-stage [data-editable-type=video],
+  .demo-stage [data-editable-type=link]{cursor:pointer}
+  .demo-hint{font-size:.8rem;color:var(--muted);margin:2px 0 0}
+  .demo-out{margin:0;border-top:1px solid var(--line);background:var(--code-bg);color:var(--code-ink);
+    padding:12px 16px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.78rem;line-height:1.5;
+    white-space:pre-wrap;word-break:break-word;overflow-x:auto}
+  .demo-out .k{color:var(--tok3)} .demo-out .a{color:var(--tok)} .demo-out .s{color:var(--tok2)}
+  /* demo widgets */
+  .demo .cards{display:flex;gap:16px;flex-wrap:wrap;margin:0}
+  .demo .card{flex:1 1 160px;border:1px solid var(--line);border-radius:8px;padding:12px;background:#fff;position:relative}
+  .demo .card img{width:100%;height:90px;object-fit:cover;border-radius:4px;display:block;margin-bottom:8px}
+  .demo-slider{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+  .demo-slide{flex:0 0 68%;scroll-snap-align:center;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#fff}
+  .demo-slide img{width:100%;height:120px;object-fit:cover;display:block}
+  .demo-slide figcaption{padding:8px 10px;font-size:.85rem}
+  .demo-remove{position:absolute;top:6px;right:6px;width:22px;height:22px;border:0;border-radius:50%;
+    background:#b00020;color:#fff;font:14px/22px system-ui;cursor:pointer;opacity:.8}
+  .demo-remove:hover{opacity:1}
+  .demo-add{border:2px dashed rgba(30,120,220,.5);border-radius:8px;background:none;color:#1e78dc;
+    padding:10px 18px;font:inherit;cursor:pointer;align-self:center}
+  .demo-add:hover{border-color:var(--accent);color:var(--accent)}
+  .demo-form{display:grid;gap:12px;max-width:380px}
+  .demo-form label{display:block;font-size:.85rem;color:#555;margin-bottom:3px}
+  .demo-form input,.demo-form select{width:100%;box-sizing:border-box;padding:8px 10px;border:1px solid #ccc;border-radius:5px;font:inherit}
+  .demo-form .fieldwrap{position:relative}
+  .demo-reveal{border:1px dashed rgba(176,0,32,.4);border-radius:6px;padding:10px 12px;margin-top:8px}
+  .demo-video{position:relative;background:#12332c;border-radius:8px;overflow:hidden;aspect-ratio:16/7;
+    display:flex;align-items:center;justify-content:center;color:#8fc8a0;font-size:.85rem;background-size:cover;background-position:center}
+  .demo-gear{position:absolute;width:24px;height:24px;border:0;border-radius:50%;background:var(--ink);color:#fff;
+    font-size:12px;cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+
+  /* ---- admin | production split ---- */
+  .demo-split{display:grid;grid-template-columns:1fr 1fr}
+  .demo-pane{min-width:0}
+  .demo-admin{border-right:1px solid var(--line)}
+  .demo-pane-head{display:flex;align-items:center;gap:7px;padding:7px 12px;font-size:.7rem;font-weight:700;
+    text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid var(--line)}
+  .demo-admin .demo-pane-head{background:#eef4f1;color:#3a6b5b}
+  .demo-prod .demo-pane-head{background:#f4efe6;color:#9a6216}
+  .demo-pane-head .ic{font-size:.85rem;filter:grayscale(.1)}
+  .demo-save{margin-left:auto;border:0;border-radius:5px;background:#cbd6d1;color:#3a544b;padding:4px 12px;
+    font:inherit;font-size:.72rem;font-weight:600;text-transform:none;letter-spacing:0;cursor:pointer}
+  .demo-save.dirty{background:var(--accent);color:#fff;box-shadow:0 0 0 3px rgba(224,123,0,.2)}
+  .demo-save:disabled{opacity:.55;cursor:default;box-shadow:none}
+  .demo-live{padding:20px 18px}
+  .demo-saved{margin:0;border-top:1px solid var(--line);background:var(--code-bg);color:var(--code-ink);
+    padding:10px 14px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.75rem;line-height:1.5;
+    white-space:pre-wrap;word-break:break-word;overflow-x:auto}
+  .demo-saved .k{color:var(--tok3)} .demo-saved .a{color:var(--tok)} .demo-saved .s{color:var(--tok2)}
+  .demo-saved-label{display:block;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:#7f9a8f;margin-bottom:5px}
+  /* production affordances: like the live site, no edit chrome */
+  .demo-live [data-editable]{outline:none}
+  .demo-acc-q{cursor:pointer;user-select:none;font-weight:600;color:#10312b;display:flex;gap:8px;align-items:center;
+    padding:9px 12px;border:1px solid var(--line);border-radius:6px;background:#fff}
+  .demo-acc-q .caret{transition:transform .15s;color:var(--accent)}
+  .demo-acc-q.open .caret{transform:rotate(90deg)}
+  .demo-acc-a{padding:8px 12px 2px;font-size:.92rem}
+  .demo-prod .demo-form input,.demo-prod .demo-form select{background:#fff}
+  .demo-prod .demo-video{cursor:default}
+  .demo-vbadge{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.55);color:#fff;font-size:.68rem;
+    padding:3px 8px;border-radius:20px;letter-spacing:.02em}
+  @media (max-width:720px){
+    .demo-split{grid-template-columns:1fr}
+    .demo-admin{border-right:0;border-bottom:1px solid var(--line)}
+  }
+
+  @media (max-width:860px){
+    .wrap{flex-direction:column}
+    .sidebar{position:static;width:100%;flex-basis:auto;height:auto;padding:16px 20px}
+    .sidebar .tag{display:none}
+    .toc{display:none}
+    .toc.open{display:block}
+    .menu-btn{display:block;background:rgba(255,255,255,.1);color:#fff;border:0;border-radius:6px;
+      padding:8px 14px;font-size:.9rem;cursor:pointer;margin-top:10px}
+    .content{padding:28px 22px 100px}
+    h1{font-size:1.8rem}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav class="sidebar">
+    <div class="brand"><b>Adminka</b><span>docs</span></div>
+    <p class="tag">Flat-file inline editor for static HTML sites. No database, no build step.</p>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false">☰ Contents</button>
+    <ul class="toc" id="toc">
+      <li class="grouptitle">Getting started</li>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#requirements">Requirements</a></li>
+      <li><a href="#install">Installation</a></li>
+      <li><a href="#password">Set your password</a></li>
+      <li><a href="#signin">Sign-in options</a>
+        <ul class="sub">
+          <li><a href="#signin-google">Google</a></li>
+          <li><a href="#signin-apple">Apple</a></li>
+          <li><a href="#signin-passkey">Passkeys</a></li>
+        </ul>
+      </li>
+
+      <li class="grouptitle">How it works</li>
+      <li><a href="#concepts">Core concepts</a></li>
+      <li><a href="#canvas">Edit mode (canvas)</a></li>
+      <li><a href="#ids">Auto-assigned IDs</a></li>
+
+      <li class="grouptitle">Editable types</li>
+      <li><a href="#type-text">text</a></li>
+      <li><a href="#type-html">html</a></li>
+      <li><a href="#type-image">image</a></li>
+      <li><a href="#type-video">video</a></li>
+      <li><a href="#type-link">link</a></li>
+      <li><a href="#type-list">list</a></li>
+      <li><a href="#type-form">form</a></li>
+      <li><a href="#type-attrs">attrs</a></li>
+
+      <li class="grouptitle">Content options</li>
+      <li><a href="#opt-scroll">Sliders</a></li>
+      <li><a href="#opt-reveal">Popups &amp; accordions</a></li>
+      <li><a href="#opt-media">Media library</a></li>
+      <li><a href="#opt-placeholder">Select placeholder</a></li>
+
+      <li class="grouptitle">Reference</li>
+      <li><a href="#config">Configuration</a></li>
+      <li><a href="#backups">Backups &amp; recovery</a></li>
+      <li><a href="#security">Security</a></li>
+      <li><a href="#cli">CLI: assign-ids</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+    </ul>
+  </nav>
+
+  <main class="content">
+
+    <section id="overview">
+      <h1>Adminka documentation</h1>
+      <p class="lede">Mark any element in your HTML with <code>data-editable</code> and it becomes editable in place. Your client opens the page, clicks, types, and presses <b>Save</b> — the change is written straight back into the HTML file. No database, no JSON store, no build step: your HTML <em>is</em> the content.</p>
+      <p>Adminka is a single entry point (<code>admin.php</code>) plus a small <code>admin-lib/</code> folder, dropped into the root of a static site. This page documents every feature: installation, the sign-in methods, how edit mode works, and a worked example for each editable type and content option.</p>
+      <div class="cards">
+        <div class="card"><h4>Zero dependencies</h4><p>Pure PHP + vanilla JS. No Composer, npm, or framework.</p></div>
+        <div class="card"><h4>Files are the storage</h4><p>Edits round-trip through the real HTML file, with backups.</p></div>
+        <div class="card"><h4>Modern sign-in</h4><p>Password, Google, Apple, and passkeys — no user database.</p></div>
+      </div>
+    </section>
+
+    <section id="requirements">
+      <h2>Requirements</h2>
+      <ul>
+        <li><b>PHP 8.1+</b> — 8.4+ recommended. On 8.4 Adminka uses the HTML5-accurate <code>Dom\HTMLDocument</code> parser; older versions fall back to legacy <code>DOMDocument</code> (which entity-encodes non-ASCII text — it renders fine but the source is uglier).</li>
+        <li><b>Extensions:</b> <code>dom</code> (always enabled), <code>openssl</code> + <code>curl</code> for Google/Apple sign-in and passkeys, <code>fileinfo</code> for upload validation. All bundled by default on virtually every host.</li>
+        <li><b>HTTPS</b> in production — required for passkeys and for the login form to be meaningful. <code>localhost</code> counts as secure for passkeys during development.</li>
+        <li><b>Write access</b> for the web-server user to your HTML files and to the <code>backups/</code>, <code>data/</code>, and <code>assets/content/</code> directories (created automatically).</li>
+      </ul>
+    </section>
+
+    <section id="install">
+      <h2>Installation</h2>
+      <p>Copy <code>admin.php</code>, <code>config.php</code>, <code>admin-lib/</code>, and (optionally) <code>tools/</code> into the root of your static site:</p>
+      <pre><code>/your-site
+├── index.html
+├── about.html
+├── admin.php        <span class="c-com">← the editor (entry point)</span>
+├── config.php       <span class="c-com">← settings &amp; credentials</span>
+├── admin-lib/       <span class="c-com">← internals (PHP modules + ui.js / editor.js)</span>
+├── tools/           <span class="c-com">← CLI helpers (assign-ids)</span>
+├── assets/content/  <span class="c-com">← media library (image/ and video/)</span>
+├── backups/         <span class="c-com">← created on first save</span>
+└── data/            <span class="c-com">← passkeys + sign-in state</span></code></pre>
+      <p>Make sure PHP can write to your HTML files and create those folders:</p>
+      <pre><code>chown -R www-data:www-data /path/to/your-site
+<span class="c-com"># or at minimum:</span>
+chmod 664 *.html &amp;&amp; chmod 775 .</code></pre>
+      <p>That is the entire install. Open <code>https://your-site.com/admin.php</code> and sign in.</p>
+    </section>
+
+    <section id="password">
+      <h2>Set your password</h2>
+      <div class="note warn"><b>Never deploy with the default.</b> The out-of-the-box login is <code>admin</code> / <code>changeme</code> — change it before going live.</div>
+      <p>Generate a hash and paste it into <code>config.php</code>:</p>
+      <pre><code>php -r "echo password_hash('your-strong-password', PASSWORD_DEFAULT);"</code></pre>
+      <pre><code><span class="c-attr">'admin_user'</span> =&gt; <span class="c-str">'admin'</span>,
+<span class="c-attr">'admin_hash'</span> =&gt; <span class="c-str">'$2y$10$...paste-hash-here...'</span>,</code></pre>
+      <p>The plain password is never stored anywhere — only the bcrypt hash.</p>
+    </section>
+
+    <section id="signin">
+      <h2>Sign-in options</h2>
+      <p>Password sign-in always works and is your lockout-proof fallback. On top of it you can enable any combination of the following. Whichever method vouches for the visitor, only addresses on <code>oauth_allowed_emails</code> may actually sign in through OAuth.</p>
+
+      <h3 id="signin-google">Sign in with Google</h3>
+      <ol>
+        <li>Create an OAuth client at <a href="https://console.cloud.google.com/apis/credentials">console.cloud.google.com/apis/credentials</a> (type “Web application”).</li>
+        <li>Add the redirect URI <code>https://your-site.com/admin.php?action=oauth_cb&amp;provider=google</code></li>
+        <li>Fill in <code>config.php</code>:</li>
+      </ol>
+      <pre><code><span class="c-attr">'oauth'</span> =&gt; [
+    <span class="c-attr">'google'</span> =&gt; [
+        <span class="c-attr">'enabled'</span>       =&gt; <span class="c-tag">true</span>,
+        <span class="c-attr">'client_id'</span>     =&gt; <span class="c-str">'1234-abc.apps.googleusercontent.com'</span>,
+        <span class="c-attr">'client_secret'</span> =&gt; <span class="c-str">'GOCSPX-...'</span>,
+    ],
+],
+<span class="c-attr">'oauth_allowed_emails'</span> =&gt; [<span class="c-str">'you@gmail.com'</span>],   <span class="c-com">// who may sign in</span></code></pre>
+
+      <h3 id="signin-apple">Sign in with Apple</h3>
+      <p>Needs a paid Apple Developer account. Create a <b>Services ID</b>, enable “Sign in with Apple”, register the same redirect URI (with <code>&amp;provider=apple</code>), and create a <b>Sign in with Apple key</b> (a <code>.p8</code> file).</p>
+      <pre><code><span class="c-attr">'apple'</span> =&gt; [
+    <span class="c-attr">'enabled'</span>   =&gt; <span class="c-tag">true</span>,
+    <span class="c-attr">'client_id'</span> =&gt; <span class="c-str">'com.your-site.adminka'</span>,   <span class="c-com">// the Services ID</span>
+    <span class="c-attr">'team_id'</span>   =&gt; <span class="c-str">'ABCDE12345'</span>,
+    <span class="c-attr">'key_id'</span>    =&gt; <span class="c-str">'XYZ9876543'</span>,
+    <span class="c-attr">'key_file'</span>  =&gt; __DIR__ . <span class="c-str">'/AuthKey.p8'</span>,   <span class="c-com">// keep out of web root if possible</span>
+],</code></pre>
+      <p>Identity tokens are validated for issuer, audience, expiry, and a per-attempt nonce before the email is checked against the allowlist.</p>
+
+      <h3 id="signin-passkey">Passkeys <span class="pill">no config</span></h3>
+      <p>Touch ID / Face ID / Windows Hello / security keys — nothing to configure. Sign in once (any method), then click <b>“Add a passkey for this device”</b> on the page list. From then on the login screen offers <b>“Sign in with a passkey.”</b></p>
+      <ul>
+        <li>Requires HTTPS (or localhost).</li>
+        <li>Credentials live in <code>data/passkeys.json</code>; use the <b>Remove</b> button (or delete a line) to revoke one.</li>
+        <li>ES256 and RS256 authenticators are supported — Apple, Google, Windows Hello, YubiKeys.</li>
+      </ul>
+    </section>
+
+    <section id="concepts">
+      <h2>Core concepts</h2>
+      <p>Two attributes drive everything:</p>
+      <ul>
+        <li><code>data-editable</code> — marks an element as editable. Its value is a per-page-unique id (auto-generated if you leave it blank; see <a href="#ids">Auto-assigned IDs</a>).</li>
+        <li><code>data-editable-type</code> — chooses the editing behavior (<code>text</code>, <code>html</code>, <code>image</code>, <code>video</code>, <code>link</code>, <code>list</code>, <code>form</code>, <code>attrs</code>). Omit it for plain text.</li>
+      </ul>
+      <p>The <b>type is read from the file on the server</b>, never trusted from the browser — so a tampered client cannot, say, turn a text field into raw HTML. When your client presses Save, the changed values are applied to the parsed document and written back atomically (temp file + rename), after a timestamped backup.</p>
+    </section>
+
+    <section id="canvas">
+      <h2>Edit mode is a canvas</h2>
+      <p>When a page is opened through <code>admin.php?page=…</code>, it renders exactly like the live site with editable regions outlined — but the page’s <b>own JavaScript and navigation are frozen</b>. Links don’t navigate, anchors don’t scroll, forms don’t submit, and the site’s menus/sliders/carousels don’t react. This keeps the editor stable no matter what scripts the page ships.</p>
+      <div class="note">Because page scripts are frozen, widgets that <em>rely</em> on JS to reveal content (sliders, popups, accordions) need a marker so their content stays reachable while editing — see <a href="#opt-scroll">Sliders</a> and <a href="#opt-reveal">Popups &amp; accordions</a>.</div>
+    </section>
+
+    <section id="ids">
+      <h2>Auto-assigned IDs</h2>
+      <p>You never have to invent ids. Write just the marker:</p>
+      <pre><code><span class="c-tag">&lt;h1</span> <span class="c-attr">data-editable</span><span class="c-tag">&gt;</span>We build websites<span class="c-tag">&lt;/h1&gt;</span>
+<span class="c-tag">&lt;img</span> <span class="c-attr">src</span>=<span class="c-str">"team.jpg"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"image"</span><span class="c-tag">&gt;</span></code></pre>
+      <p>The first time a page is opened in the admin (or saved through it), every editable without an id gets a readable one — slugged from the element’s text (<code>we-build-websites</code>), transliterated from non-Latin scripts, filename-based for images/videos, class-based for lists and forms, de-duplicated with numeric suffixes. The file is normalized once, with a backup, and stays stable after. Duplicate ids are healed the same way; hand-written ids are never touched.</p>
+      <p>To normalize files before deploying (avoiding a first-open write in production), run the <a href="#cli">CLI tool</a>.</p>
+    </section>
+
+    <!-- ================= TYPES ================= -->
+
+    <section id="type-text">
+      <div class="type-head"><h2>text</h2><code>data-editable-type="text"</code><span class="pill">default</span></div>
+      <p>Plain-text, inline editing on any element. HTML the client types is escaped, so it can never inject markup. Source indentation is shown collapsed in the editor and text is trimmed on save, so IDE whitespace never leaks into the content.</p>
+      <div class="note" style="margin-bottom:6px">The panels below are <b>live</b> and split in two: the <b>Admin view</b> is what your client edits, the <b>Production view</b> is what visitors see. Edit on the left, press <b>Save changes</b>, and the right side updates — exactly the adminka round-trip. <b>Reset</b> restores a demo.</div>
+      <span class="codelabel">Markup</span>
+      <pre><code><span class="c-tag">&lt;h1</span> <span class="c-attr">data-editable</span>=<span class="c-str">"hero-title"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"text"</span><span class="c-tag">&gt;</span>
+  We build websites that just work
+<span class="c-tag">&lt;/h1&gt;</span></code></pre>
+      <div class="demo" data-demo="">
+        <div class="demo-bar"><span class="dot"></span><b>Live demo</b> — click the heading and type<button class="reset" type="button">Reset</button></div>
+        <div class="demo-stage">
+          <h3 style="margin:0;color:#10312b" data-editable="hero-title" data-editable-type="text">We build websites that just work</h3>
+          <p class="demo-hint">Click the outlined text and edit it directly, like any editor.</p>
+        </div>
+      </div>
+      <p>The type attribute is optional here — a bare <code>data-editable</code> behaves as <code>text</code>.</p>
+    </section>
+
+    <section id="type-html">
+      <div class="type-head"><h2>html</h2><code>data-editable-type="html"</code></div>
+      <p>Rich, inline editing for a block of formatted content. On save the markup is sanitized against a tag/attribute whitelist (configured in <code>config.php</code>): <code>script</code>, <code>style</code>, <code>iframe</code>, <code>object</code>, and <code>form</code> are removed with their content, event handlers are stripped, and disallowed tags are unwrapped.</p>
+      <span class="codelabel">Markup</span>
+      <pre><code><span class="c-tag">&lt;div</span> <span class="c-attr">data-editable</span>=<span class="c-str">"about-body"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"html"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;p&gt;</span>We are a <span class="c-tag">&lt;strong&gt;</span>small studio<span class="c-tag">&lt;/strong&gt;</span> focused on fast sites.<span class="c-tag">&lt;/p&gt;</span>
+  <span class="c-tag">&lt;p&gt;</span>No heavy CMS — just clean HTML.<span class="c-tag">&lt;/p&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></code></pre>
+      <p>Default allowed tags: <code>p br b strong i em u s a ul ol li h1–h6 blockquote span</code>. Default allowed attributes: <code>a[href,title,target]</code>, <code>span[class]</code>.</p>
+      <div class="demo" data-demo="">
+        <div class="demo-bar"><span class="dot"></span><b>Live demo</b> — rich text, select and use <kbd>⌘/Ctrl-B</kbd> for bold<button class="reset" type="button">Reset</button></div>
+        <div class="demo-stage">
+          <div data-editable="about-body" data-editable-type="html">
+            <p style="margin:0 0 8px">We are a <strong>small studio</strong> focused on fast, static websites.</p>
+            <p style="margin:0">No heavy CMS — just clean HTML your browser loves.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="type-image">
+      <div class="type-head"><h2>image</h2><code>data-editable-type="image"</code></div>
+      <p>Clicking an <code>&lt;img&gt;</code> opens the <a href="#opt-media">media picker</a>: choose an existing file, upload a new one (with an optional crop step for JPEG/PNG/WebP), or paste a URL. An <b>Alt text…</b> button edits the <code>alt</code> attribute. Images buried under overlay text also get a 🖼 corner badge so they stay clickable.</p>
+      <span class="codelabel">Markup</span>
+      <pre><code><span class="c-tag">&lt;img</span> <span class="c-attr">src</span>=<span class="c-str">"assets/content/image/hero.jpg"</span> <span class="c-attr">alt</span>=<span class="c-str">"Storefront"</span>
+     <span class="c-attr">data-editable</span>=<span class="c-str">"hero-image"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"image"</span><span class="c-tag">&gt;</span></code></pre>
+      <p><code>javascript:</code> and <code>data:</code> URLs are rejected. Uploads are validated by extension, sniffed MIME type, and size cap.</p>
+      <div class="demo" data-demo="">
+        <div class="demo-bar"><span class="dot"></span><b>Live demo</b> — click the image to open the picker<button class="reset" type="button">Reset</button></div>
+        <div class="demo-stage">
+          <div class="cards"><div class="card">
+            <img data-editable="hero-image" data-editable-type="image" data-sample="0" alt="">
+            <div style="font-size:.85rem;color:#555">Click the picture above</div>
+          </div></div>
+          <p class="demo-hint">In the real editor this lists your media folder with upload &amp; crop; here it offers a few samples.</p>
+        </div>
+        <pre class="demo-out" data-out=""></pre>
+      </div>
+    </section>
+
+    <section id="type-video">
+      <div class="type-head"><h2>video</h2><code>data-editable-type="video"</code></div>
+      <p>Clicking a <code>&lt;video&gt;</code> opens a dialog rather than the bare picker. You can set the <b>video file</b> and a <b>poster</b> image (each via <b>Browse…</b> into the library), toggle <b>Show player controls</b>, and toggle <b>Autoplay silently in the background</b> — which applies the reliable background-video recipe in one click.</p>
+      <span class="codelabel">Markup</span>
+      <pre><code><span class="c-tag">&lt;video</span> <span class="c-attr">src</span>=<span class="c-str">"assets/content/video/reel.mp4"</span> <span class="c-attr">controls</span>
+       <span class="c-attr">data-editable</span>=<span class="c-str">"showreel"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"video"</span><span class="c-tag">&gt;&lt;/video&gt;</span></code></pre>
+      <span class="codelabel">What “background autoplay” writes</span>
+      <pre><code><span class="c-tag">&lt;video</span> <span class="c-attr">src</span>=<span class="c-str">"…"</span> <span class="c-attr">muted autoplay loop playsinline webkit-playsinline</span>
+       <span class="c-attr">disablepictureinpicture disableremoteplayback</span> <span class="c-attr">preload</span>=<span class="c-str">"metadata"</span><span class="c-tag">&gt;&lt;/video&gt;</span></code></pre>
+      <p>A 🎬 corner badge is added for background videos that content sits on top of.</p>
+      <div class="demo" data-demo="">
+        <div class="demo-bar"><span class="dot"></span><b>Live demo</b> — click the video frame to open its dialog<button class="reset" type="button">Reset</button></div>
+        <div class="demo-stage">
+          <div class="demo-video" data-editable="showreel" data-editable-type="video" data-sample="0">Showreel — click to configure</div>
+          <p class="demo-hint">Toggle “Autoplay silently in the background” and watch the resulting markup below.</p>
+        </div>
+        <pre class="demo-out" data-out=""></pre>
+      </div>
+    </section>
+
+    <section id="type-link">
+      <div class="type-head"><h2>link</h2><code>data-editable-type="link"</code></div>
+      <p>Clicking an <code>&lt;a&gt;</code> opens a small dialog to edit its <b>text</b> and <b>URL</b> together.</p>
+      <span class="codelabel">Markup</span>
+      <pre><code><span class="c-tag">&lt;a</span> <span class="c-attr">href</span>=<span class="c-str">"/contact.html"</span>
+   <span class="c-attr">data-editable</span>=<span class="c-str">"cta"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"link"</span><span class="c-tag">&gt;</span>Contact us<span class="c-tag">&lt;/a&gt;</span></code></pre>
+      <p>URLs are scheme-validated (<code>http</code>, <code>https</code>, <code>mailto</code>, <code>tel</code>, relative, and anchors are allowed; <code>javascript:</code> is not). To also edit attributes like <code>target</code>, add <a href="#type-attrs"><code>data-editable-attrs</code></a>.</p>
+      <div class="demo" data-demo="">
+        <div class="demo-bar"><span class="dot"></span><b>Live demo</b> — click the link to edit its text &amp; URL<button class="reset" type="button">Reset</button></div>
+        <div class="demo-stage">
+          <p style="margin:0"><a href="/contact.html" data-editable="cta" data-editable-type="link" style="color:#0b6b57;font-weight:600">Contact us</a></p>
+        </div>
+        <pre class="demo-out" data-out=""></pre>
+      </div>
+    </section>
+
+    <section id="type-list">
+      <div class="type-head"><h2>list</h2><code>data-editable-type="list"</code></div>
+      <p>Turns a container into a repeatable list. In edit mode a <b>“+ Add item”</b> tile appears; each item gets a <b>“×”</b> remove badge (hidden when only one item remains, since new items are copied from the last one). Add and remove save immediately, with a backup, and the server assigns fresh unique ids to the new item’s nested editables automatically.</p>
+      <span class="codelabel">Markup</span>
+      <pre><code><span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"cards"</span> <span class="c-attr">data-editable</span>=<span class="c-str">"services"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"list"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"card"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;img</span> <span class="c-attr">src</span>=<span class="c-str">"a.jpg"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"image"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;h3</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"text"</span><span class="c-tag">&gt;</span>Landing pages<span class="c-tag">&lt;/h3&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-com">&lt;!-- more .card items… --&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></code></pre>
+      <p>Nested editables don’t need ids — they’re generated on first open. For a horizontally-scrolling gallery, combine with <a href="#opt-scroll"><code>data-editable-scroll</code></a>.</p>
+      <div class="demo" data-demo="">
+        <div class="demo-bar"><span class="dot"></span><b>Live demo</b> — add items, remove them, edit each<button class="reset" type="button">Reset</button></div>
+        <div class="demo-stage">
+          <div class="cards" data-editable="services" data-editable-type="list" data-list="">
+            <div class="card">
+              <h4 style="margin:0 0 4px;color:#10312b" data-editable="landing-pages" data-editable-type="text">Landing pages</h4>
+              <p style="margin:0;font-size:.85rem;color:#666" data-editable="one-page-sites-that" data-editable-type="text">One-page sites that load in a blink.</p>
+            </div>
+            <div class="card">
+              <h4 style="margin:0 0 4px;color:#10312b" data-editable="business-sites" data-editable-type="text">Business sites</h4>
+              <p style="margin:0;font-size:.85rem;color:#666" data-editable="multi-page-presence-easy" data-editable-type="text">Multi-page presence, easy editing.</p>
+            </div>
+          </div>
+          <p class="demo-hint">“× ” appears only while more than one item remains — new items copy the last.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="type-form">
+      <div class="type-head"><h2>form</h2><code>data-editable-type="form"</code></div>
+      <p>Mark a <code>&lt;form&gt;</code> (or any wrapper around controls). In edit mode every <code>input</code>, <code>textarea</code>, <code>select</code>, and <code>button</code> becomes click-to-edit. The editor stays deliberately content-focused: <b>label</b>, <b>placeholder</b> (only for input types that support one), and <b>required</b>; buttons get their <b>text</b>. Structural details — field <code>name</code>, input <code>type</code>, default <code>value</code> — stay in the markup where the developer put them.</p>
+      <span class="codelabel">Markup</span>
+      <pre><code><span class="c-tag">&lt;form</span> <span class="c-attr">data-editable</span>=<span class="c-str">"contact-form"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"form"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;label</span> <span class="c-attr">for</span>=<span class="c-str">"cf-name"</span><span class="c-tag">&gt;</span>Your name<span class="c-tag">&lt;/label&gt;</span>
+  <span class="c-tag">&lt;input</span> <span class="c-attr">id</span>=<span class="c-str">"cf-name"</span> <span class="c-attr">name</span>=<span class="c-str">"name"</span> <span class="c-attr">type</span>=<span class="c-str">"text"</span> <span class="c-attr">placeholder</span>=<span class="c-str">"Jane Doe"</span> <span class="c-attr">required</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;select</span> <span class="c-attr">name</span>=<span class="c-str">"topic"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;option&gt;</span>New website<span class="c-tag">&lt;/option&gt;</span>
+    <span class="c-tag">&lt;option</span> <span class="c-attr">value</span>=<span class="c-str">"other"</span><span class="c-tag">&gt;</span>Something else<span class="c-tag">&lt;/option&gt;</span>
+  <span class="c-tag">&lt;/select&gt;</span>
+<span class="c-tag">&lt;/form&gt;</span></code></pre>
+      <p><b>Select options</b> are a simple label list: rename inline, drag <b>☰</b> to reorder, <b>×</b> to remove, <b>+</b> to add. Each option’s <code>value</code>/<code>selected</code>/<code>disabled</code> travel with it untouched — the editor changes only the visible words. See also the <a href="#opt-placeholder">select placeholder</a>.</p>
+      <div class="demo" data-demo="">
+        <div class="demo-bar"><span class="dot"></span><b>Live demo</b> — click a field to edit it; on the dropdown, drag&nbsp;☰ to reorder options<button class="reset" type="button">Reset</button></div>
+        <div class="demo-stage">
+          <div class="demo-form" data-editable="contact-form" data-editable-type="form" data-form="">
+            <div class="fieldwrap">
+              <label data-label="">Your name</label>
+              <input type="text" name="name" placeholder="Jane Doe" data-control="" readonly="">
+            </div>
+            <div class="fieldwrap">
+              <label data-label="">Topic</label>
+              <select name="topic" data-control="">
+                <option>New website</option>
+                <option>Redesign</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+          </div>
+          <p class="demo-hint">Click a label/field to open its editor. On the Topic dropdown, the Options list supports drag-reordering.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="type-attrs">
+      <div class="type-head"><h2>attrs</h2><code>data-editable-attrs="…"</code></div>
+      <p>Expose specific attributes for editing. Hovering the element shows a <b>⚙</b> button that opens an attribute dialog — untick to remove an attribute, tick with an empty value for boolean attributes like <code>download</code> or <code>controls</code>.</p>
+      <span class="codelabel">Markup</span>
+      <pre><code><span class="c-tag">&lt;a</span> <span class="c-attr">href</span>=<span class="c-str">"/kit.zip"</span> <span class="c-attr">download</span>
+   <span class="c-attr">data-editable</span>=<span class="c-str">"dl"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"attrs"</span>
+   <span class="c-attr">data-editable-attrs</span>=<span class="c-str">"href download title"</span><span class="c-tag">&gt;</span>Download the kit<span class="c-tag">&lt;/a&gt;</span></code></pre>
+      <ul>
+        <li>Only attributes named in <code>data-editable-attrs</code> can be changed (the server re-reads the list from the file).</li>
+        <li>Event handlers, <code>style</code>, and <code>data-editable*</code> are always refused; URL-carrying attributes (<code>href</code>, <code>src</code>, <code>poster</code>, …) are scheme-validated.</li>
+        <li>Use type <code>attrs</code> when attributes are the <em>only</em> thing to edit; or combine <code>data-editable-attrs</code> with any other type to get both.</li>
+      </ul>
+      <div class="note">If you list <code>src</code> on an element the media picker also manages, the picker’s value wins on save — simplest not to double-manage the same attribute.</div>
+      <div class="demo" data-demo="">
+        <div class="demo-bar"><span class="dot"></span><b>Live demo</b> — hover the button, click the ⚙ that appears<button class="reset" type="button">Reset</button></div>
+        <div class="demo-stage">
+          <p style="margin:0"><a href="/kit.zip" download="" data-editable="dl" data-editable-type="attrs" data-editable-attrs="href download title" style="display:inline-block;background:#10312b;color:#fff;padding:8px 16px;border-radius:6px;text-decoration:none">Download the kit</a></p>
+        </div>
+        <pre class="demo-out" data-out=""></pre>
+      </div>
+    </section>
+
+    <!-- ================= CONTENT OPTIONS ================= -->
+
+    <section id="opt-scroll">
+      <div class="type-head"><h2>Sliders</h2><code>data-editable-scroll</code></div>
+      <p>Since page JS is frozen in edit mode, a carousel would be stuck on its first slide. Add <code>data-editable-scroll</code> to the slider’s track and, <em>in edit mode only</em>, it becomes a horizontal scroll-snap strip — every slide reachable by scrolling, no arrows needed. The live page is untouched.</p>
+      <span class="codelabel">Markup</span>
+      <pre><code><span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"slider"</span> <span class="c-attr">data-editable</span>=<span class="c-str">"gallery"</span>
+     <span class="c-attr">data-editable-type</span>=<span class="c-str">"list"</span> <span class="c-attr">data-editable-scroll</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;figure&gt;</span> … <span class="c-tag">&lt;/figure&gt;</span>
+  <span class="c-tag">&lt;figure&gt;</span> … <span class="c-tag">&lt;/figure&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></code></pre>
+      <p>Combine with <code>data-editable-type="list"</code> (as above) so the client can add and remove slides too.</p>
+      <div class="demo" data-demo="solo">
+        <div class="demo-bar"><span class="dot"></span><b>Live demo</b> — scroll the strip sideways; every slide is reachable<button class="reset" type="button">Reset</button></div>
+        <div class="demo-stage">
+          <div class="demo-slider" data-slider="">
+            <figure class="demo-slide" style="margin:0"><img data-sample="0" alt=""><figcaption>Bakery site</figcaption></figure>
+            <figure class="demo-slide" style="margin:0"><img data-sample="1" alt=""><figcaption>Wood workshop</figcaption></figure>
+            <figure class="demo-slide" style="margin:0"><img data-sample="2" alt=""><figcaption>Local café</figcaption></figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="opt-reveal">
+      <div class="type-head"><h2>Popups &amp; accordions</h2><code>data-editable-reveal</code></div>
+      <p>Content the live site keeps hidden — a modal, a collapsed accordion panel, an off-screen drawer — would be invisible (and uneditable) with page JS frozen. Mark it <code>data-editable-reveal</code> and it’s shown inline while editing, flagged “Hidden on the live site,” with everything inside editable as normal. The trigger button/link is just a regular <code>text</code> or <code>link</code> editable.</p>
+      <span class="codelabel">Markup</span>
+      <pre><code><span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"faq-item"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"faq-q"</span> <span class="c-attr">data-editable</span>=<span class="c-str">"q1"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"text"</span><span class="c-tag">&gt;</span>
+    How long does a site take?
+  <span class="c-tag">&lt;/button&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"faq-a"</span> <span class="c-attr">style</span>=<span class="c-str">"display:none"</span> <span class="c-attr">data-editable-reveal</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;p</span> <span class="c-attr">data-editable</span>=<span class="c-str">"a1"</span> <span class="c-attr">data-editable-type</span>=<span class="c-str">"text"</span><span class="c-tag">&gt;</span>About a week.<span class="c-tag">&lt;/p&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></code></pre>
+      <div class="note">Adminka can’t guess which elements are popups — it reveals only what you mark. Bake the marker into your reusable popup/accordion partials once and it’s free on every page.</div>
+      <div class="demo" data-demo="">
+        <div class="demo-bar"><span class="dot"></span><b>Live demo</b> — the panel is <code>display:none</code> live, revealed for editing<button class="reset" type="button">Reset</button></div>
+        <div class="demo-stage">
+          <div style="font-weight:600;color:#10312b;margin-bottom:4px" data-editable="how-long-does-a" data-editable-type="text">How long does a site take?</div>
+          <div class="demo-reveal" data-reveal>
+            <div class="demo-reveal-note" style="font-size:.72rem;color:#b00020;margin-bottom:5px">Hidden on the live site — shown for editing</div>
+            <p style="margin:0" data-editable="a-landing-page-ships" data-editable-type="text">A landing page ships in about a week; larger sites in two to three.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="opt-media">
+      <h2>Media library</h2>
+      <p>Images live in <code>assets/content/image</code>, videos in <code>assets/content/video</code> (configurable). The picker shows everything in the matching folder, newest first, plus:</p>
+      <ul>
+        <li><b>Upload…</b> — the file lands in the folder and is selected immediately. JPEG/PNG/WebP get a <b>crop dialog</b> first (drag the corners, then <em>Crop &amp; upload</em> — re-encoded at full resolution in the browser — or <em>Upload original</em>). GIF and AVIF skip cropping so animation/transparency survive.</li>
+        <li><b>Use URL…</b> — reference an external URL instead.</li>
+        <li><b>Alt text…</b> — edit an image’s <code>alt</code>.</li>
+      </ul>
+      <p>Every upload is checked three ways: extension whitelist, sniffed MIME type must match the folder kind, and a size cap (10&nbsp;MB images / 200&nbsp;MB videos by default). <b>SVG uploads are refused</b> (SVG can carry scripts). Filenames are slugified; collisions get <code>-2</code>, <code>-3</code> suffixes.</p>
+      <table>
+        <tbody><tr><th>Kind</th><th>Folder</th><th>Extensions</th><th>Max size</th></tr>
+        <tr><td>image</td><td><code>assets/content/image</code></td><td>jpg, jpeg, png, gif, webp, avif</td><td>10 MB</td></tr>
+        <tr><td>video</td><td><code>assets/content/video</code></td><td>mp4, webm, mov</td><td>200 MB</td></tr>
+      </tbody></table>
+    </section>
+
+    <section id="opt-placeholder">
+      <h2>Select placeholder</h2>
+      <p>A <code>&lt;select&gt;</code>’s control editor has a <b>Placeholder</b> field. Typing one creates (or updates) a hidden, disabled first option — the standard “please choose” pattern — which is excluded from the draggable option rows so it never clutters the list. Clearing the field removes it.</p>
+      <span class="codelabel">What the placeholder field writes</span>
+      <pre><code><span class="c-tag">&lt;option</span> <span class="c-attr">value</span>=<span class="c-str">""</span> <span class="c-attr">disabled selected</span> <span class="c-attr">style</span>=<span class="c-str">"display:none;"</span><span class="c-tag">&gt;</span>
+  Pick a topic…
+<span class="c-tag">&lt;/option&gt;</span></code></pre>
+    </section>
+
+    <!-- ================= REFERENCE ================= -->
+
+    <section id="config">
+      <h2>Configuration reference</h2>
+      <p>All settings live in <code>config.php</code>:</p>
+      <table>
+        <tbody><tr><th>Key</th><th>Default</th><th>Meaning</th></tr>
+        <tr><td><code>admin_user</code></td><td><code>admin</code></td><td>login name</td></tr>
+        <tr><td><code>admin_hash</code></td><td>—</td><td><code>password_hash()</code> of the password</td></tr>
+        <tr><td><code>site_root</code></td><td>script dir</td><td>where editable files live; nothing outside is ever read or written</td></tr>
+        <tr><td><code>backup_dir</code></td><td><code>./backups</code></td><td>backup location</td></tr>
+        <tr><td><code>data_dir</code></td><td><code>./data</code></td><td>passkeys + OAuth state (auto deny-all <code>.htaccess</code>)</td></tr>
+        <tr><td><code>backup_keep</code></td><td><code>10</code></td><td>backups kept per file (oldest pruned before each new save)</td></tr>
+        <tr><td><code>extensions</code></td><td><code>html, htm</code></td><td>editable file extensions</td></tr>
+        <tr><td><code>allowed_tags</code></td><td>p, br, b, strong, i, em, u, s, a, ul, ol, li, h1–h6, blockquote, span</td><td>tags permitted in <code>html</code> regions</td></tr>
+        <tr><td><code>allowed_attrs</code></td><td><code>a[href,title,target]</code>, <code>span[class]</code></td><td>attributes permitted per tag</td></tr>
+        <tr><td><code>oauth</code></td><td>disabled</td><td>Google / Apple credentials</td></tr>
+        <tr><td><code>oauth_allowed_emails</code></td><td>—</td><td>emails allowed through OAuth (case-insensitive)</td></tr>
+        <tr><td><code>passkeys_file</code></td><td><code>./data/passkeys.json</code></td><td>WebAuthn credential store</td></tr>
+        <tr><td><code>media</code></td><td>image / video folders</td><td>picker folders, allowed extensions, size caps</td></tr>
+      </tbody></table>
+    </section>
+
+    <section id="backups">
+      <h2>Backups &amp; recovery</h2>
+      <p>Before every save the current file is copied into <code>backups/</code> with a timestamp. Adminka keeps the last <b>10</b> per file (set by <code>backup_keep</code>) — the oldest is pruned <em>before</em> each new one is written, so the count never grows past the cap.</p>
+      <pre><code>backups/index.html.2026-07-12_142530</code></pre>
+      <p>To restore, copy a backup over the live file:</p>
+      <pre><code>cp backups/index.html.2026-07-12_142530 index.html</code></pre>
+      <p>Writes are atomic (temp file + rename), so a failed save can never leave a half-written page.</p>
+    </section>
+
+    <section id="security">
+      <h2>Security notes</h2>
+      <p><b>Built in:</b> bcrypt password + PHP sessions, a brute-force delay, a CSRF token on every state-changing request (saves, uploads, passkey management), path confinement to <code>site_root</code> (no <code>../</code> traversal), server-side type enforcement, an HTML whitelist sanitizer, URL-scheme validation for images/videos/links, upload MIME sniffing, OAuth state/nonce validation with an email allowlist, and WebAuthn signature + counter verification (cloned-authenticator detection).</p>
+      <p><b>Your responsibilities:</b></p>
+      <ul>
+        <li>Serve the site over <b>HTTPS</b>.</li>
+        <li><b>Change the default password</b> before going live.</li>
+        <li>Optionally add a second layer in front of <code>admin.php</code> (HTTP Basic Auth or an IP allowlist).</li>
+        <li>Deny web access to <code>backups/</code>, <code>data/</code>, <code>config.php</code>, and your Apple key:</li>
+      </ul>
+      <pre><code><span class="c-com"># nginx</span>
+location ~ ^/(backups/|data/|config\.php|AuthKey) { deny all; }</code></pre>
+      <p>On Apache, <code>data/</code> gets a deny-all <code>.htaccess</code> automatically; add the same file to <code>backups/</code>.</p>
+    </section>
+
+    <section id="cli">
+      <h2>CLI: assign-ids</h2>
+      <p>ID generation also runs automatically on first open, but you can normalize files ahead of a deploy (to avoid a first-open write in production):</p>
+      <pre><code>php tools/assign-ids.php index.html            <span class="c-com"># fills ids, keeps index.html.bak</span>
+php tools/assign-ids.php index.html --dry-run  <span class="c-com"># preview only</span></code></pre>
+      <p>It generates readable slugs, transliterates non-Latin text, de-duplicates, never touches existing ids, and reports any duplicates it heals.</p>
+    </section>
+
+    <section id="troubleshooting">
+      <h2>Troubleshooting</h2>
+      <table>
+        <tbody><tr><th>Symptom</th><th>Fix</th></tr>
+        <tr><td>“Could not write file. Check permissions.”</td><td>Give the web-server user write access to the HTML files and site directory.</td></tr>
+        <tr><td>“Invalid CSRF token — reload the page.”</td><td>Session expired; reload the edit page and save again.</td></tr>
+        <tr><td>Page list is empty</td><td>Check <code>site_root</code> and <code>extensions</code> in <code>config.php</code>.</td></tr>
+        <tr><td>Element not editable</td><td>Verify the <code>data-editable</code> id is present and unique on the page.</td></tr>
+        <tr><td>“Sign-in session expired” during OAuth</td><td>The state file expired (10 min) or was reused — start sign-in again.</td></tr>
+        <tr><td>Passkey button missing on login</td><td>No passkeys registered yet, or <code>data/passkeys.json</code> unreadable.</td></tr>
+        <tr><td>Passkey registration fails instantly</td><td>Page must be served over HTTPS (or localhost); check the browser console.</td></tr>
+        <tr><td>Upload rejected as wrong type</td><td>Content is sniffed — renaming <code>.mov</code>→<code>.mp4</code> is fine, but a PHP script named <code>.png</code> is not.</td></tr>
+        <tr><td>Slider/menu/popup doesn’t react in edit mode</td><td>By design — page JS is frozen. Mark sliders with <code>data-editable-scroll</code>, hidden panels with <code>data-editable-reveal</code>.</td></tr>
+        <tr><td>Styles broken in edit mode for subfolder pages</td><td>Use root-relative asset paths (<code>/css/style.css</code>) instead of relative ones.</td></tr>
+      </tbody></table>
+    </section>
+
+  </main>
+</div>
+
+<button class="totop" id="toTop" aria-label="Back to top">↑</button>
+
+<!-- Real Adminka modal system, so the demos use the exact product dialogs -->
+<script src="admin-lib/ui.js"></script>
+<script>
+/* Live documentation demos. These reuse AdminkaUI (the product's modal system)
+   but have no save bar and no server — they only mutate the demo DOM so readers
+   can feel each interaction. Sample media are inline SVG data URIs. */
+(function () {
+  var UI = window.AdminkaUI;
+  if (!UI) return;   // ui.js not reachable (docs opened without the project) — demos stay static
+
+  function svgSample(label, c1, c2) {
+    var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="440" height="280">' +
+      '<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0" stop-color="' + c1 + '"/><stop offset="1" stop-color="' + c2 + '"/></linearGradient></defs>' +
+      '<rect width="440" height="280" fill="url(#g)"/>' +
+      '<text x="220" y="150" font-family="system-ui,sans-serif" font-size="28" fill="#ffffff" text-anchor="middle" opacity="0.92">' +
+      label + '</text></svg>';
+    return 'data:image/svg+xml,' + encodeURIComponent(svg);
+  }
+  var SAMPLES = [
+    { name: 'Storefront', url: svgSample('Storefront', '#2f7d5e', '#12332c') },
+    { name: 'Team',       url: svgSample('Team', '#c9772a', '#7a3b12') },
+    { name: 'Product',    url: svgSample('Product', '#3a6ea5', '#1c3a5e') },
+    { name: 'Workshop',   url: svgSample('Workshop', '#7a5c99', '#3a2b52') }
+  ];
+  function sampleOptions() { return SAMPLES.map(function (s, i) { return { v: String(i), t: s.name }; }); }
+  function pickIndex(url) { for (var i = 0; i < SAMPLES.length; i++) if (SAMPLES[i].url === url) return String(i); return '0'; }
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+
+  // One-line tag readout for the "resulting HTML" panels.
+  function serialize(el) {
+    var etype = (el.getAttribute('data-editable-type') || '').toLowerCase();
+    var tag = etype === 'video' ? 'video' : el.tagName.toLowerCase();   // demo video is a styled div
+    var out = '<span class="k">&lt;' + tag + '</span>';
+    Array.prototype.forEach.call(el.attributes, function (a) {
+      if (a.name.indexOf('data-') === 0 || a.name === 'style' || a.name === 'class'
+          || a.name === 'contenteditable') return;
+      var val = a.value;
+      if (val.indexOf('data:image') === 0) {               // show a friendly filename, not the raw data URI
+        var m = SAMPLES.filter(function (s) { return s.url === val; })[0];
+        val = (m ? m.name.toLowerCase() : 'image') + '.jpg';
+      }
+      out += ' <span class="a">' + esc(a.name) + '</span>';
+      if (val !== '') out += '=<span class="s">"' + esc(val) + '"</span>';
+    });
+    out += '<span class="k">&gt;</span>';
+    if (tag === 'a') out += esc(el.textContent) + '<span class="k">&lt;/a&gt;</span>';
+    if (tag === 'video') out += '<span class="k">&lt;/video&gt;</span>';
+    return out;
+  }
+  function markDirty(demo) {
+    var s = demo.querySelector('.demo-save');
+    if (s) { s.disabled = false; s.classList.add('dirty'); s.textContent = 'Save changes'; }
+  }
+
+  // One editable element worth echoing as "saved markup" (image/video/link/attrs).
+  function keyEl(stage) {
+    return stage.querySelector('[data-editable-type=image],[data-editable-type=video],[data-editable-type=link],[data-editable-attrs]');
+  }
+
+  // Render the admin stage as the live site would show it: no edit chrome,
+  // hidden panels collapsed into a working accordion, video state reflected.
+  function renderProduction(stage) {
+    var c = stage.cloneNode(true);
+    c.querySelectorAll('.demo-add,.demo-remove,.demo-gear,.demo-hint,.demo-reveal-note').forEach(function (n) { n.remove(); });
+    c.querySelectorAll('[contenteditable]').forEach(function (n) { n.removeAttribute('contenteditable'); });
+
+    // reveal → click-to-open accordion (the trigger is the preceding editable)
+    c.querySelectorAll('[data-reveal]').forEach(function (rev) {
+      var trigger = rev.previousElementSibling;
+      if (!trigger) { rev.style.display = 'none'; return; }
+      trigger.className = 'demo-acc-q'; trigger.removeAttribute('style');
+      var caret = document.createElement('span'); caret.className = 'caret'; caret.textContent = '▶';
+      trigger.insertBefore(caret, trigger.firstChild);
+      var body = document.createElement('div'); body.className = 'demo-acc-a';
+      rev.removeAttribute('style'); rev.className = '';
+      while (rev.firstChild) body.appendChild(rev.firstChild);
+      rev.appendChild(body); body.style.display = 'none';
+      trigger.addEventListener('click', function () {
+        var open = body.style.display === 'none';
+        body.style.display = open ? 'block' : 'none';
+        trigger.classList.toggle('open', open);
+      });
+    });
+
+    // video → poster frame with a state badge (no configure prompt)
+    c.querySelectorAll('[data-editable-type=video]').forEach(function (v) {
+      v.textContent = '';
+      var badge = document.createElement('span'); badge.className = 'demo-vbadge';
+      badge.textContent = v.hasAttribute('autoplay') ? '● autoplay · muted · loop'
+        : (v.hasAttribute('controls') ? '▶ with controls' : '▶ click to play');
+      v.appendChild(badge);
+    });
+
+    // forms → interactive controls, required labels marked
+    c.querySelectorAll('[data-control]').forEach(function (ctl) {
+      ctl.removeAttribute('readonly');
+      if (ctl.hasAttribute('required')) {
+        var lab = ctl.closest('.fieldwrap').querySelector('[data-label]');
+        if (lab && lab.textContent.indexOf('*') < 0) lab.textContent += ' *';
+      }
+    });
+
+    // strip the markers so it reads like plain published HTML
+    c.querySelectorAll('[data-editable],[data-editable-attrs]').forEach(function (n) {
+      n.removeAttribute('data-editable'); n.removeAttribute('data-editable-type');
+      n.removeAttribute('data-editable-attrs'); n.removeAttribute('title');
+    });
+
+    var frag = document.createDocumentFragment();
+    while (c.firstChild) frag.appendChild(c.firstChild);
+    return frag;
+  }
+
+  document.querySelectorAll('.demo[data-demo]').forEach(function (demo) {
+    var stage = demo.querySelector('.demo-stage');
+    var initial = stage.innerHTML;
+    var solo = demo.getAttribute('data-demo') === 'solo';
+    var out  = demo.querySelector('[data-out]');   // becomes the "saved markup" panel
+    var live = null, save = null, savedPre = null;
+
+    if (!solo) {
+      var split = document.createElement('div'); split.className = 'demo-split';
+      var admin = document.createElement('div'); admin.className = 'demo-pane demo-admin';
+      var aHead = document.createElement('div'); aHead.className = 'demo-pane-head';
+      aHead.innerHTML = '<span class="ic">✎</span> Admin view';
+      save = document.createElement('button');
+      save.type = 'button'; save.className = 'demo-save'; save.textContent = 'Saved ✓'; save.disabled = true;
+      aHead.appendChild(save);
+      admin.appendChild(aHead);
+      admin.appendChild(stage);                    // move the editable stage into the admin pane
+
+      var prod = document.createElement('div'); prod.className = 'demo-pane demo-prod';
+      var pHead = document.createElement('div'); pHead.className = 'demo-pane-head';
+      pHead.innerHTML = '<span class="ic">◉</span> Production view';
+      prod.appendChild(pHead);
+      live = document.createElement('div'); live.className = 'demo-live';
+      prod.appendChild(live);
+      if (out) { savedPre = out; out.classList.add('demo-saved'); prod.appendChild(out); }
+      split.appendChild(admin); split.appendChild(prod);
+      demo.appendChild(split);
+
+      save.addEventListener('click', commit);
+    }
+
+    function commit() {
+      if (live) { live.innerHTML = ''; live.appendChild(renderProduction(stage)); }
+      if (savedPre) {
+        var el = keyEl(stage);
+        savedPre.innerHTML = '<span class="demo-saved-label">Saved markup</span>' +
+          (el ? serialize(el) : '<span style="opacity:.5">—</span>');
+      }
+      if (save) { save.disabled = true; save.classList.remove('dirty'); save.textContent = 'Saved ✓'; }
+    }
+
+    function wireAll() {
+      stage.querySelectorAll('[data-sample]').forEach(function (el) {
+        var s = SAMPLES[+el.getAttribute('data-sample')] || SAMPLES[0];
+        if (el.tagName === 'IMG') el.src = s.url; else el.style.backgroundImage = 'url("' + s.url + '")';
+      });
+      stage.querySelectorAll('[data-editable]').forEach(function (el) {
+        var type = (el.getAttribute('data-editable-type') || 'text').toLowerCase();
+        if (type === 'text' || type === 'html') {
+          el.setAttribute('contenteditable', type === 'text' ? 'plaintext-only' : 'true');
+          el.addEventListener('input', function () { markDirty(demo); });
+        }
+        if (type === 'image') el.addEventListener('click', function () { editImage(el, demo); });
+        if (type === 'video') el.addEventListener('click', function () { editVideo(el, demo); });
+        if (type === 'link')  el.addEventListener('click', function (e) { e.preventDefault(); editLink(el, demo); });
+      });
+      stage.querySelectorAll('[data-editable-attrs]').forEach(function (el) { attachGear(el, demo); });
+      var list = stage.querySelector('[data-list]'); if (list) wireList(list, demo);
+      var form = stage.querySelector('[data-form]'); if (form) wireForm(form, demo);
+    }
+
+    var reset = demo.querySelector('.reset');
+    if (reset) reset.addEventListener('click', function () { stage.innerHTML = initial; wireAll(); commit(); });
+
+    wireAll();
+    commit();   // initial production render
+  });
+
+  function editImage(el, demo) {
+    UI.form({ title: 'Choose image', submit: 'Apply', fields: [
+      { name: 'src', label: 'Image', type: 'select', value: pickIndex(el.getAttribute('src')), options: sampleOptions() },
+      { name: 'alt', label: 'Alt text', value: el.getAttribute('alt') || '' }
+    ]}).then(function (v) { if (!v) return; el.src = SAMPLES[+v.src].url; el.setAttribute('alt', v.alt); markDirty(demo); });
+  }
+
+  var BG = ['muted','autoplay','loop','playsinline','webkit-playsinline','disablepictureinpicture','disableremoteplayback'];
+  function editVideo(el, demo) {
+    UI.form({ title: 'Video', submit: 'Apply', fields: [
+      { name: 'poster', label: 'Poster image', type: 'select',
+        value: pickIndex(el.style.backgroundImage.replace(/^url\("?|"?\)$/g, '')), options: sampleOptions() },
+      { name: 'bg', label: 'Autoplay silently in the background', type: 'checkbox', checked: el.hasAttribute('autoplay') },
+      { name: 'controls', label: 'Show player controls', type: 'checkbox', checked: el.hasAttribute('controls') }
+    ]}).then(function (v) {
+      if (!v) return;
+      el.style.backgroundImage = 'url("' + SAMPLES[+v.poster].url + '")';
+      el.setAttribute('poster', SAMPLES[+v.poster].name.toLowerCase() + '.jpg');
+      if (v.bg) { BG.forEach(function (a) { el.setAttribute(a, ''); }); el.setAttribute('preload', 'metadata'); }
+      else { BG.forEach(function (a) { el.removeAttribute(a); }); el.removeAttribute('preload'); }
+      if (v.controls) el.setAttribute('controls', ''); else el.removeAttribute('controls');
+      el.textContent = v.bg ? 'Background video (muted, looping)' : 'Showreel — click to configure';
+      markDirty(demo);
+    });
+  }
+
+  function editLink(el, demo) {
+    UI.form({ title: 'Edit link', submit: 'Apply', fields: [
+      { name: 'text', label: 'Text', value: el.textContent.trim() },
+      { name: 'href', label: 'URL', value: el.getAttribute('href') || '' }
+    ]}).then(function (v) { if (!v) return; el.textContent = v.text; el.setAttribute('href', v.href); markDirty(demo); });
+  }
+
+  function attachGear(el, demo) {
+    var gear = document.createElement('button');
+    gear.type = 'button'; gear.className = 'demo-gear'; gear.textContent = '⚙'; gear.style.display = 'none';
+    el.insertAdjacentElement('afterend', gear);
+    function place() {
+      gear.style.left = (el.offsetLeft + el.offsetWidth - 12) + 'px';
+      gear.style.top  = (el.offsetTop - 8) + 'px';
+    }
+    el.addEventListener('mouseenter', function () { place(); gear.style.display = 'block'; });
+    el.addEventListener('mouseleave', function () { setTimeout(function () { if (!gear.matches(':hover')) gear.style.display = 'none'; }, 80); });
+    gear.addEventListener('mouseleave', function () { gear.style.display = 'none'; });
+    gear.addEventListener('click', function () {
+      var names = (el.getAttribute('data-editable-attrs') || '').split(/[\s,]+/).filter(Boolean);
+      UI.form({ title: 'Attributes', submit: 'Apply', fields: names.map(function (n) {
+        return { name: n, label: n, type: 'attr', present: el.hasAttribute(n), value: el.getAttribute(n) || '' };
+      })}).then(function (v) {
+        if (!v) return;
+        names.forEach(function (n) { if (v[n] === null) el.removeAttribute(n); else el.setAttribute(n, v[n]); });
+        markDirty(demo); gear.style.display = 'none';
+      });
+    });
+  }
+
+  function wireList(list, demo) {
+    function cards() { return Array.prototype.filter.call(list.children, function (c) { return c.classList.contains('card'); }); }
+    function refresh() {
+      list.querySelectorAll('.demo-remove,.demo-add').forEach(function (b) { b.remove(); });
+      var items = cards();
+      if (items.length > 1) items.forEach(function (item) {
+        var x = document.createElement('button');
+        x.type = 'button'; x.className = 'demo-remove'; x.textContent = '×';
+        x.addEventListener('click', function () { item.remove(); refresh(); markDirty(demo); });
+        item.appendChild(x);
+      });
+      var add = document.createElement('button');
+      add.type = 'button'; add.className = 'demo-add'; add.textContent = '+ Add item';
+      add.addEventListener('click', function () {
+        var items2 = cards();
+        var clone = items2[items2.length - 1].cloneNode(true);
+        clone.querySelectorAll('.demo-remove').forEach(function (b) { b.remove(); });
+        clone.querySelectorAll('[data-editable]').forEach(function (e) {
+          var t = (e.getAttribute('data-editable-type') || 'text').toLowerCase();
+          if (t === 'text' || t === 'html') {
+            e.setAttribute('contenteditable', t === 'text' ? 'plaintext-only' : 'true');
+            e.addEventListener('input', function () { markDirty(demo); });
+          }
+        });
+        list.appendChild(clone); refresh(); markDirty(demo);
+      });
+      list.appendChild(add);
+    }
+    refresh();
+  }
+
+  function wireForm(form, demo) {
+    form.querySelectorAll('[data-control]').forEach(function (c) {
+      var wrap = c.closest('.fieldwrap');
+      var label = wrap.querySelector('[data-label]');
+      function open() {
+        var tag = c.tagName.toLowerCase();
+        var fields = [{ name: 'label', label: 'Label', value: label.textContent }];
+        if (tag === 'input') fields.push({ name: 'placeholder', label: 'Placeholder', value: c.getAttribute('placeholder') || '' });
+        if (tag === 'select') fields.push({ name: 'options', label: 'Options', type: 'options',
+          value: Array.prototype.map.call(c.options, function (o, i) { return { text: o.text, from: i }; }) });
+        fields.push({ name: 'required', label: 'Required', type: 'checkbox', checked: c.hasAttribute('required') });
+        UI.form({ title: 'Edit field', submit: 'Apply', fields: fields }).then(function (v) {
+          if (!v) return;
+          label.textContent = v.label;
+          if ('placeholder' in v) { v.placeholder ? c.setAttribute('placeholder', v.placeholder) : c.removeAttribute('placeholder'); }
+          if (v.required) c.setAttribute('required', ''); else c.removeAttribute('required');
+          if (tag === 'select' && Array.isArray(v.options)) {
+            var orig = Array.prototype.slice.call(c.options);
+            c.innerHTML = '';
+            v.options.forEach(function (o) {
+              if (!o.text.trim()) return;
+              var opt = (o.from >= 0 && orig[o.from]) ? orig[o.from] : document.createElement('option');
+              opt.textContent = o.text;
+              c.appendChild(opt);
+            });
+          }
+          markDirty(demo);
+        });
+      }
+      c.addEventListener('mousedown', function (e) { e.preventDefault(); });
+      c.addEventListener('click', function (e) { e.preventDefault(); open(); });
+      label.style.cursor = 'pointer';
+      label.addEventListener('click', open);
+    });
+  }
+})();
+</script>
+
+<script>
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.toc a[href^="#"]'));
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); })
+                      .filter(Boolean);
+
+  // Scrollspy: highlight the nav entry for the section nearest the top.
+  var current = null;
+  function setActive(id) {
+    if (id === current) return;
+    current = id;
+    links.forEach(function (a) { a.classList.remove('active'); });
+    if (byId[id]) {
+      byId[id].classList.add('active');
+      // keep the active item visible inside the sidebar
+      byId[id].scrollIntoView({ block: 'nearest' });
+    }
+  }
+  var observer = new IntersectionObserver(function (entries) {
+    // pick the topmost section currently intersecting; fall back to nearest above
+    var visible = entries.filter(function (e) { return e.isIntersecting; });
+    if (visible.length) {
+      visible.sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+      setActive(visible[0].target.id);
+    }
+  }, { rootMargin: '0px 0px -70% 0px', threshold: 0 });
+  sections.forEach(function (s) { observer.observe(s); });
+
+  // Fallback for when nothing is "intersecting" (e.g. very tall sections)
+  function onScroll() {
+    var top = window.scrollY + 90;
+    var best = null;
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].offsetTop <= top) best = sections[i];
+    }
+    if (best) setActive(best.id);
+    document.getElementById('toTop').classList.toggle('show', window.scrollY > 400);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu toggle
+  var toc = document.getElementById('toc'), btn = document.getElementById('menuBtn');
+  btn.addEventListener('click', function () {
+    var open = toc.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  toc.addEventListener('click', function (e) {
+    if (e.target.tagName === 'A' && window.matchMedia('(max-width:860px)').matches) {
+      toc.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  document.getElementById('toTop').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+</script>
+
+
+</body></html>
