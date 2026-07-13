@@ -2,7 +2,6 @@
 *.zip
 
 ### Custom ###
-build
 stats.json
 
 ### macOS ###
